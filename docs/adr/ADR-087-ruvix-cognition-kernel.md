@@ -951,9 +951,43 @@ THEN:
 4. **Hot-swapping RVF components?** Position: add `rvf_unmount` in a future ABI revision, not in initial 12 syscalls.
 5. **Minimum viable Phase B hardware?** Position: Raspberry Pi 4 (Cortex-A72) for accessibility, validate on Pi 5 (Cortex-A76).
 
+6. **Boot signature failure behavior?** Position: boot halts (kernel panic) on signature verification failure — no fallback, diagnostic to UART.
+7. **Slab slot use-after-free?** Position: slab allocations return capability-protected handles with per-slot generation counters; stale handles are detected and rejected.
+8. **Queue schema validation boundary?** Position: kernel validates message size and WIT type tag at `queue_send` time; deep structural validation is receiver-side. Document this as a trust boundary.
+
 ---
 
-## 20. References
+## 20. Security Hardening Notes
+
+Identified during pre-release security audit. All are specification clarifications, not structural flaws.
+
+### 20.1 Root Task Privilege Attenuation
+
+The root task holds capabilities for all physical memory at boot. After Stage 3 component mounting completes, the root task MUST drop all capabilities except its own task handle and the kernel witness log (read-only). If the root task is implemented as a persistent init component, it retains only the minimum capability set declared in its RVF manifest. This prevents a compromised root task from owning the entire system post-boot.
+
+### 20.2 Capability Delegation Depth Limit
+
+`cap_grant` with `GRANT` right enables transitive delegation chains. To prevent unbounded delegation: maximum delegation depth is 8 (configurable per-RVF). A `GRANT_ONCE` right (non-transitive) is available for cases where a task should delegate access but not the ability to further delegate. The periodic capability audit (Section 14) flags delegation chains deeper than 4.
+
+### 20.3 Boot RVF Proof Bootstrap
+
+Mounting the Proof Engine itself cannot require a user-space proof (circular dependency). Resolution: Stage 3 component mounting from the cryptographically-signed boot RVF is the single kernel-trusted path that bypasses proof token requirements. Post-boot `rvf_mount` calls always require proof tokens from the now-running Proof Engine. The boot RVF's signature verification at Stage 1 provides equivalent assurance.
+
+### 20.4 Reflex Proof Cache Scoping
+
+The Reflex-tier proof cache (Section 14, proof engine unavailable mitigation) caches proof tokens scoped to a specific `(mutation_hash, nonce)` pair, not to operation classes. Cached proofs are single-use (nonce consumed on first verification). Cache entries have 100ms TTL. The cache size is bounded (default: 64 entries). This prevents window-of-opportunity attacks where coherence degrades between cache insertion and consumption.
+
+### 20.5 Zero-Copy IPC TOCTOU Mitigation
+
+When `queue_send` places a descriptor referencing a shared region, the referenced data segment must be in an `Immutable` or `AppendOnly` region. The kernel rejects `queue_send` descriptors pointing into `Slab` regions (which permit overwrites). This eliminates time-of-check-to-time-of-use attacks where a sender modifies shared data after the receiver reads the descriptor but before it processes the content.
+
+### 20.6 Boot Signature Failure
+
+If ML-DSA-65 signature verification fails at Stage 1, the kernel panics immediately. There is no fallback boot path, no recovery mode, and no unsigned boot option. A diagnostic message is written to UART (if initialized). This is a deliberate design choice: a system that boots unsigned code provides no security guarantees.
+
+---
+
+## 21. References
 
 1. **seL4 Microkernel** — Klein et al., "seL4: Formal Verification of an OS Kernel," SOSP 2009. The capability model and "kernel creates nothing after boot" principle directly inspire RuVix's capability manager.
 
@@ -977,7 +1011,7 @@ THEN:
 
 ---
 
-## 21. Decision Record
+## 22. Decision Record
 
 This ADR proposes RuVix as a new architectural layer in the RuVector ecosystem. It does not replace any existing crate or ADR. It promotes existing primitives (RVF, proof-gated mutation, coherence scoring, capability-based access) from library conventions to kernel-enforced invariants.
 
