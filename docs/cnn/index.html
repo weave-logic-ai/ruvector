@@ -706,6 +706,7 @@
             <button class="tab active" data-tab="playground">Playground</button>
             <button class="tab" data-tab="realtime">Real-time</button>
             <button class="tab" data-tab="pose">Pose Estimation</button>
+            <button class="tab" data-tab="learning">Self-Learning</button>
             <button class="tab" data-tab="examples">Examples</button>
         </div>
 
@@ -1004,6 +1005,246 @@
                             <div class="console" id="pose-console" style="margin-top: 1rem;">
                                 <div class="console-line info">> Pose detection ready...</div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Self-Learning Tab -->
+            <div class="tab-content" data-tab="learning">
+                <div class="grid">
+                    <!-- Live Classifier Training -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🧠</div>
+                            <div>
+                                <div class="card-title">Live Classifier</div>
+                                <div class="card-description">Train a classifier in real-time</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.85rem; margin-bottom: 1rem;">
+                                1. Add labeled examples &nbsp; 2. Test on new images &nbsp; 3. Correct mistakes to improve
+                            </p>
+
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                                <input type="text" id="class-name-input" placeholder="Class name (e.g., cat)"
+                                    style="flex: 1; min-width: 120px; padding: 0.5rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); border-radius: 6px; color: hsl(var(--foreground)); font-size: 0.85rem;">
+                                <button class="btn btn-primary" id="add-class-btn">+ Add Class</button>
+                            </div>
+
+                            <div id="class-containers" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;"></div>
+
+                            <div style="border-top: 1px solid hsl(var(--border)); padding-top: 1rem; margin-top: 0.5rem;">
+                                <p style="font-size: 0.8rem; color: hsl(var(--muted-foreground)); margin-bottom: 0.5rem;">Test Classification:</p>
+                                <div class="drop-zone" id="classify-drop" style="padding: 1rem;">
+                                    <span style="font-size: 1.5rem;">🎯</span>
+                                    <span style="font-size: 0.85rem; margin-left: 0.5rem;">Drop image to classify</span>
+                                </div>
+                                <input type="file" id="classify-input" accept="image/*" style="display: none;">
+                                <div id="classify-result" style="margin-top: 0.75rem; text-align: center;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Few-Shot Learning -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🎯</div>
+                            <div>
+                                <div class="card-title">Few-Shot Learning</div>
+                                <div class="card-description">Learn from 1-5 examples per class</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.85rem; margin-bottom: 1rem;">
+                                Register classes with just a few examples, then classify new images instantly.
+                            </p>
+
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+                                <div style="text-align: center;">
+                                    <div class="drop-zone" id="fewshot-class-a" style="padding: 0.75rem; min-height: 80px;" data-class="A">
+                                        <div style="font-weight: 600; color: hsl(var(--primary));">Class A</div>
+                                        <div style="font-size: 0.7rem; color: hsl(var(--muted-foreground));">Drop images</div>
+                                    </div>
+                                    <input type="file" id="fewshot-input-a" multiple accept="image/*" style="display: none;">
+                                    <div id="fewshot-count-a" style="font-size: 0.75rem; margin-top: 0.25rem;">0 examples</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div class="drop-zone" id="fewshot-class-b" style="padding: 0.75rem; min-height: 80px;" data-class="B">
+                                        <div style="font-weight: 600; color: hsl(var(--success));">Class B</div>
+                                        <div style="font-size: 0.7rem; color: hsl(var(--muted-foreground));">Drop images</div>
+                                    </div>
+                                    <input type="file" id="fewshot-input-b" multiple accept="image/*" style="display: none;">
+                                    <div id="fewshot-count-b" style="font-size: 0.75rem; margin-top: 0.25rem;">0 examples</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div class="drop-zone" id="fewshot-class-c" style="padding: 0.75rem; min-height: 80px;" data-class="C">
+                                        <div style="font-weight: 600; color: hsl(var(--warning));">Class C</div>
+                                        <div style="font-size: 0.7rem; color: hsl(var(--muted-foreground));">Drop images</div>
+                                    </div>
+                                    <input type="file" id="fewshot-input-c" multiple accept="image/*" style="display: none;">
+                                    <div id="fewshot-count-c" style="font-size: 0.75rem; margin-top: 0.25rem;">0 examples</div>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid hsl(var(--border)); padding-top: 1rem;">
+                                <div class="drop-zone" id="fewshot-test" style="padding: 0.75rem;">
+                                    <span>🔮 Drop to classify</span>
+                                </div>
+                                <input type="file" id="fewshot-test-input" accept="image/*" style="display: none;">
+                                <div id="fewshot-result" style="margin-top: 0.5rem; text-align: center; font-size: 0.9rem;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Incremental Learning -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">📈</div>
+                            <div>
+                                <div class="card-title">Incremental Learning</div>
+                                <div class="card-description">Watch accuracy improve over time</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.85rem; margin-bottom: 1rem;">
+                                Add examples one by one and watch the prototype centroids evolve.
+                            </p>
+
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <select id="incremental-class" style="flex: 1; padding: 0.5rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); border-radius: 6px; color: hsl(var(--foreground));">
+                                    <option value="positive">Positive (+)</option>
+                                    <option value="negative">Negative (-)</option>
+                                </select>
+                                <div class="drop-zone" id="incremental-add" style="padding: 0.5rem 1rem; flex: 2;">
+                                    <span style="font-size: 0.85rem;">📥 Drop to add example</span>
+                                </div>
+                                <input type="file" id="incremental-input" accept="image/*" style="display: none;">
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background: hsl(var(--secondary)); padding: 0.75rem; border-radius: 8px; text-align: center;">
+                                    <div style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--success));" id="inc-pos-count">0</div>
+                                    <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Positive examples</div>
+                                </div>
+                                <div style="background: hsl(var(--secondary)); padding: 0.75rem; border-radius: 8px; text-align: center;">
+                                    <div style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--destructive));" id="inc-neg-count">0</div>
+                                    <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Negative examples</div>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px solid hsl(var(--border)); padding-top: 1rem;">
+                                <div class="drop-zone" id="incremental-test" style="padding: 0.75rem;">
+                                    <span>⚖️ Drop to test</span>
+                                </div>
+                                <input type="file" id="incremental-test-input" accept="image/*" style="display: none;">
+                                <div id="incremental-result" style="margin-top: 0.5rem;"></div>
+                            </div>
+
+                            <button class="btn btn-ghost" id="incremental-reset" style="width: 100%; margin-top: 0.75rem;">🔄 Reset Model</button>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Learning -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🔄</div>
+                            <div>
+                                <div class="card-title">Feedback Learning</div>
+                                <div class="card-description">Correct mistakes to improve</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.85rem; margin-bottom: 1rem;">
+                                The model learns from corrections. Wrong prediction? Tell it the right answer!
+                            </p>
+
+                            <div id="feedback-history" style="max-height: 200px; overflow-y: auto; margin-bottom: 1rem;">
+                                <div style="text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.85rem; padding: 1rem;">
+                                    Train the Live Classifier above, then test images here to provide feedback
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; text-align: center; font-size: 0.8rem;">
+                                <div style="background: hsl(var(--secondary)); padding: 0.5rem; border-radius: 6px;">
+                                    <div style="font-weight: 600;" id="feedback-total">0</div>
+                                    <div style="color: hsl(var(--muted-foreground));">Total</div>
+                                </div>
+                                <div style="background: hsl(var(--secondary)); padding: 0.5rem; border-radius: 6px;">
+                                    <div style="font-weight: 600; color: hsl(var(--success));" id="feedback-correct">0</div>
+                                    <div style="color: hsl(var(--muted-foreground));">Correct</div>
+                                </div>
+                                <div style="background: hsl(var(--secondary)); padding: 0.5rem; border-radius: 6px;">
+                                    <div style="font-weight: 600; color: hsl(var(--primary));" id="feedback-accuracy">—</div>
+                                    <div style="color: hsl(var(--muted-foreground));">Accuracy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory Bank -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">💾</div>
+                            <div>
+                                <div class="card-title">Memory Bank</div>
+                                <div class="card-description">Persistent embedding storage</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: hsl(var(--muted-foreground)); font-size: 0.85rem; margin-bottom: 1rem;">
+                                View all stored embeddings and their class assignments.
+                            </p>
+
+                            <div id="memory-bank-grid" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; max-height: 200px; overflow-y: auto;">
+                                <div style="grid-column: span 6; text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.85rem; padding: 1rem;">
+                                    No memories yet. Add examples to the classifiers above.
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                                <button class="btn btn-secondary" id="export-memory-btn" style="flex: 1;">📤 Export</button>
+                                <button class="btn btn-secondary" id="import-memory-btn" style="flex: 1;">📥 Import</button>
+                                <input type="file" id="import-memory-input" accept=".json" style="display: none;">
+                            </div>
+
+                            <div id="memory-stats" style="margin-top: 0.75rem; font-size: 0.8rem; color: hsl(var(--muted-foreground)); text-align: center;">
+                                0 classes • 0 embeddings • 0 KB
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Camera Training -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">📹</div>
+                            <div>
+                                <div class="card-title">Camera Training</div>
+                                <div class="card-description">Train using your webcam</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="camera-wrapper" style="position: relative; aspect-ratio: 4/3; background: hsl(var(--secondary)); margin-bottom: 1rem;">
+                                <video id="training-video" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                <div style="position: absolute; top: 0.5rem; left: 0.5rem;">
+                                    <span class="stat-badge" id="training-class-badge" style="background: hsl(var(--primary));">Ready</span>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <button class="btn btn-primary" id="start-training-cam-btn">Start Camera</button>
+                                <button class="btn btn-secondary hidden" id="stop-training-cam-btn">Stop</button>
+                            </div>
+
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <input type="text" id="cam-class-input" placeholder="Class name"
+                                    style="flex: 1; min-width: 100px; padding: 0.5rem; background: hsl(var(--secondary)); border: 1px solid hsl(var(--border)); border-radius: 6px; color: hsl(var(--foreground)); font-size: 0.85rem;">
+                                <button class="btn btn-primary" id="capture-training-btn" disabled>📸 Capture</button>
+                                <button class="btn btn-secondary" id="auto-capture-btn" disabled>🔄 Auto (5)</button>
+                            </div>
+
+                            <div id="cam-training-log" style="margin-top: 0.75rem; font-size: 0.8rem; color: hsl(var(--muted-foreground)); max-height: 60px; overflow-y: auto;"></div>
                         </div>
                     </div>
                 </div>
@@ -3112,6 +3353,472 @@ async function gestureLoop() {
             });
 
             anomalyResult.innerHTML = `Found <span style="color: hsl(var(--destructive));">${anomalyCount}</span> potential anomaly${anomalyCount !== 1 ? 's' : ''} (red border)`;
+        }
+
+        // ==================== SELF-LEARNING DEMOS ====================
+
+        // Shared classifier state
+        const classifier = {
+            classes: new Map(), // className -> { embeddings: [], color: string }
+            colors: ['hsl(262, 83%, 58%)', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 62%, 50%)', 'hsl(200, 70%, 50%)', 'hsl(280, 60%, 50%)'],
+            colorIndex: 0,
+            feedbackLog: [],
+            totalTests: 0,
+            correctTests: 0
+        };
+
+        // Helper: Extract embedding from image file
+        async function extractEmbeddingFromFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 224; canvas.height = 224;
+                        canvas.getContext('2d').drawImage(img, 0, 0, 224, 224);
+                        const imageData = canvas.getContext('2d').getImageData(0, 0, 224, 224);
+                        const rgb = new Uint8Array(224 * 224 * 3);
+                        for (let i = 0, j = 0; i < imageData.data.length; i += 4, j += 3) {
+                            rgb[j] = imageData.data[i]; rgb[j+1] = imageData.data[i+1]; rgb[j+2] = imageData.data[i+2];
+                        }
+                        resolve({ embedding: embedder.extract(rgb, 224, 224), dataUrl: e.target.result });
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Helper: Classify using stored prototypes
+        function classifyEmbedding(embedding) {
+            if (classifier.classes.size === 0) return null;
+            const scores = [];
+            for (const [className, data] of classifier.classes) {
+                if (data.embeddings.length === 0) continue;
+                // Compute prototype (mean embedding)
+                const proto = computePrototype(data.embeddings);
+                const sim = embedder.cosine_similarity(embedding, proto);
+                scores.push({ className, similarity: sim, color: data.color, count: data.embeddings.length });
+            }
+            return scores.sort((a, b) => b.similarity - a.similarity);
+        }
+
+        function computePrototype(embeddings) {
+            const dim = embeddings[0].length;
+            const proto = new Float32Array(dim);
+            for (const emb of embeddings) {
+                for (let i = 0; i < dim; i++) proto[i] += emb[i];
+            }
+            for (let i = 0; i < dim; i++) proto[i] /= embeddings.length;
+            const norm = Math.sqrt(proto.reduce((s, v) => s + v*v, 0));
+            for (let i = 0; i < dim; i++) proto[i] /= norm;
+            return proto;
+        }
+
+        // Live Classifier
+        const addClassBtn = document.getElementById('add-class-btn');
+        const classNameInput = document.getElementById('class-name-input');
+        const classContainers = document.getElementById('class-containers');
+        const classifyDrop = document.getElementById('classify-drop');
+        const classifyInput = document.getElementById('classify-input');
+        const classifyResult = document.getElementById('classify-result');
+
+        if (addClassBtn) {
+            addClassBtn.onclick = () => {
+                const name = classNameInput.value.trim();
+                if (!name || classifier.classes.has(name)) return;
+                const color = classifier.colors[classifier.colorIndex++ % classifier.colors.length];
+                classifier.classes.set(name, { embeddings: [], color, thumbnails: [] });
+                renderClassContainers();
+                classNameInput.value = '';
+                updateMemoryBank();
+            };
+        }
+
+        function renderClassContainers() {
+            if (!classContainers) return;
+            classContainers.innerHTML = '';
+            for (const [name, data] of classifier.classes) {
+                const container = document.createElement('div');
+                container.style.cssText = `background: hsl(var(--secondary)); border: 2px solid ${data.color}; border-radius: 8px; padding: 0.5rem; min-width: 120px;`;
+                container.innerHTML = `
+                    <div style="font-size: 0.8rem; font-weight: 600; color: ${data.color}; margin-bottom: 0.25rem;">${name} (${data.embeddings.length})</div>
+                    <div class="class-thumbs" style="display: flex; gap: 2px; flex-wrap: wrap; min-height: 30px;"></div>
+                    <input type="file" class="class-file-input" multiple accept="image/*" style="display: none;">
+                `;
+                const thumbsDiv = container.querySelector('.class-thumbs');
+                const fileInput = container.querySelector('.class-file-input');
+
+                // Show thumbnails
+                data.thumbnails.slice(-6).forEach(thumb => {
+                    const img = document.createElement('img');
+                    img.src = thumb;
+                    img.style.cssText = 'width: 24px; height: 24px; object-fit: cover; border-radius: 3px;';
+                    thumbsDiv.appendChild(img);
+                });
+
+                // Drop zone behavior
+                container.ondragover = e => { e.preventDefault(); container.style.borderStyle = 'dashed'; };
+                container.ondragleave = () => { container.style.borderStyle = 'solid'; };
+                container.ondrop = async e => {
+                    e.preventDefault();
+                    container.style.borderStyle = 'solid';
+                    for (const file of e.dataTransfer.files) {
+                        if (!file.type.startsWith('image/')) continue;
+                        const result = await extractEmbeddingFromFile(file);
+                        data.embeddings.push(result.embedding);
+                        data.thumbnails.push(result.dataUrl);
+                    }
+                    renderClassContainers();
+                    updateMemoryBank();
+                };
+
+                container.onclick = () => fileInput.click();
+                fileInput.onchange = async e => {
+                    for (const file of e.target.files) {
+                        const result = await extractEmbeddingFromFile(file);
+                        data.embeddings.push(result.embedding);
+                        data.thumbnails.push(result.dataUrl);
+                    }
+                    renderClassContainers();
+                    updateMemoryBank();
+                };
+
+                classContainers.appendChild(container);
+            }
+        }
+
+        // Classification drop zone
+        if (classifyDrop && classifyInput) {
+            classifyDrop.onclick = () => classifyInput.click();
+            classifyDrop.ondragover = e => { e.preventDefault(); classifyDrop.classList.add('drag-over'); };
+            classifyDrop.ondragleave = () => classifyDrop.classList.remove('drag-over');
+            classifyDrop.ondrop = async e => { e.preventDefault(); classifyDrop.classList.remove('drag-over'); await doClassify(e.dataTransfer.files[0]); };
+            classifyInput.onchange = async e => await doClassify(e.target.files[0]);
+        }
+
+        async function doClassify(file) {
+            if (!file || !embedder) return;
+            const result = await extractEmbeddingFromFile(file);
+            const scores = classifyEmbedding(result.embedding);
+
+            if (!scores || scores.length === 0) {
+                classifyResult.innerHTML = '<span style="color: hsl(var(--muted-foreground));">Add classes first!</span>';
+                return;
+            }
+
+            const top = scores[0];
+            classifyResult.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+                    <img src="${result.dataUrl}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px;">
+                    <div>
+                        <div style="font-size: 1.25rem; font-weight: 700; color: ${top.color};">${top.className}</div>
+                        <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground));">Confidence: ${(top.similarity * 100).toFixed(1)}%</div>
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.25rem; justify-content: center; flex-wrap: wrap;">
+                    ${scores.slice(0, 4).map(s => `<span style="font-size: 0.7rem; padding: 2px 6px; background: ${s.color}22; color: ${s.color}; border-radius: 4px;">${s.className}: ${(s.similarity * 100).toFixed(0)}%</span>`).join('')}
+                </div>
+            `;
+
+            // Add to feedback log
+            classifier.totalTests++;
+            updateFeedbackStats();
+        }
+
+        // Few-Shot Learning
+        const fewshotClasses = { A: [], B: [], C: [] };
+        const fewshotEmbeddings = { A: [], B: [], C: [] };
+
+        ['a', 'b', 'c'].forEach(letter => {
+            const dropEl = document.getElementById(`fewshot-class-${letter}`);
+            const inputEl = document.getElementById(`fewshot-input-${letter}`);
+            const countEl = document.getElementById(`fewshot-count-${letter}`);
+            const classKey = letter.toUpperCase();
+
+            if (dropEl && inputEl) {
+                dropEl.onclick = () => inputEl.click();
+                dropEl.ondragover = e => { e.preventDefault(); dropEl.classList.add('drag-over'); };
+                dropEl.ondragleave = () => dropEl.classList.remove('drag-over');
+                dropEl.ondrop = async e => {
+                    e.preventDefault();
+                    dropEl.classList.remove('drag-over');
+                    for (const file of e.dataTransfer.files) {
+                        if (!file.type.startsWith('image/')) continue;
+                        const result = await extractEmbeddingFromFile(file);
+                        fewshotEmbeddings[classKey].push(result.embedding);
+                    }
+                    countEl.textContent = `${fewshotEmbeddings[classKey].length} examples`;
+                };
+                inputEl.onchange = async e => {
+                    for (const file of e.target.files) {
+                        const result = await extractEmbeddingFromFile(file);
+                        fewshotEmbeddings[classKey].push(result.embedding);
+                    }
+                    countEl.textContent = `${fewshotEmbeddings[classKey].length} examples`;
+                };
+            }
+        });
+
+        const fewshotTest = document.getElementById('fewshot-test');
+        const fewshotTestInput = document.getElementById('fewshot-test-input');
+        const fewshotResult = document.getElementById('fewshot-result');
+
+        if (fewshotTest && fewshotTestInput) {
+            fewshotTest.onclick = () => fewshotTestInput.click();
+            fewshotTest.ondragover = e => { e.preventDefault(); fewshotTest.classList.add('drag-over'); };
+            fewshotTest.ondragleave = () => fewshotTest.classList.remove('drag-over');
+            fewshotTest.ondrop = async e => { e.preventDefault(); fewshotTest.classList.remove('drag-over'); await fewshotClassify(e.dataTransfer.files[0]); };
+            fewshotTestInput.onchange = async e => await fewshotClassify(e.target.files[0]);
+        }
+
+        async function fewshotClassify(file) {
+            if (!file || !embedder) return;
+            const result = await extractEmbeddingFromFile(file);
+            const scores = [];
+            const classColors = { A: 'hsl(262, 83%, 58%)', B: 'hsl(142, 76%, 36%)', C: 'hsl(38, 92%, 50%)' };
+
+            for (const [cls, embs] of Object.entries(fewshotEmbeddings)) {
+                if (embs.length === 0) continue;
+                const proto = computePrototype(embs);
+                const sim = embedder.cosine_similarity(result.embedding, proto);
+                scores.push({ cls, similarity: sim, color: classColors[cls] });
+            }
+
+            if (scores.length === 0) {
+                fewshotResult.innerHTML = '<span style="color: hsl(var(--warning));">Add examples to classes first!</span>';
+                return;
+            }
+
+            scores.sort((a, b) => b.similarity - a.similarity);
+            fewshotResult.innerHTML = `<span style="font-weight: 700; color: ${scores[0].color};">Class ${scores[0].cls}</span> (${(scores[0].similarity * 100).toFixed(1)}%) ` +
+                scores.slice(1).map(s => `<span style="color: ${s.color}; font-size: 0.8rem;">${s.cls}: ${(s.similarity * 100).toFixed(0)}%</span>`).join(' ');
+        }
+
+        // Incremental Learning
+        const incrementalModel = { positive: [], negative: [] };
+        const incPosCount = document.getElementById('inc-pos-count');
+        const incNegCount = document.getElementById('inc-neg-count');
+        const incrementalAdd = document.getElementById('incremental-add');
+        const incrementalInput = document.getElementById('incremental-input');
+        const incrementalClass = document.getElementById('incremental-class');
+        const incrementalTest = document.getElementById('incremental-test');
+        const incrementalTestInput = document.getElementById('incremental-test-input');
+        const incrementalResult = document.getElementById('incremental-result');
+        const incrementalReset = document.getElementById('incremental-reset');
+
+        if (incrementalAdd && incrementalInput) {
+            incrementalAdd.onclick = () => incrementalInput.click();
+            incrementalAdd.ondragover = e => { e.preventDefault(); incrementalAdd.classList.add('drag-over'); };
+            incrementalAdd.ondragleave = () => incrementalAdd.classList.remove('drag-over');
+            incrementalAdd.ondrop = async e => { e.preventDefault(); incrementalAdd.classList.remove('drag-over'); await addIncrementalExample(e.dataTransfer.files[0]); };
+            incrementalInput.onchange = async e => await addIncrementalExample(e.target.files[0]);
+        }
+
+        async function addIncrementalExample(file) {
+            if (!file || !embedder) return;
+            const cls = incrementalClass.value;
+            const result = await extractEmbeddingFromFile(file);
+            incrementalModel[cls].push(result.embedding);
+            incPosCount.textContent = incrementalModel.positive.length;
+            incNegCount.textContent = incrementalModel.negative.length;
+        }
+
+        if (incrementalTest && incrementalTestInput) {
+            incrementalTest.onclick = () => incrementalTestInput.click();
+            incrementalTest.ondragover = e => { e.preventDefault(); incrementalTest.classList.add('drag-over'); };
+            incrementalTest.ondragleave = () => incrementalTest.classList.remove('drag-over');
+            incrementalTest.ondrop = async e => { e.preventDefault(); incrementalTest.classList.remove('drag-over'); await testIncremental(e.dataTransfer.files[0]); };
+            incrementalTestInput.onchange = async e => await testIncremental(e.target.files[0]);
+        }
+
+        async function testIncremental(file) {
+            if (!file || !embedder) return;
+            const result = await extractEmbeddingFromFile(file);
+            let posSim = 0, negSim = 0;
+
+            if (incrementalModel.positive.length > 0) {
+                const posProto = computePrototype(incrementalModel.positive);
+                posSim = embedder.cosine_similarity(result.embedding, posProto);
+            }
+            if (incrementalModel.negative.length > 0) {
+                const negProto = computePrototype(incrementalModel.negative);
+                negSim = embedder.cosine_similarity(result.embedding, negProto);
+            }
+
+            const isPositive = posSim > negSim;
+            incrementalResult.innerHTML = `
+                <div style="text-align: center; padding: 0.5rem; background: ${isPositive ? 'hsla(142, 76%, 36%, 0.2)' : 'hsla(0, 62%, 50%, 0.2)'}; border-radius: 6px;">
+                    <div style="font-weight: 700; color: ${isPositive ? 'hsl(var(--success))' : 'hsl(var(--destructive))'};">${isPositive ? 'Positive (+)' : 'Negative (-)'}</div>
+                    <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground));">+: ${(posSim * 100).toFixed(1)}% | -: ${(negSim * 100).toFixed(1)}%</div>
+                </div>`;
+        }
+
+        if (incrementalReset) {
+            incrementalReset.onclick = () => {
+                incrementalModel.positive = [];
+                incrementalModel.negative = [];
+                incPosCount.textContent = '0';
+                incNegCount.textContent = '0';
+                incrementalResult.innerHTML = '';
+            };
+        }
+
+        // Memory Bank
+        function updateMemoryBank() {
+            const grid = document.getElementById('memory-bank-grid');
+            const stats = document.getElementById('memory-stats');
+            if (!grid) return;
+
+            let totalEmbs = 0;
+            grid.innerHTML = '';
+
+            for (const [name, data] of classifier.classes) {
+                totalEmbs += data.embeddings.length;
+                data.thumbnails.slice(-12).forEach(thumb => {
+                    const div = document.createElement('div');
+                    div.style.cssText = `aspect-ratio: 1; border-radius: 4px; overflow: hidden; border: 2px solid ${data.color};`;
+                    div.innerHTML = `<img src="${thumb}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                    div.title = name;
+                    grid.appendChild(div);
+                });
+            }
+
+            if (totalEmbs === 0) {
+                grid.innerHTML = '<div style="grid-column: span 6; text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.85rem; padding: 1rem;">No memories yet.</div>';
+            }
+
+            const sizeKB = (totalEmbs * 512 * 4 / 1024).toFixed(1);
+            stats.textContent = `${classifier.classes.size} classes • ${totalEmbs} embeddings • ${sizeKB} KB`;
+        }
+
+        // Export/Import Memory
+        const exportMemoryBtn = document.getElementById('export-memory-btn');
+        const importMemoryBtn = document.getElementById('import-memory-btn');
+        const importMemoryInput = document.getElementById('import-memory-input');
+
+        if (exportMemoryBtn) {
+            exportMemoryBtn.onclick = () => {
+                const data = {};
+                for (const [name, d] of classifier.classes) {
+                    data[name] = { embeddings: d.embeddings.map(e => Array.from(e)), color: d.color };
+                }
+                const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a'); a.href = url; a.download = 'classifier-memory.json'; a.click();
+            };
+        }
+
+        if (importMemoryBtn && importMemoryInput) {
+            importMemoryBtn.onclick = () => importMemoryInput.click();
+            importMemoryInput.onchange = async e => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const text = await file.text();
+                const data = JSON.parse(text);
+                for (const [name, d] of Object.entries(data)) {
+                    classifier.classes.set(name, {
+                        embeddings: d.embeddings.map(e => new Float32Array(e)),
+                        color: d.color,
+                        thumbnails: []
+                    });
+                }
+                renderClassContainers();
+                updateMemoryBank();
+            };
+        }
+
+        // Feedback Stats
+        function updateFeedbackStats() {
+            const totalEl = document.getElementById('feedback-total');
+            const correctEl = document.getElementById('feedback-correct');
+            const accuracyEl = document.getElementById('feedback-accuracy');
+            if (totalEl) totalEl.textContent = classifier.totalTests;
+            if (correctEl) correctEl.textContent = classifier.correctTests;
+            if (accuracyEl) accuracyEl.textContent = classifier.totalTests > 0 ? `${(classifier.correctTests / classifier.totalTests * 100).toFixed(0)}%` : '—';
+        }
+
+        // Camera Training
+        let trainingStream = null;
+        const trainingVideo = document.getElementById('training-video');
+        const startTrainingCamBtn = document.getElementById('start-training-cam-btn');
+        const stopTrainingCamBtn = document.getElementById('stop-training-cam-btn');
+        const captureTrainingBtn = document.getElementById('capture-training-btn');
+        const autoCaptureBtna = document.getElementById('auto-capture-btn');
+        const camClassInput = document.getElementById('cam-class-input');
+        const camTrainingLog = document.getElementById('cam-training-log');
+        const trainingClassBadge = document.getElementById('training-class-badge');
+
+        if (startTrainingCamBtn) {
+            startTrainingCamBtn.onclick = async () => {
+                try {
+                    trainingStream = await navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 } });
+                    trainingVideo.srcObject = trainingStream;
+                    startTrainingCamBtn.classList.add('hidden');
+                    stopTrainingCamBtn.classList.remove('hidden');
+                    captureTrainingBtn.disabled = false;
+                    autoCaptureBtna.disabled = false;
+                } catch (e) { console.error(e); }
+            };
+        }
+
+        if (stopTrainingCamBtn) {
+            stopTrainingCamBtn.onclick = () => {
+                if (trainingStream) { trainingStream.getTracks().forEach(t => t.stop()); trainingStream = null; }
+                trainingVideo.srcObject = null;
+                startTrainingCamBtn.classList.remove('hidden');
+                stopTrainingCamBtn.classList.add('hidden');
+                captureTrainingBtn.disabled = true;
+                autoCaptureBtna.disabled = true;
+            };
+        }
+
+        if (captureTrainingBtn) {
+            captureTrainingBtn.onclick = () => captureTrainingFrame();
+        }
+
+        if (autoCaptureBtna) {
+            autoCaptureBtna.onclick = async () => {
+                for (let i = 0; i < 5; i++) {
+                    await captureTrainingFrame();
+                    await new Promise(r => setTimeout(r, 500));
+                }
+            };
+        }
+
+        async function captureTrainingFrame() {
+            if (!embedder || !trainingStream) return;
+            const className = camClassInput.value.trim() || 'default';
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 224; canvas.height = 224;
+            canvas.getContext('2d').drawImage(trainingVideo, 0, 0, 224, 224);
+            const imageData = canvas.getContext('2d').getImageData(0, 0, 224, 224);
+            const rgb = new Uint8Array(224 * 224 * 3);
+            for (let i = 0, j = 0; i < imageData.data.length; i += 4, j += 3) {
+                rgb[j] = imageData.data[i]; rgb[j+1] = imageData.data[i+1]; rgb[j+2] = imageData.data[i+2];
+            }
+            const embedding = embedder.extract(rgb, 224, 224);
+            const dataUrl = canvas.toDataURL();
+
+            if (!classifier.classes.has(className)) {
+                const color = classifier.colors[classifier.colorIndex++ % classifier.colors.length];
+                classifier.classes.set(className, { embeddings: [], color, thumbnails: [] });
+            }
+
+            const data = classifier.classes.get(className);
+            data.embeddings.push(embedding);
+            data.thumbnails.push(dataUrl);
+
+            trainingClassBadge.textContent = `${className} (${data.embeddings.length})`;
+            trainingClassBadge.style.background = data.color;
+
+            camTrainingLog.innerHTML = `<div style="color: hsl(var(--success));">+ Added to "${className}" (${data.embeddings.length} total)</div>` + camTrainingLog.innerHTML;
+            renderClassContainers();
+            updateMemoryBank();
         }
 
         // Initialize similarity search when WASM loads
