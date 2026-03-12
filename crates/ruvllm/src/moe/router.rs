@@ -333,6 +333,10 @@ pub struct MemoryAwareRouter {
     cache_resident: CacheMask,
     /// Routing and caching metrics
     metrics: MoeMetrics,
+    /// Reusable score buffer to avoid allocations (P2 optimization)
+    score_buffer: Vec<f32>,
+    /// Reusable indexed buffer for sorting (P2 optimization)
+    index_buffer: Vec<(ExpertId, f32)>,
 }
 
 impl MemoryAwareRouter {
@@ -349,8 +353,12 @@ impl MemoryAwareRouter {
     pub fn new(config: RouterConfig, affinity: ExpertAffinity) -> Result<Self, &'static str> {
         config.validate()?;
 
+        let num_experts = config.num_experts;
         Ok(Self {
-            cache_resident: CacheMask::new(config.num_experts),
+            cache_resident: CacheMask::new(num_experts),
+            // P2: Pre-allocate buffers to avoid allocations in hot path
+            score_buffer: vec![0.0; num_experts],
+            index_buffer: Vec::with_capacity(num_experts),
             config,
             affinity,
             metrics: MoeMetrics::new(),
@@ -385,25 +393,18 @@ impl MemoryAwareRouter {
     ///
     /// This function is deterministic: same inputs produce same outputs.
     /// No random sampling is used.
+    #[inline]
     pub fn route(&mut self, gate_logits: &[f32]) -> (Vec<ExpertId>, Vec<PagingRequest>) {
         let start = Instant::now();
 
-        // Validate input length
+        // Validate input length (P3: early exit for invalid input)
         if gate_logits.len() != self.config.num_experts {
-            // Fallback: return first top_k experts
             let selected: Vec<ExpertId> = (0..self.config.top_k.min(self.config.num_experts)).collect();
             return (selected, Vec::new());
         }
 
-        // Step 1: Apply cache bonus (if memory-aware mode enabled)
-        let adjusted_scores = if self.config.memory_aware {
-            self.apply_cache_bonus(gate_logits)
-        } else {
-            gate_logits.to_vec()
-        };
-
-        // Step 2: Select top-K experts
-        let selected = self.select_top_k(&adjusted_scores);
+        // P2: Use pre-allocated buffer instead of allocating
+        let selected = self.route_into_buffer(gate_logits);
 
         // Step 3: Update affinity for selected experts
         self.affinity.update(&selected);
@@ -411,18 +412,141 @@ impl MemoryAwareRouter {
         // Step 4: Generate paging requests for non-resident selected experts
         let paging_requests = self.generate_paging_requests(&selected);
 
-        // Step 5: Record metrics
-        let hits = selected.iter().filter(|&&id| self.is_resident(id)).count();
+        // Step 5: Record metrics (P3: unroll small loops)
+        let mut hits = 0usize;
+        for &id in &selected {
+            if self.cache_resident.is_set(id) {
+                hits += 1;
+            }
+        }
         let misses = selected.len() - hits;
-        for _ in 0..hits {
-            self.metrics.record_cache_hit();
-        }
-        for _ in 0..misses {
-            self.metrics.record_cache_miss();
-        }
+        self.metrics.record_cache_hits(hits);
+        self.metrics.record_cache_misses(misses);
         self.metrics.record_routing(start.elapsed());
 
         (selected, paging_requests)
+    }
+
+    /// P2 Optimization: Route using pre-allocated buffers
+    ///
+    /// Avoids allocation in the hot path by reusing internal buffers.
+    #[inline]
+    fn route_into_buffer(&mut self, gate_logits: &[f32]) -> Vec<ExpertId> {
+        let n = gate_logits.len();
+
+        // Copy scores into buffer and apply cache bonus in-place
+        self.score_buffer.clear();
+        self.score_buffer.extend_from_slice(gate_logits);
+
+        if self.config.memory_aware {
+            self.apply_cache_bonus_inplace_buffer();
+        }
+
+        // Select top-K using index buffer
+        self.select_top_k_buffered(n)
+    }
+
+    /// P2: Apply cache bonus using internal buffer
+    #[inline]
+    fn apply_cache_bonus_inplace_buffer(&mut self) {
+        let bonus = self.config.cache_bonus;
+        for (id, score) in self.score_buffer.iter_mut().enumerate() {
+            if !score.is_finite() {
+                *score = 0.0;
+                continue;
+            }
+            if self.cache_resident.is_set(id) {
+                *score += bonus;
+            }
+        }
+    }
+
+    /// P2: Select top-K using pre-allocated index buffer
+    #[inline]
+    fn select_top_k_buffered(&mut self, n: usize) -> Vec<ExpertId> {
+        let k = self.config.top_k.min(n);
+        if k == 0 || n == 0 {
+            return Vec::new();
+        }
+
+        // Reuse index buffer
+        self.index_buffer.clear();
+        self.index_buffer.extend(
+            self.score_buffer
+                .iter()
+                .enumerate()
+                .map(|(id, &s)| (id, if s.is_finite() { s } else { f32::NEG_INFINITY }))
+        );
+
+        // P4: Unroll for small k (common case: top-2)
+        if k == 2 && n >= 2 {
+            return self.select_top_2_unrolled();
+        }
+
+        // Use partial sort for larger k
+        if k < n / 2 {
+            self.index_buffer.select_nth_unstable_by(k - 1, |a, b| {
+                b.1.partial_cmp(&a.1)
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then_with(|| a.0.cmp(&b.0))
+            });
+            self.index_buffer[..k].sort_by(|a, b| {
+                b.1.partial_cmp(&a.1)
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then_with(|| a.0.cmp(&b.0))
+            });
+        } else {
+            self.index_buffer.sort_by(|a, b| {
+                b.1.partial_cmp(&a.1)
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then_with(|| a.0.cmp(&b.0))
+            });
+        }
+
+        self.index_buffer.iter().take(k).map(|(id, _)| *id).collect()
+    }
+
+    /// P4: Unrolled top-2 selection (most common MoE configuration)
+    #[inline]
+    fn select_top_2_unrolled(&self) -> Vec<ExpertId> {
+        let mut best = (0, f32::NEG_INFINITY);
+        let mut second = (0, f32::NEG_INFINITY);
+
+        for &(id, score) in &self.index_buffer {
+            if score > best.1 || (score == best.1 && id < best.0) {
+                second = best;
+                best = (id, score);
+            } else if score > second.1 || (score == second.1 && id < second.0) {
+                second = (id, score);
+            }
+        }
+
+        vec![best.0, second.0]
+    }
+
+    /// Batch routing for multiple tokens (P2 optimization)
+    ///
+    /// Routes multiple tokens in a single call, reusing buffers across tokens.
+    /// More efficient than calling `route()` multiple times.
+    ///
+    /// # Arguments
+    ///
+    /// * `batch_logits` - Slice of gate logits for each token (shape: [batch_size][num_experts])
+    ///
+    /// # Returns
+    ///
+    /// Vector of (selected_experts, paging_requests) for each token
+    pub fn route_batch(
+        &mut self,
+        batch_logits: &[&[f32]],
+    ) -> Vec<(Vec<ExpertId>, Vec<PagingRequest>)> {
+        let mut results = Vec::with_capacity(batch_logits.len());
+
+        for logits in batch_logits {
+            results.push(self.route(logits));
+        }
+
+        results
     }
 
     /// Apply cache residency bonus to scores (in-place mutation for P0 optimization)

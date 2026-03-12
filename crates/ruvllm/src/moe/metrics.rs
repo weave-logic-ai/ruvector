@@ -53,6 +53,18 @@ impl MoeMetrics {
         self.cache_misses += 1;
     }
 
+    /// Record multiple cache hits (P2 batch optimization)
+    #[inline]
+    pub fn record_cache_hits(&mut self, count: usize) {
+        self.cache_hits += count as u64;
+    }
+
+    /// Record multiple cache misses (P2 batch optimization)
+    #[inline]
+    pub fn record_cache_misses(&mut self, count: usize) {
+        self.cache_misses += count as u64;
+    }
+
     /// Record expert paged in
     pub fn record_page_in(&mut self, latency: Duration) {
         self.experts_paged_in += 1;
@@ -303,5 +315,27 @@ mod tests {
         let timer = MetricsTimer::start();
         // Just verify it doesn't panic
         let _elapsed = timer.elapsed();
+    }
+
+    #[test]
+    fn test_bulk_cache_recording() {
+        let mut metrics = MoeMetrics::new();
+
+        // P2 optimization: bulk recording
+        metrics.record_cache_hits(5);
+        metrics.record_cache_misses(2);
+
+        assert_eq!(metrics.cache_hits, 5);
+        assert_eq!(metrics.cache_misses, 2);
+
+        // Mix with single recording
+        metrics.record_cache_hit();
+        metrics.record_cache_miss();
+
+        assert_eq!(metrics.cache_hits, 6);
+        assert_eq!(metrics.cache_misses, 3);
+
+        // Hit rate should be 6/9 = 66.67%
+        assert!((metrics.hit_rate() - 0.6666667).abs() < 1e-5);
     }
 }
