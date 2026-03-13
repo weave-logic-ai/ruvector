@@ -343,15 +343,30 @@ pub use qat::{
     UniformQuantizer, DEFAULT_BITS, DEFAULT_QAT_LR, MAX_BITS, MIN_BITS,
 };
 pub use quantize::{
+    // Incoherence transform (ADR-090 Phase 3)
+    apply_incoherence,
     dequantize_for_ane,
     // Memory estimation
     estimate_memory_q4,
     estimate_memory_q5,
     estimate_memory_q8,
+    // Hadamard transform (ADR-090 Phase 3)
+    hadamard_batch_inverse,
+    hadamard_batch_transform,
+    log2_exact,
+    next_power_of_2,
+    pad_to_power_of_2,
     // Quantization functions
     quantize_ruvltra_q4,
     quantize_ruvltra_q5,
     quantize_ruvltra_q8,
+    restore_incoherence,
+    HadamardTransform,
+    IncoherenceConfig,
+    IncoherenceEvent,
+    IncoherencePhase,
+    IncoherenceStats,
+    IncoherenceTransform,
     MemoryEstimate,
     // Block types
     Q4KMBlock,
@@ -364,23 +379,8 @@ pub use quantize::{
     // Core quantizer
     RuvltraQuantizer,
     TargetFormat,
-    // Hadamard transform (ADR-090 Phase 3)
-    hadamard_batch_inverse,
-    hadamard_batch_transform,
-    log2_exact,
-    next_power_of_2,
-    pad_to_power_of_2,
-    HadamardTransform,
     MAX_LOG_DIM,
     SIMD_LANES,
-    // Incoherence transform (ADR-090 Phase 3)
-    apply_incoherence,
-    restore_incoherence,
-    IncoherenceConfig,
-    IncoherenceEvent,
-    IncoherencePhase,
-    IncoherenceStats,
-    IncoherenceTransform,
 };
 pub use serving::{
     BatchStats,

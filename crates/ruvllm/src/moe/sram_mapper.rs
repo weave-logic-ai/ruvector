@@ -214,7 +214,7 @@ pub struct HardwareConfig {
 impl Default for HardwareConfig {
     fn default() -> Self {
         Self {
-            sram_bytes: 8 * 1024 * 1024,       // 8 MB typical L3
+            sram_bytes: 8 * 1024 * 1024,               // 8 MB typical L3
             dram_budget_bytes: 4 * 1024 * 1024 * 1024, // 4 GB DRAM budget
             sram_expert_slots: 2,
             dram_expert_slots: 8,
@@ -227,11 +227,7 @@ impl HardwareConfig {
     /// Create a new hardware configuration.
     ///
     /// Automatically computes slot counts from byte budgets and expert size.
-    pub fn new(
-        sram_bytes: usize,
-        dram_budget_bytes: usize,
-        expert_size_bytes: usize,
-    ) -> Self {
+    pub fn new(sram_bytes: usize, dram_budget_bytes: usize, expert_size_bytes: usize) -> Self {
         let sram_expert_slots = sram_bytes / expert_size_bytes.max(1);
         let dram_expert_slots = dram_budget_bytes / expert_size_bytes.max(1);
 
@@ -420,7 +416,11 @@ impl SramMapper {
     /// ```rust,ignore
     /// let mapper = SramMapper::from_preset(HardwarePreset::RaspberryPi5, 8, 34_000_000);
     /// ```
-    pub fn from_preset(preset: HardwarePreset, num_experts: usize, expert_size_bytes: usize) -> Self {
+    pub fn from_preset(
+        preset: HardwarePreset,
+        num_experts: usize,
+        expert_size_bytes: usize,
+    ) -> Self {
         let config = preset.default_config(expert_size_bytes);
         Self::from_config(config, num_experts)
     }
@@ -443,9 +443,7 @@ impl SramMapper {
         let tier_map = vec![MemoryTier::Storage; num_experts];
 
         // Initialize affinity tracking
-        let affinity = (0..num_experts)
-            .map(SramExpertAffinity::new)
-            .collect();
+        let affinity = (0..num_experts).map(SramExpertAffinity::new).collect();
 
         // Default latency estimates (microseconds)
         // SRAM: ~0.04us (40ns), DRAM: ~0.1us (100ns), Storage: ~100us
@@ -519,7 +517,10 @@ impl SramMapper {
     ///
     /// The current memory tier assignment. Returns `Storage` for out-of-range IDs.
     pub fn get_tier(&self, expert_id: ExpertId) -> MemoryTier {
-        self.tier_map.get(expert_id).copied().unwrap_or(MemoryTier::Storage)
+        self.tier_map
+            .get(expert_id)
+            .copied()
+            .unwrap_or(MemoryTier::Storage)
     }
 
     /// Estimate the paging latency for accessing an expert in microseconds.
@@ -607,7 +608,10 @@ impl SramMapper {
     /// # Returns
     ///
     /// A vector of `(ExpertId, MemoryTier)` pairs suggesting new tier assignments.
-    pub fn suggest_eviction_tier(&self, _affinity_data: &SramExpertAffinity) -> Vec<(ExpertId, MemoryTier)> {
+    pub fn suggest_eviction_tier(
+        &self,
+        _affinity_data: &SramExpertAffinity,
+    ) -> Vec<(ExpertId, MemoryTier)> {
         self.suggest_tier_changes()
     }
 
@@ -625,7 +629,8 @@ impl SramMapper {
         let mut suggestions = Vec::new();
 
         // Collect experts with their priority scores and current tiers
-        let mut experts: Vec<(ExpertId, f32, MemoryTier)> = self.affinity
+        let mut experts: Vec<(ExpertId, f32, MemoryTier)> = self
+            .affinity
             .iter()
             .enumerate()
             .filter(|(_, aff)| !aff.pinned)
@@ -652,7 +657,9 @@ impl SramMapper {
         // Suggest demotions for low-priority SRAM experts
         // (process from lowest priority)
         for &(expert_id, _priority, current_tier) in experts.iter().rev() {
-            if current_tier == MemoryTier::Sram && suggestions.iter().all(|(id, _)| *id != expert_id) {
+            if current_tier == MemoryTier::Sram
+                && suggestions.iter().all(|(id, _)| *id != expert_id)
+            {
                 if self.dram_available() > 0 {
                     suggestions.push((expert_id, MemoryTier::Dram));
                 } else {
@@ -820,9 +827,9 @@ mod tests {
     #[test]
     fn test_tier_assignment() {
         let config = HardwareConfig::new(
-            16 * 1024 * 1024,    // 16 MB SRAM
+            16 * 1024 * 1024,       // 16 MB SRAM
             4 * 1024 * 1024 * 1024, // 4 GB DRAM
-            4 * 1024 * 1024,     // 4 MB per expert
+            4 * 1024 * 1024,        // 4 MB per expert
         );
         let mut mapper = SramMapper::from_config(config, 8);
 
@@ -859,11 +866,7 @@ mod tests {
 
     #[test]
     fn test_paging_latency_estimates() {
-        let config = HardwareConfig::new(
-            16 * 1024 * 1024,
-            4 * 1024 * 1024 * 1024,
-            4 * 1024 * 1024,
-        );
+        let config = HardwareConfig::new(16 * 1024 * 1024, 4 * 1024 * 1024 * 1024, 4 * 1024 * 1024);
         let mut mapper = SramMapper::from_config(config, 4);
 
         // Set custom latencies
@@ -873,8 +876,8 @@ mod tests {
         mapper.assign_tier(1, MemoryTier::Dram);
         mapper.assign_tier(2, MemoryTier::Storage);
 
-        assert_eq!(mapper.estimate_paging_latency(0), 1);   // SRAM
-        assert_eq!(mapper.estimate_paging_latency(1), 10);  // DRAM
+        assert_eq!(mapper.estimate_paging_latency(0), 1); // SRAM
+        assert_eq!(mapper.estimate_paging_latency(1), 10); // DRAM
         assert_eq!(mapper.estimate_paging_latency(2), 200); // Storage
         assert_eq!(mapper.estimate_paging_latency(3), 200); // Default (Storage)
 
@@ -903,7 +906,10 @@ mod tests {
 
         // Total
         assert_eq!(mapper.config().total_slots(), 1028);
-        assert_eq!(mapper.config().total_budget(), 32 * 1024 * 1024 + 8 * 1024 * 1024 * 1024);
+        assert_eq!(
+            mapper.config().total_budget(),
+            32 * 1024 * 1024 + 8 * 1024 * 1024 * 1024
+        );
 
         // Available (nothing allocated yet)
         assert_eq!(mapper.sram_available(), 4);
@@ -916,11 +922,7 @@ mod tests {
 
     #[test]
     fn test_eviction_suggestions() {
-        let config = HardwareConfig::new(
-            16 * 1024 * 1024,
-            4 * 1024 * 1024 * 1024,
-            4 * 1024 * 1024,
-        );
+        let config = HardwareConfig::new(16 * 1024 * 1024, 4 * 1024 * 1024 * 1024, 4 * 1024 * 1024);
         let mut mapper = SramMapper::from_config(config, 8);
 
         // Simulate access patterns
@@ -947,7 +949,7 @@ mod tests {
     #[test]
     fn test_custom_config() {
         let config = HardwareConfig {
-            sram_bytes: 64 * 1024 * 1024,        // 64 MB
+            sram_bytes: 64 * 1024 * 1024,               // 64 MB
             dram_budget_bytes: 16 * 1024 * 1024 * 1024, // 16 GB
             sram_expert_slots: 8,
             dram_expert_slots: 200,
@@ -1013,11 +1015,7 @@ mod tests {
 
     #[test]
     fn test_experts_in_tier() {
-        let config = HardwareConfig::new(
-            16 * 1024 * 1024,
-            4 * 1024 * 1024 * 1024,
-            4 * 1024 * 1024,
-        );
+        let config = HardwareConfig::new(16 * 1024 * 1024, 4 * 1024 * 1024 * 1024, 4 * 1024 * 1024);
         let mut mapper = SramMapper::from_config(config, 8);
 
         mapper.assign_tier(0, MemoryTier::Sram);
@@ -1044,11 +1042,7 @@ mod tests {
 
     #[test]
     fn test_tier_summary() {
-        let config = HardwareConfig::new(
-            16 * 1024 * 1024,
-            4 * 1024 * 1024 * 1024,
-            4 * 1024 * 1024,
-        );
+        let config = HardwareConfig::new(16 * 1024 * 1024, 4 * 1024 * 1024 * 1024, 4 * 1024 * 1024);
         let mut mapper = SramMapper::from_config(config, 8);
 
         mapper.assign_tier(0, MemoryTier::Sram);

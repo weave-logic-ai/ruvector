@@ -309,10 +309,7 @@ impl ExpertAffinity {
     /// the expert ID is out of range.
     #[inline]
     pub fn activation_count(&self, expert_id: ExpertId) -> u64 {
-        self.total_activations
-            .get(expert_id)
-            .copied()
-            .unwrap_or(0)
+        self.total_activations.get(expert_id).copied().unwrap_or(0)
     }
 
     /// Get all activation counts.
@@ -355,19 +352,24 @@ impl ExpertAffinity {
     ///
     /// Useful for eviction decisions. NaN values are treated as lowest (evict first).
     pub fn least_affinity(&self, candidates: &[ExpertId]) -> Option<ExpertId> {
-        candidates
-            .iter()
-            .copied()
-            .min_by(|&a, &b| {
-                let score_a = self.score(a);
-                let score_b = self.score(b);
-                // NaN handling: treat NaN as NEG_INFINITY for eviction priority
-                let sa = if score_a.is_finite() { score_a } else { f32::NEG_INFINITY };
-                let sb = if score_b.is_finite() { score_b } else { f32::NEG_INFINITY };
-                sa.partial_cmp(&sb)
-                    .unwrap_or(std::cmp::Ordering::Equal)
-                    .then_with(|| a.cmp(&b)) // Deterministic tie-breaking
-            })
+        candidates.iter().copied().min_by(|&a, &b| {
+            let score_a = self.score(a);
+            let score_b = self.score(b);
+            // NaN handling: treat NaN as NEG_INFINITY for eviction priority
+            let sa = if score_a.is_finite() {
+                score_a
+            } else {
+                f32::NEG_INFINITY
+            };
+            let sb = if score_b.is_finite() {
+                score_b
+            } else {
+                f32::NEG_INFINITY
+            };
+            sa.partial_cmp(&sb)
+                .unwrap_or(std::cmp::Ordering::Equal)
+                .then_with(|| a.cmp(&b)) // Deterministic tie-breaking
+        })
     }
 
     /// Compute percentile rank of an expert's activation frequency
@@ -554,9 +556,21 @@ mod tests {
         affinity.update(&[5]);
 
         // Verify scores are as expected (no decay)
-        assert!((affinity.score(3) - 0.5).abs() < 1e-6, "Expert 3 score: {}", affinity.score(3));
-        assert!((affinity.score(1) - 0.3).abs() < 1e-6, "Expert 1 score: {}", affinity.score(1));
-        assert!((affinity.score(5) - 0.1).abs() < 1e-6, "Expert 5 score: {}", affinity.score(5));
+        assert!(
+            (affinity.score(3) - 0.5).abs() < 1e-6,
+            "Expert 3 score: {}",
+            affinity.score(3)
+        );
+        assert!(
+            (affinity.score(1) - 0.3).abs() < 1e-6,
+            "Expert 1 score: {}",
+            affinity.score(1)
+        );
+        assert!(
+            (affinity.score(5) - 0.1).abs() < 1e-6,
+            "Expert 5 score: {}",
+            affinity.score(5)
+        );
 
         // Top-2 should be [3, 1] (highest scores)
         let top2 = affinity.top_k_by_affinity(2);
@@ -760,10 +774,16 @@ mod tests {
     #[test]
     fn test_decay_clamp() {
         let config = AffinityConfig::with_num_experts(4).with_decay(1.5);
-        assert!((config.decay - 1.0).abs() < 1e-6, "Decay should be clamped to 1.0");
+        assert!(
+            (config.decay - 1.0).abs() < 1e-6,
+            "Decay should be clamped to 1.0"
+        );
 
         let config2 = AffinityConfig::with_num_experts(4).with_decay(-0.5);
-        assert!((config2.decay - 0.0).abs() < 1e-6, "Decay should be clamped to 0.0");
+        assert!(
+            (config2.decay - 0.0).abs() < 1e-6,
+            "Decay should be clamped to 0.0"
+        );
     }
 
     /// Test: Frequency percentile calculation
@@ -788,7 +808,10 @@ mod tests {
         let pct_1 = affinity.frequency_percentile(1);
         let pct_3 = affinity.frequency_percentile(3);
 
-        assert!(pct_1 > pct_3, "Expert 1 should have higher percentile than 3");
+        assert!(
+            pct_1 > pct_3,
+            "Expert 1 should have higher percentile than 3"
+        );
         assert!(pct_1 > 0.5, "Expert 1 should be above median");
     }
 
@@ -948,7 +971,11 @@ mod tests {
         affinity.update(&[]);
 
         // Verify each score decayed correctly
-        for (i, (&before, &after)) in scores_before.iter().zip(affinity.scores().iter()).enumerate() {
+        for (i, (&before, &after)) in scores_before
+            .iter()
+            .zip(affinity.scores().iter())
+            .enumerate()
+        {
             let expected = before * 0.87;
             assert!(
                 (after - expected).abs() < 1e-6,

@@ -23,9 +23,8 @@
 #[cfg(test)]
 mod moe_integration {
     use ruvllm::bitnet::expert_cache::{
-        align_to_cache_line, expert_memory_footprint, EvictionPolicy,
-        ExpertCache, ExpertCacheConfig, MoeBatchScheduler, NullPrefetcher,
-        Prefetcher,
+        align_to_cache_line, expert_memory_footprint, EvictionPolicy, ExpertCache,
+        ExpertCacheConfig, MoeBatchScheduler, NullPrefetcher, Prefetcher,
     };
     use std::time::{Duration, Instant};
 
@@ -94,8 +93,7 @@ mod moe_integration {
 
         let hit_rate = cache.stats().hit_rate();
 
-        eprintln!(
-            "\nG1 Cache Hit Rate Test:");
+        eprintln!("\nG1 Cache Hit Rate Test:");
         eprintln!(
             "  Hit rate: {:.2}% (target: >= {:.0}%, baseline: {:.0}%)",
             hit_rate * 100.0,
@@ -153,7 +151,10 @@ mod moe_integration {
         eprintln!("\nG1 Memory-Aware vs LRU Comparison:");
         eprintln!("  Adaptive hit rate: {:.2}%", adaptive_hit_rate * 100.0);
         eprintln!("  LRU hit rate:      {:.2}%", lru_hit_rate * 100.0);
-        eprintln!("  Improvement:       {:.2}x", adaptive_hit_rate / lru_hit_rate.max(0.01));
+        eprintln!(
+            "  Improvement:       {:.2}x",
+            adaptive_hit_rate / lru_hit_rate.max(0.01)
+        );
 
         // Adaptive should outperform LRU on skewed workloads
         assert!(
@@ -206,7 +207,10 @@ mod moe_integration {
         eprintln!("\nG3 Routing Latency Test:");
         eprintln!("  p50: {:?}", p50);
         eprintln!("  p95: {:?}", p95);
-        eprintln!("  p99: {:?} (target: <= {} us)", p99, ROUTING_OVERHEAD_TARGET_US);
+        eprintln!(
+            "  p99: {:?} (target: <= {} us)",
+            p99, ROUTING_OVERHEAD_TARGET_US
+        );
         eprintln!("  max: {:?}", max);
 
         let p99_us = p99.as_micros() as u64;
@@ -214,7 +218,8 @@ mod moe_integration {
         // G3: p99 latency must be <= 15 microseconds
         // Note: On very fast machines, this may be sub-microsecond
         assert!(
-            p99_us <= ROUTING_OVERHEAD_TARGET_US || p99 <= Duration::from_micros(ROUTING_OVERHEAD_TARGET_US),
+            p99_us <= ROUTING_OVERHEAD_TARGET_US
+                || p99 <= Duration::from_micros(ROUTING_OVERHEAD_TARGET_US),
             "G3 FAILED: p99 latency {} us > target {} us",
             p99_us,
             ROUTING_OVERHEAD_TARGET_US
@@ -297,7 +302,10 @@ mod moe_integration {
         eprintln!("\nG4 Memory Budget Enforcement Test:");
         eprintln!("  Max hot experts configured: {}", HOT_SET_SIZE);
         eprintln!("  Final hot count: {}", cache.hot_count());
-        eprintln!("  Total accesses: {}", cache.stats().hits + cache.stats().misses);
+        eprintln!(
+            "  Total accesses: {}",
+            cache.stats().hits + cache.stats().misses
+        );
         eprintln!("  Total evictions: {}", cache.stats().evictions);
     }
 
@@ -323,9 +331,20 @@ mod moe_integration {
         eprintln!("  up_proj:         {:.2} MB", up_proj as f64 / 1e6);
         eprintln!("  down_proj:       {:.2} MB", down_proj as f64 / 1e6);
         eprintln!("  Per expert:      {:.2} MB", expert_total as f64 / 1e6);
-        eprintln!("  Hot set ({}):    {:.2} MB", HOT_SET_SIZE, hot_set_total as f64 / 1e6);
-        eprintln!("  All experts ({}): {:.2} MB", NUM_EXPERTS, all_experts_total as f64 / 1e6);
-        eprintln!("  Memory savings:  {:.2}x", all_experts_total as f64 / hot_set_total as f64);
+        eprintln!(
+            "  Hot set ({}):    {:.2} MB",
+            HOT_SET_SIZE,
+            hot_set_total as f64 / 1e6
+        );
+        eprintln!(
+            "  All experts ({}): {:.2} MB",
+            NUM_EXPERTS,
+            all_experts_total as f64 / 1e6
+        );
+        eprintln!(
+            "  Memory savings:  {:.2}x",
+            all_experts_total as f64 / hot_set_total as f64
+        );
 
         // Verify hot set is significantly smaller than full expert set
         assert!(
@@ -587,9 +606,9 @@ mod moe_integration {
         // Simulate precision allocation based on cache status
         #[derive(Debug, Clone, Copy, PartialEq)]
         enum Precision {
-            FP16,  // High precision for hot experts
-            INT8,  // Medium precision
-            INT4,  // Low precision for cold experts
+            FP16, // High precision for hot experts
+            INT8, // Medium precision
+            INT4, // Low precision for cold experts
         }
 
         fn allocate_precision(cache: &ExpertCache, expert_id: usize) -> Precision {
@@ -640,7 +659,10 @@ mod moe_integration {
         eprintln!("\nPrecision Allocation Test:");
         eprintln!("  FP16 (hot): {} experts", hot_precision_count);
         eprintln!("  INT4 (cold): {} experts", cold_precision_count);
-        eprintln!("  Total: {} experts", hot_precision_count + cold_precision_count);
+        eprintln!(
+            "  Total: {} experts",
+            hot_precision_count + cold_precision_count
+        );
 
         assert_eq!(hot_precision_count, HOT_SET_SIZE);
         assert_eq!(cold_precision_count, NUM_EXPERTS - HOT_SET_SIZE);
@@ -750,7 +772,10 @@ mod moe_integration {
         }
 
         let avg_hit_rate: f32 = layer_hit_rates.iter().sum::<f32>() / layer_hit_rates.len() as f32;
-        let min_hit_rate = layer_hit_rates.iter().cloned().fold(f32::INFINITY, f32::min);
+        let min_hit_rate = layer_hit_rates
+            .iter()
+            .cloned()
+            .fold(f32::INFINITY, f32::min);
         let max_hit_rate = layer_hit_rates.iter().cloned().fold(0.0f32, f32::max);
 
         eprintln!("\nMixtral Workload Simulation:");
@@ -807,10 +832,8 @@ mod moe_integration {
 
                 // Normalize to sum to 1
                 let sum: f32 = selected.iter().map(|(_, w)| w).sum();
-                let normalized: Vec<(usize, f32)> = selected
-                    .into_iter()
-                    .map(|(id, w)| (id, w / sum))
-                    .collect();
+                let normalized: Vec<(usize, f32)> =
+                    selected.into_iter().map(|(id, w)| (id, w / sum)).collect();
 
                 (token_idx, normalized)
             })
@@ -899,9 +922,8 @@ mod moe_integration {
 
     #[test]
     fn test_all_experts_routing() {
-        let routing: Vec<(usize, Vec<(usize, f32)>)> = (0..NUM_EXPERTS)
-            .map(|i| (i, vec![(i, 1.0)]))
-            .collect();
+        let routing: Vec<(usize, Vec<(usize, f32)>)> =
+            (0..NUM_EXPERTS).map(|i| (i, vec![(i, 1.0)])).collect();
         let batches = MoeBatchScheduler::schedule(&routing);
 
         assert_eq!(batches.len(), NUM_EXPERTS);

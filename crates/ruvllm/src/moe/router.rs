@@ -371,9 +371,8 @@ impl MemoryAwareRouter {
     ///
     /// Returns `Err` if the configuration is invalid.
     pub fn with_default_affinity(config: RouterConfig) -> Result<Self, &'static str> {
-        let affinity = ExpertAffinity::new(
-            super::AffinityConfig::with_num_experts(config.num_experts)
-        );
+        let affinity =
+            ExpertAffinity::new(super::AffinityConfig::with_num_experts(config.num_experts));
         Self::new(config, affinity)
     }
 
@@ -399,7 +398,8 @@ impl MemoryAwareRouter {
 
         // Validate input length (P3: early exit for invalid input)
         if gate_logits.len() != self.config.num_experts {
-            let selected: Vec<ExpertId> = (0..self.config.top_k.min(self.config.num_experts)).collect();
+            let selected: Vec<ExpertId> =
+                (0..self.config.top_k.min(self.config.num_experts)).collect();
             return (selected, Vec::new());
         }
 
@@ -475,7 +475,7 @@ impl MemoryAwareRouter {
             self.score_buffer
                 .iter()
                 .enumerate()
-                .map(|(id, &s)| (id, if s.is_finite() { s } else { f32::NEG_INFINITY }))
+                .map(|(id, &s)| (id, if s.is_finite() { s } else { f32::NEG_INFINITY })),
         );
 
         // P4: Unroll for small k (common case: top-2)
@@ -503,7 +503,11 @@ impl MemoryAwareRouter {
             });
         }
 
-        self.index_buffer.iter().take(k).map(|(id, _)| *id).collect()
+        self.index_buffer
+            .iter()
+            .take(k)
+            .map(|(id, _)| *id)
+            .collect()
     }
 
     /// P4: Unrolled top-2 selection (most common MoE configuration)
@@ -628,11 +632,7 @@ impl MemoryAwareRouter {
         }
 
         // Take top-K
-        indexed
-            .into_iter()
-            .take(k)
-            .map(|(id, _)| id)
-            .collect()
+        indexed.into_iter().take(k).map(|(id, _)| id).collect()
     }
 
     /// Update cache residency state
@@ -852,13 +852,23 @@ mod tests {
         let (selected2, paging2) = router2.route(&gate_logits);
 
         // Results must be identical
-        assert_eq!(selected1, selected2, "INV-6 violation: different expert selection");
-        assert_eq!(paging1.len(), paging2.len(), "INV-6 violation: different paging count");
+        assert_eq!(
+            selected1, selected2,
+            "INV-6 violation: different expert selection"
+        );
+        assert_eq!(
+            paging1.len(),
+            paging2.len(),
+            "INV-6 violation: different paging count"
+        );
 
         // Run multiple times on same router
         router1.reset_metrics();
         let (selected3, _) = router1.route(&gate_logits);
-        assert_eq!(selected1, selected3, "INV-6 violation: non-deterministic routing");
+        assert_eq!(
+            selected1, selected3,
+            "INV-6 violation: non-deterministic routing"
+        );
     }
 
     // ---------------------------------------------------------------
@@ -917,7 +927,10 @@ mod tests {
 
         assert_eq!(selected.len(), 2);
         // No paging needed
-        assert!(paging.is_empty(), "No paging should be needed when all selected are resident");
+        assert!(
+            paging.is_empty(),
+            "No paging should be needed when all selected are resident"
+        );
 
         // All should be cache hits
         assert_eq!(router.metrics().cache_hits, 2);
@@ -940,7 +953,11 @@ mod tests {
 
         assert_eq!(selected.len(), 2);
         // Should need paging for all selected
-        assert_eq!(paging.len(), 2, "Should need to page in all selected experts");
+        assert_eq!(
+            paging.len(),
+            2,
+            "Should need to page in all selected experts"
+        );
 
         // All should be cache misses
         assert_eq!(router.metrics().cache_misses, 2);
@@ -958,15 +975,25 @@ mod tests {
         assert!(valid.validate().is_ok());
 
         // Invalid: top_k = 0
-        let invalid1 = RouterConfig { top_k: 0, ..RouterConfig::default() };
+        let invalid1 = RouterConfig {
+            top_k: 0,
+            ..RouterConfig::default()
+        };
         assert!(invalid1.validate().is_err());
 
         // Invalid: top_k > num_experts
-        let invalid2 = RouterConfig { top_k: 10, num_experts: 8, ..RouterConfig::default() };
+        let invalid2 = RouterConfig {
+            top_k: 10,
+            num_experts: 8,
+            ..RouterConfig::default()
+        };
         assert!(invalid2.validate().is_err());
 
         // Invalid: num_experts = 0
-        let invalid3 = RouterConfig { num_experts: 0, ..RouterConfig::default() };
+        let invalid3 = RouterConfig {
+            num_experts: 0,
+            ..RouterConfig::default()
+        };
         assert!(invalid3.validate().is_err());
     }
 
@@ -976,7 +1003,9 @@ mod tests {
 
     #[test]
     fn test_memory_aware_disabled() {
-        let config = RouterConfig::new(4, 2).with_memory_aware(false).with_cache_bonus(0.5);
+        let config = RouterConfig::new(4, 2)
+            .with_memory_aware(false)
+            .with_cache_bonus(0.5);
         let mut router = MemoryAwareRouter::with_default_affinity(config).unwrap();
 
         // Even with high cache bonus, should not apply it when disabled
@@ -1184,10 +1213,16 @@ mod tests {
     #[test]
     fn test_cache_bonus_clamping() {
         let config = RouterConfig::new(8, 2).with_cache_bonus(1.5);
-        assert!((config.cache_bonus - 1.0).abs() < 1e-6, "cache_bonus should be clamped to 1.0");
+        assert!(
+            (config.cache_bonus - 1.0).abs() < 1e-6,
+            "cache_bonus should be clamped to 1.0"
+        );
 
         let config2 = RouterConfig::new(8, 2).with_cache_bonus(-0.5);
-        assert!((config2.cache_bonus - 0.0).abs() < 1e-6, "cache_bonus should be clamped to 0.0");
+        assert!(
+            (config2.cache_bonus - 0.0).abs() < 1e-6,
+            "cache_bonus should be clamped to 0.0"
+        );
     }
 
     // ---------------------------------------------------------------
@@ -1238,7 +1273,7 @@ mod tests {
         // Set bits across word boundaries
         mask.set(0, true);
         mask.set(63, true);
-        mask.set(64, true);  // First bit of second word
+        mask.set(64, true); // First bit of second word
         mask.set(127, true);
 
         assert!(mask.is_set(0));
@@ -1294,7 +1329,11 @@ mod tests {
 
         // No experts should be resident
         for i in 0..8 {
-            assert!(!router.is_resident(i), "Expert {} should not be resident", i);
+            assert!(
+                !router.is_resident(i),
+                "Expert {} should not be resident",
+                i
+            );
         }
 
         assert!(router.resident_experts().is_empty());

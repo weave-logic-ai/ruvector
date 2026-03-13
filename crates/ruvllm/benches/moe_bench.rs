@@ -21,12 +21,10 @@
     unused_must_use
 )]
 
-use criterion::{
-    black_box, criterion_group, criterion_main, BenchmarkId, Criterion, Throughput,
-};
+use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use ruvllm::bitnet::expert_cache::{
-    align_to_cache_line, expert_memory_footprint, EvictionPolicy, ExpertBatch,
-    ExpertCache, ExpertCacheConfig, MoeBatchScheduler, NullPrefetcher, Prefetcher,
+    align_to_cache_line, expert_memory_footprint, EvictionPolicy, ExpertBatch, ExpertCache,
+    ExpertCacheConfig, MoeBatchScheduler, NullPrefetcher, Prefetcher,
 };
 use std::collections::HashMap;
 use std::time::Duration;
@@ -214,9 +212,7 @@ fn bench_affinity_update(c: &mut Criterion) {
             tracker.activate(i % NUM_EXPERTS);
         }
 
-        b.iter(|| {
-            black_box(tracker.get_top_k(HOT_SET_SIZE))
-        });
+        b.iter(|| black_box(tracker.get_top_k(HOT_SET_SIZE)));
     });
 
     // Combined: activate + decay + get_top_k (full routing step)
@@ -330,7 +326,8 @@ fn bench_precision_allocation(c: &mut Criterion) {
         let block_size = 256;
 
         b.iter(|| {
-            let expert_footprint = expert_memory_footprint(intermediate_size, hidden_size, block_size) * 3;
+            let expert_footprint =
+                expert_memory_footprint(intermediate_size, hidden_size, block_size) * 3;
             let hot_set_budget = expert_footprint * HOT_SET_SIZE;
             black_box(hot_set_budget)
         });
@@ -661,9 +658,7 @@ fn bench_prefetch_decision(c: &mut Criterion) {
             cache.access(i);
         }
 
-        let weights: Vec<f32> = (0..NUM_EXPERTS)
-            .map(|i| 0.05 + (i as f32) * 0.03)
-            .collect();
+        let weights: Vec<f32> = (0..NUM_EXPERTS).map(|i| 0.05 + (i as f32) * 0.03).collect();
 
         let mut idx = 0;
         b.iter(|| {
@@ -787,7 +782,7 @@ fn bench_eviction_policies(c: &mut Criterion) {
 
 /// Benchmark: MemoryAwareRouter performance (ADR-092)
 fn bench_memory_aware_router(c: &mut Criterion) {
-    use ruvllm::moe::{MemoryAwareRouter, RouterConfig, AffinityConfig, ExpertAffinity};
+    use ruvllm::moe::{AffinityConfig, ExpertAffinity, MemoryAwareRouter, RouterConfig};
 
     let mut group = c.benchmark_group("memory_aware_router");
     group.measurement_time(Duration::from_secs(5));
@@ -879,9 +874,7 @@ fn bench_memory_aware_router(c: &mut Criterion) {
 
         let gate_logits: Vec<f32> = (0..64).map(|i| (i as f32 * 0.7).sin()).collect();
 
-        b.iter(|| {
-            black_box(router.select_top_k(black_box(&gate_logits)))
-        });
+        b.iter(|| black_box(router.select_top_k(black_box(&gate_logits))));
     });
 
     group.bench_function("select_top4_partial_sort", |b| {
@@ -890,9 +883,7 @@ fn bench_memory_aware_router(c: &mut Criterion) {
 
         let gate_logits: Vec<f32> = (0..64).map(|i| (i as f32 * 0.7).sin()).collect();
 
-        b.iter(|| {
-            black_box(router.select_top_k(black_box(&gate_logits)))
-        });
+        b.iter(|| black_box(router.select_top_k(black_box(&gate_logits))));
     });
 
     group.finish();
@@ -900,7 +891,7 @@ fn bench_memory_aware_router(c: &mut Criterion) {
 
 /// Benchmark: SIMD affinity decay (P1 optimization)
 fn bench_simd_affinity_decay(c: &mut Criterion) {
-    use ruvllm::moe::{ExpertAffinity, AffinityConfig};
+    use ruvllm::moe::{AffinityConfig, ExpertAffinity};
 
     let mut group = c.benchmark_group("simd_affinity_decay");
 
@@ -919,7 +910,7 @@ fn bench_simd_affinity_decay(c: &mut Criterion) {
                 affinity.update(&all);
 
                 b.iter(|| {
-                    affinity.update(&[]);  // Decay-only update
+                    affinity.update(&[]); // Decay-only update
                     black_box(affinity.score(0))
                 });
             },
@@ -932,7 +923,7 @@ fn bench_simd_affinity_decay(c: &mut Criterion) {
                 let config = AffinityConfig::with_num_experts(n).with_decay(0.95);
                 let mut affinity = ExpertAffinity::new(config);
 
-                let activated = vec![0, 1];  // Activate 2 experts per call
+                let activated = vec![0, 1]; // Activate 2 experts per call
 
                 b.iter(|| {
                     affinity.update(&activated);
