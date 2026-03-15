@@ -1,0 +1,102 @@
+{
+  "discovery_type": "air_quality",
+  "api": "Open-Meteo Air Quality API",
+  "location": {
+    "city": "Los Angeles",
+    "state": "California",
+    "lat": 34.05,
+    "lon": -118.25
+  },
+  "units": {
+    "time": "iso8601",
+    "pm2_5": "\u03bcg/m\u00b3",
+    "pm10": "\u03bcg/m\u00b3",
+    "ozone": "\u03bcg/m\u00b3"
+  },
+  "entries": [
+    {
+      "title": "LA Air Quality 2026-03-08 \u2014 Good",
+      "content": "Date: 2026-03-08. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 10.2 ug/m3 (max: 18.4). PM10 avg: 17.8 ug/m3. Ozone avg: 68.2 ug/m3. AQI Category: Good.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-09 \u2014 Moderate",
+      "content": "Date: 2026-03-09. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 16.1 ug/m3 (max: 24.4). PM10 avg: 22.3 ug/m3. Ozone avg: 47.1 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-10 \u2014 Moderate",
+      "content": "Date: 2026-03-10. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 21.4 ug/m3 (max: 31.2). PM10 avg: 26.1 ug/m3. Ozone avg: 40.5 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-11 \u2014 Moderate",
+      "content": "Date: 2026-03-11. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 26.2 ug/m3 (max: 38.8). PM10 avg: 31.5 ug/m3. Ozone avg: 47.3 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-12 \u2014 Moderate",
+      "content": "Date: 2026-03-12. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 21.7 ug/m3 (max: 33.4). PM10 avg: 25.2 ug/m3. Ozone avg: 39.9 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-13 \u2014 Moderate",
+      "content": "Date: 2026-03-13. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 17.1 ug/m3 (max: 23.6). PM10 avg: 20.2 ug/m3. Ozone avg: 32.2 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-14 \u2014 Moderate",
+      "content": "Date: 2026-03-14. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 34.4 ug/m3 (max: 51.7). PM10 avg: 37.2 ug/m3. Ozone avg: 34.8 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-15 \u2014 Moderate",
+      "content": "Date: 2026-03-15. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 26.7 ug/m3 (max: 33.9). PM10 avg: 32.6 ug/m3. Ozone avg: 35.1 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-16 \u2014 Moderate",
+      "content": "Date: 2026-03-16. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 26.3 ug/m3 (max: 34.6). PM10 avg: 30.3 ug/m3. Ozone avg: 36.4 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-17 \u2014 Moderate",
+      "content": "Date: 2026-03-17. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 25.3 ug/m3 (max: 34.0). PM10 avg: 28.2 ug/m3. Ozone avg: 37.7 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-18 \u2014 Moderate",
+      "content": "Date: 2026-03-18. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 29.4 ug/m3 (max: 42.3). PM10 avg: 31.6 ug/m3. Ozone avg: 36.3 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    },
+    {
+      "title": "LA Air Quality 2026-03-19 \u2014 Moderate",
+      "content": "Date: 2026-03-19. Location: Los Angeles, CA (34.05N, -118.25W). PM2.5 avg: 34.9 ug/m3 (max: 48.2). PM10 avg: 36.5 ug/m3. Ozone avg: 33.7 ug/m3. AQI Category: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_air_quality",
+      "confidence": 0.85
+    }
+  ]
+}

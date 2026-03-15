@@ -1,0 +1,75 @@
+{
+  "fetched_at": "2026-03-15T23:47:40.544632+00:00",
+  "entries": [
+    {
+      "title": "Canada's bill C-22 mandates mass metadata surveillance of Canadians",
+      "content": "Score: 121. Comments: 32. By: opengrass. URL: https://www.michaelgeist.ca/2026/03/a-tale-of-two-bills-lawful-access-returns-with-changes-to-warrantless-access-but-dangerous-backdoor-surveillance-risks-remains/. Type: story",
+      "timestamp": "2026-03-15T21:22:16+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "Chrome DevTools MCP",
+      "content": "Score: 259. Comments: 124. By: xnx. URL: https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session. Type: story",
+      "timestamp": "2026-03-15T19:12:53+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "The 49MB web page",
+      "content": "Score: 222. Comments: 137. By: kermatt. URL: https://thatshubham.com/blog/news-audit. Type: story",
+      "timestamp": "2026-03-15T19:25:18+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "LLM Architecture Gallery",
+      "content": "Score: 185. Comments: 10. By: tzury. URL: https://sebastianraschka.com/llm-architecture-gallery/. Type: story",
+      "timestamp": "2026-03-15T16:01:09+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "LLMs can be exhausting",
+      "content": "Score: 14. Comments: 5. By: tjohnell. URL: https://tomjohnell.com/llms-can-be-absolutely-exhausting/. Type: story",
+      "timestamp": "2026-03-15T20:56:21+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "//go:fix inline and the source-level inliner",
+      "content": "Score: 92. Comments: 32. By: commotionfever. URL: https://go.dev/blog/inliner. Type: story",
+      "timestamp": "2026-03-11T18:39:25+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "A new Bigfoot documentary helps explain our conspiracy-minded era",
+      "content": "Score: 18. Comments: 2. By: zdw. URL: https://www.msn.com/en-us/news/us/a-new-bigfoot-documentary-helps-explain-our-conspiracy-minded-era/ar-AA1Yv6px. Type: story",
+      "timestamp": "2026-03-15T22:15:50+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "Separating the Wayland compositor and window manager",
+      "content": "Score: 192. Comments: 82. By: dpassens. URL: https://isaacfreund.com/blog/river-window-management/. Type: story",
+      "timestamp": "2026-03-15T15:09:24+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "What makes Intel Optane stand out (2023)",
+      "content": "Score: 167. Comments: 112. By: walterbell. URL: https://blog.zuthof.nl/2023/06/02/what-makes-intel-optane-stand-out/. Type: story",
+      "timestamp": "2026-03-15T15:09:41+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    },
+    {
+      "title": "Glassworm Is Back: A New Wave of Invisible Unicode Attacks Hits Repositories",
+      "content": "Score: 199. Comments: 115. By: robinhouston. URL: https://www.aikido.dev/blog/glassworm-returns-unicode-attack-github-npm-vscode. Type: story",
+      "timestamp": "2026-03-15T13:08:02+00:00",
+      "source": "hacker_news_api",
+      "confidence": 0.93
+    }
+  ]
+}

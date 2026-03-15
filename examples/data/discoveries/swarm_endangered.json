@@ -1,0 +1,58 @@
+{
+  "discovery_type": "endangered_species",
+  "api": "GBIF Occurrence Search",
+  "iucn_category": "CR (Critically Endangered)",
+  "taxon": "Aves (Birds)",
+  "total_occurrences": 613578,
+  "entries": [
+    {
+      "title": "Critically endangered bird: Ara ambiguus",
+      "content": "Species: Ara ambiguus. IUCN Status: Critically Endangered (CR). Country: Costa Rica. Location: (10.033363, -83.509436). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-01T16:34:06. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Aythya baeri",
+      "content": "Species: Aythya baeri. IUCN Status: Critically Endangered (CR). Country: China. Location: (30.925189, 117.911175). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-03T15:46. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Gyps africanus",
+      "content": "Species: Gyps africanus. IUCN Status: Critically Endangered (CR). Country: Tanzania, United Republic of. Location: (-2.100957, 34.584936). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-03T09:39. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Cyanoramphus malherbi",
+      "content": "Species: Cyanoramphus malherbi. IUCN Status: Critically Endangered (CR). Country: New Zealand. Location: (-41.164963, 174.23098). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-02T17:49:21. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Pycnonotus zeylanicus",
+      "content": "Species: Pycnonotus zeylanicus. IUCN Status: Critically Endangered (CR). Country: Singapore. Location: (1.589613, 103.724626). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-01T14:21:07. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Emberiza aureola",
+      "content": "Species: Emberiza aureola. IUCN Status: Critically Endangered (CR). Country: Thailand. Location: (13.744109, 100.811165). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-01T07:09. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    },
+    {
+      "title": "Critically endangered bird: Necrosyrtes monachus",
+      "content": "Species: Necrosyrtes monachus. IUCN Status: Critically Endangered (CR). Country: South Africa. Location: (-24.218465, 30.977448). Observation type: HUMAN_OBSERVATION. Event date: 2026-01-01T18:03:14. Dataset: iNaturalist research-grade observations.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "gbif",
+      "confidence": 0.88
+    }
+  ]
+}

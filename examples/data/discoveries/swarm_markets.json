@@ -1,0 +1,33 @@
+{
+  "fetched_at": "2026-03-15T23:47:40.544632+00:00",
+  "entries": [
+    {
+      "title": "Bitcoin Price",
+      "content": "USD: $72,708.00. 24h Change: 2.17%",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "coingecko_api",
+      "confidence": 0.9
+    },
+    {
+      "title": "Ethereum Price",
+      "content": "USD: $2,179.53. 24h Change: 3.95%",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "coingecko_api",
+      "confidence": 0.9
+    },
+    {
+      "title": "Solana Price",
+      "content": "USD: $92.04. 24h Change: 4.51%",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "coingecko_api",
+      "confidence": 0.9
+    },
+    {
+      "title": "USD Exchange Rates (2026-03-13)",
+      "content": "Base: USD. Key rates: EUR: 0.87138, GBP: 0.75377, JPY: 159.33, CNY: 6.8966, CHF: 0.78721, CAD: 1.3703, AUD: 1.4197, INR: 92.38, KRW: 1491.7, BRL: 5.2433. Total currencies: 29",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "frankfurter_api",
+      "confidence": 0.92
+    }
+  ]
+}

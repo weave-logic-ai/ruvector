@@ -1,0 +1,50 @@
+[
+  {
+    "source_domain": "technology",
+    "target_domain": "earth",
+    "target_title": "Equatorial Climate: 2026-03-11",
+    "target_id": "swarm_climate.json#3",
+    "ppr_score": 0.014047261688189209,
+    "confidence": 0.012642535519370288
+  },
+  {
+    "source_domain": "technology",
+    "target_domain": "space-science",
+    "target_title": "ZTF J1828+2308 b: Ultra-short period brown dwarf companion completing orbit in 2.7 hours",
+    "target_id": "space_discoveries.json#1",
+    "ppr_score": 0.014047261688189209,
+    "confidence": 0.012923480753134074
+  },
+  {
+    "source_domain": "technology",
+    "target_domain": "medical-genomics",
+    "target_title": "PubMed: Imidazolium salt chitosan based on bacterial capture: Antimicrobial mechanisms, biosafety, and methicillin-resistant Staphylococcus aureus-infected wound healing.",
+    "target_id": "swarm_medical.json#7",
+    "ppr_score": 0.01378872312951088,
+    "confidence": 0.011720414660084248
+  },
+  {
+    "source_domain": "technology",
+    "target_domain": "earth",
+    "target_title": "Equatorial Climate: 2026-03-10",
+    "target_id": "swarm_climate.json#2",
+    "ppr_score": 0.01378872312951088,
+    "confidence": 0.012409850816559792
+  },
+  {
+    "source_domain": "life-science",
+    "target_domain": "academic-research",
+    "target_title": "Agentic AI Emerges as Primary Research Focus with Security Concerns",
+    "target_id": "academic_discoveries.json#1",
+    "ppr_score": 0.010978337020874024,
+    "confidence": 0.009880503318786623
+  },
+  {
+    "source_domain": "life-science",
+    "target_domain": "research",
+    "target_title": "Renaissance in GPCR Research and Drug Discovery",
+    "target_id": "swarm_books.json#7",
+    "ppr_score": 0.008486886847814788,
+    "confidence": 0.007892804768467753
+  }
+]

@@ -1,0 +1,1406 @@
+{
+  "discovery_type": "volcanic_activity",
+  "api": "NOAA National Geophysical Data Center \u2014 Hazard Service",
+  "entries": [
+    {
+      "title": "Volcanic event: Etna (Italy, 1169)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1169. VEI: N/A. Agent: S,W. Deaths total: 16000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1329)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1329. VEI: 3. Agent: I. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karthala (Comoros, 1883)",
+      "content": "Volcano: Karthala. Location: Indian O-W, Comoros. Coordinates: (-11.75, 43.38). Elevation: 2361m. Morphology: Shield volcano. Eruption year: 1883. VEI: 2. Agent: L. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ritter Island (Papua New Guinea, 1888)",
+      "content": "Volcano: Ritter Island. Location: New Guinea-NE of, Papua New Guinea. Coordinates: (-5.519, 148.115). Elevation: 75m. Morphology: Stratovolcano. Eruption year: 1888. VEI: 2. Agent: W. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Rabaul (Papua New Guinea, 1850)",
+      "content": "Volcano: Rabaul. Location: New Britain-SW Pac, Papua New Guinea. Coordinates: (-4.246, 152.194). Elevation: 688m. Morphology: Pyroclastic shield. Eruption year: 1850. VEI: 2. Agent: T. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1832)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1832. VEI: 2. Agent: L. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Nyiragongo (Congo, DRC, 1977)",
+      "content": "Volcano: Nyiragongo. Location: Africa-C, Congo, DRC. Coordinates: (-1.52, 29.25). Elevation: 3470m. Morphology: Stratovolcano. Eruption year: 1977. VEI: 1. Agent: L. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 787)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 787. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1779)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1779. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ischia (Italy, 1302)",
+      "content": "Volcano: Ischia. Location: Italy, Italy. Coordinates: (40.73, 13.897). Elevation: 789m. Morphology: Complex volcano. Eruption year: 1302. VEI: N/A. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Alayta (Ethiopia, 1907)",
+      "content": "Volcano: Alayta. Location: Africa-NE, Ethiopia. Coordinates: (12.888, 40.573). Elevation: 1496m. Morphology: Shield volcano. Eruption year: 1907. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1905)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1905. VEI: 2. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Stromboli (Italy, 1986)",
+      "content": "Volcano: Stromboli. Location: Italy, Italy. Coordinates: (38.789, 15.213). Elevation: 924m. Morphology: Stratovolcano. Eruption year: 1986. VEI: 2. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1536)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1536. VEI: 3. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karthala (Comoros, 1904)",
+      "content": "Volcano: Karthala. Location: Indian O-W, Comoros. Coordinates: (-11.75, 43.38). Elevation: 2361m. Morphology: Shield volcano. Eruption year: 1904. VEI: 2. Agent: L. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Rabaul (Papua New Guinea, 1878)",
+      "content": "Volcano: Rabaul. Location: New Britain-SW Pac, Papua New Guinea. Coordinates: (-4.246, 152.194). Elevation: 688m. Morphology: Pyroclastic shield. Eruption year: 1878. VEI: 3. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1737)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1737. VEI: 3. Agent: T. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Okataina (New Zealand, 1917)",
+      "content": "Volcano: Okataina. Location: New Zealand, New Zealand. Coordinates: (-38.157, 176.507). Elevation: 1111m. Morphology: Lava dome. Eruption year: 1917. VEI: 1. Agent: T. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Manam (Papua New Guinea, 1899)",
+      "content": "Volcano: Manam. Location: New Guinea-NE of, Papua New Guinea. Coordinates: (-4.08, 145.037). Elevation: 1807m. Morphology: Stratovolcano. Eruption year: 1899. VEI: 2. Agent: N/A. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karkar (Papua New Guinea, 1979)",
+      "content": "Volcano: Karkar. Location: New Guinea-NE of, Papua New Guinea. Coordinates: (-4.647, 145.976). Elevation: 1839m. Morphology: Stratovolcano. Eruption year: 1979. VEI: 2. Agent: P. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Campi Flegrei (Italy, 1970)",
+      "content": "Volcano: Campi Flegrei. Location: Italy, Italy. Coordinates: (40.827, 14.139). Elevation: 458m. Morphology: Caldera. Eruption year: 1970. VEI: N/A. Agent: S. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Fournaise, Piton de la (Reunion, 1972)",
+      "content": "Volcano: Fournaise, Piton de la. Location: Indian O-W, Reunion. Coordinates: (-21.244, 55.708). Elevation: 2632m. Morphology: Shield volcano. Eruption year: 1972. VEI: 2. Agent: I. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1682)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1682. VEI: 3. Agent: N/A. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1805)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1805. VEI: 2. Agent: N/A. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Stromboli (Italy, 1919)",
+      "content": "Volcano: Stromboli. Location: Italy, Italy. Coordinates: (38.789, 15.213). Elevation: 924m. Morphology: Stratovolcano. Eruption year: 1919. VEI: 3. Agent: T. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Stromboli (Italy, 1930)",
+      "content": "Volcano: Stromboli. Location: Italy, Italy. Coordinates: (38.789, 15.213). Elevation: 924m. Morphology: Stratovolcano. Eruption year: 1930. VEI: 3. Agent: P,W,T. Deaths total: 6. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Okataina (New Zealand, 1903)",
+      "content": "Volcano: Okataina. Location: New Zealand, New Zealand. Coordinates: (-38.157, 176.507). Elevation: 1111m. Morphology: Lava dome. Eruption year: 1903. VEI: 1. Agent: T. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1928)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1928. VEI: 1. Agent: L. Deaths total: 5. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1872)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1872. VEI: 3. Agent: L,G. Deaths total: 9. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1979)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1979. VEI: 3. Agent: T. Deaths total: 9. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1987)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1987. VEI: 2. Agent: T. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Whakaari/White Island (New Zealand, 1914)",
+      "content": "Volcano: Whakaari/White Island. Location: New Zealand, New Zealand. Coordinates: (-37.52, 177.18). Elevation: 294m. Morphology: Stratovolcano. Eruption year: 1914. VEI: N/A. Agent: A. Deaths total: 11. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Niuafo'ou (Tonga, 1886)",
+      "content": "Volcano: Niuafo'ou. Location: Tonga-SW Pacific, Tonga. Coordinates: (-15.6, -175.63). Elevation: 260m. Morphology: Shield volcano. Eruption year: 1886. VEI: 4. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Nyamulagira (Congo, DRC, 1912)",
+      "content": "Volcano: Nyamulagira. Location: Africa-C, Congo, DRC. Coordinates: (-1.408, 29.2). Elevation: 3058m. Morphology: Shield volcano. Eruption year: 1912. VEI: 3. Agent: L. Deaths total: 20. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karkar (Papua New Guinea, 1895)",
+      "content": "Volcano: Karkar. Location: New Guinea-NE of, Papua New Guinea. Coordinates: (-4.647, 145.976). Elevation: 1839m. Morphology: Stratovolcano. Eruption year: 1895. VEI: 2. Agent: I,M. Deaths total: 21. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Campi Flegrei (Italy, 1538)",
+      "content": "Volcano: Campi Flegrei. Location: Italy, Italy. Coordinates: (40.827, 14.139). Elevation: 458m. Morphology: Caldera. Eruption year: 1538. VEI: 3. Agent: T. Deaths total: 24. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Niuafo'ou (Tonga, 1853)",
+      "content": "Volcano: Niuafo'ou. Location: Tonga-SW Pacific, Tonga. Coordinates: (-15.6, -175.63). Elevation: 260m. Morphology: Shield volcano. Eruption year: 1853. VEI: 0. Agent: L. Deaths total: 25. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Bam (Papua New Guinea, 1954)",
+      "content": "Volcano: Bam. Location: New Guinea-NE of, Papua New Guinea. Coordinates: (-3.613, 144.818). Elevation: 685m. Morphology: Stratovolcano. Eruption year: 1954. VEI: 2. Agent: I. Deaths total: 25. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Vesuvius (Italy, 1944)",
+      "content": "Volcano: Vesuvius. Location: Italy, Italy. Coordinates: (40.821, 14.426). Elevation: 1281m. Morphology: Complex volcano. Eruption year: 1944. VEI: 3. Agent: T,L,I. Deaths total: 27. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Oku Volcanic Field (Cameroon, 1984)",
+      "content": "Volcano: Oku Volcanic Field. Location: Africa-W, Cameroon. Coordinates: (6.25, 10.5). Elevation: 3011m. Morphology: Maar. Eruption year: 1984. VEI: N/A. Agent: G. Deaths total: 37. Status: Radiocarbon.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, -141)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: -141. VEI: N/A. Agent: N/A. Deaths total: 40. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Santorini (Greece, 1926)",
+      "content": "Volcano: Santorini. Location: Greece, Greece. Coordinates: (36.404, 25.396). Elevation: 367m. Morphology: Shield volcano. Eruption year: 1926. VEI: 2. Agent: S. Deaths total: 48. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Dama Ali (Ethiopia, 1631)",
+      "content": "Volcano: Dama Ali. Location: Africa-NE, Ethiopia. Coordinates: (11.28, 41.63). Elevation: 1068m. Morphology: Shield volcano. Eruption year: 1631. VEI: N/A. Agent: S. Deaths total: 50. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Etna (Italy, 1843)",
+      "content": "Volcano: Etna. Location: Italy, Italy. Coordinates: (37.748, 14.999). Elevation: 3357m. Morphology: Stratovolcano. Eruption year: 1843. VEI: 2. Agent: L. Deaths total: 59. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Dieng Volcanic Complex (Indonesia, 1944)",
+      "content": "Volcano: Dieng Volcanic Complex. Location: Java, Indonesia. Coordinates: (-7.2, 109.879). Elevation: 2565m. Morphology: Complex volcano. Eruption year: 1944. VEI: 2. Agent: T. Deaths total: 117. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Dieng Volcanic Complex (Indonesia, 1979)",
+      "content": "Volcano: Dieng Volcanic Complex. Location: Java, Indonesia. Coordinates: (-7.2, 109.879). Elevation: 2565m. Morphology: Complex volcano. Eruption year: 1979. VEI: 1. Agent: G. Deaths total: 149. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1587)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1587. VEI: 4. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1672)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1672. VEI: 3. Agent: P. Deaths total: 3000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1822)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1822. VEI: 3. Agent: N/A. Deaths total: 100. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1832)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1832. VEI: 2. Agent: N/A. Deaths total: 32. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1872)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1872. VEI: 4. Agent: T. Deaths total: 30. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1872)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1872. VEI: 4. Agent: P,T. Deaths total: 200. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1902)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1902. VEI: 2. Agent: P. Deaths total: 16. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1920)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1920. VEI: 2. Agent: P. Deaths total: 35. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1930)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1930. VEI: 3. Agent: P,M. Deaths total: 1369. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1954)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1954. VEI: 2. Agent: P. Deaths total: 64. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1961)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1961. VEI: 3. Agent: P. Deaths total: 6. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1969)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1969. VEI: 2. Agent: P. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1986)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1986. VEI: 2. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Merapi (Indonesia, 1994)",
+      "content": "Volcano: Merapi. Location: Java, Indonesia. Coordinates: (-7.54, 110.446). Elevation: 2910m. Morphology: Stratovolcano. Eruption year: 1994. VEI: 3. Agent: P. Deaths total: 66. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1311)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1311. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1334)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1334. VEI: 3. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1376)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1376. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1385)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1385. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1586)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1586. VEI: 5. Agent: N/A. Deaths total: 10000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1716)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1716. VEI: 2. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1826)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1826. VEI: 4. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1848)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1848. VEI: 3. Agent: M. Deaths total: 22. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1864)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1864. VEI: 2. Agent: M. Deaths total: 54. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1875)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1875. VEI: N/A. Agent: m. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1901)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1901. VEI: 3. Agent: N/A. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1919)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1919. VEI: 4. Agent: M. Deaths total: 5110. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1951)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1951. VEI: 4. Agent: N/A. Deaths total: 7. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1966)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1966. VEI: 4. Agent: M,m,P. Deaths total: 215. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kelud (Indonesia, 1990)",
+      "content": "Volcano: Kelud. Location: Java, Indonesia. Coordinates: (-7.935, 112.314). Elevation: 1730m. Morphology: Stratovolcano. Eruption year: 1990. VEI: 4. Agent: T,P. Deaths total: 35. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1860)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1860. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1885)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1885. VEI: 2. Agent: A. Deaths total: 74. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1895)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1895. VEI: 2. Agent: M. Deaths total: 80. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1909)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1909. VEI: 2. Agent: m. Deaths total: 221. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1911)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1911. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1913)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1913. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1941)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1941. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1946)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1946. VEI: 2. Agent: F. Deaths total: 6. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1946)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1946. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1950)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1950. VEI: 1. Agent: P. Deaths total: 6. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1963)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1963. VEI: 2. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1967)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1967. VEI: 3. Agent: M. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1985)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1985. VEI: 3. Agent: A. Deaths total: 70. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1978)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1978. VEI: 3. Agent: M. Deaths total: 12. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1976)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1976. VEI: 2. Agent: M. Deaths total: 119. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Semeru (Indonesia, 1981)",
+      "content": "Volcano: Semeru. Location: Java, Indonesia. Coordinates: (-8.108, 112.922). Elevation: 3657m. Morphology: Stratovolcano. Eruption year: 1981. VEI: 3. Agent: P. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Lamongan (Indonesia, 1843)",
+      "content": "Volcano: Lamongan. Location: Java, Indonesia. Coordinates: (-7.981, 113.341). Elevation: 1641m. Morphology: Stratovolcano. Eruption year: 1843. VEI: 2. Agent: N/A. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Lamongan (Indonesia, 1869)",
+      "content": "Volcano: Lamongan. Location: Java, Indonesia. Coordinates: (-7.981, 113.341). Elevation: 1641m. Morphology: Stratovolcano. Eruption year: 1869. VEI: 2. Agent: T,A. Deaths total: 8. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Raung (Indonesia, 1593)",
+      "content": "Volcano: Raung. Location: Java, Indonesia. Coordinates: (-8.119, 114.056). Elevation: 3260m. Morphology: Stratovolcano. Eruption year: 1593. VEI: 5. Agent: N/A. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Raung (Indonesia, 1597)",
+      "content": "Volcano: Raung. Location: Java, Indonesia. Coordinates: (-8.119, 114.056). Elevation: 3260m. Morphology: Stratovolcano. Eruption year: 1597. VEI: 3. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Raung (Indonesia, 1638)",
+      "content": "Volcano: Raung. Location: Java, Indonesia. Coordinates: (-8.119, 114.056). Elevation: 3260m. Morphology: Stratovolcano. Eruption year: 1638. VEI: 4. Agent: M. Deaths total: 1001. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Raung (Indonesia, 1730)",
+      "content": "Volcano: Raung. Location: Java, Indonesia. Coordinates: (-8.119, 114.056). Elevation: 3260m. Morphology: Stratovolcano. Eruption year: 1730. VEI: 3. Agent: M,T. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Raung (Indonesia, 1817)",
+      "content": "Volcano: Raung. Location: Java, Indonesia. Coordinates: (-8.119, 114.056). Elevation: 3260m. Morphology: Stratovolcano. Eruption year: 1817. VEI: 4. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ijen (Indonesia, 1817)",
+      "content": "Volcano: Ijen. Location: Java, Indonesia. Coordinates: (-8.058, 114.242). Elevation: 2769m. Morphology: Stratovolcano. Eruption year: 1817. VEI: 2. Agent: M. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Batur (Indonesia, 1963)",
+      "content": "Volcano: Batur. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.24, 115.378). Elevation: 1711m. Morphology: Caldera. Eruption year: 1963. VEI: 2. Agent: N/A. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Agung (Indonesia, 1963)",
+      "content": "Volcano: Agung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.343, 115.508). Elevation: 2997m. Morphology: Stratovolcano. Eruption year: 1963. VEI: 5. Agent: P,T,M,A. Deaths total: 1028. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Agung (Indonesia, 1963)",
+      "content": "Volcano: Agung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.343, 115.508). Elevation: 2997m. Morphology: Stratovolcano. Eruption year: 1963. VEI: 3. Agent: N/A. Deaths total: 120. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Tambora (Indonesia, 1815)",
+      "content": "Volcano: Tambora. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.25, 118). Elevation: 2850m. Morphology: Stratovolcano. Eruption year: 1815. VEI: 7. Agent: P,W,A,I. Deaths total: 60000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Iya (Indonesia, 1969)",
+      "content": "Volcano: Iya. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.891, 121.641). Elevation: 618m. Morphology: Stratovolcano. Eruption year: 1969. VEI: 3. Agent: T,m. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Paluweh (Indonesia, 1928)",
+      "content": "Volcano: Paluweh. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.32, 121.708). Elevation: 875m. Morphology: Stratovolcano. Eruption year: 1928. VEI: 3. Agent: W,T. Deaths total: 226. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Paluweh (Indonesia, 1964)",
+      "content": "Volcano: Paluweh. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.32, 121.708). Elevation: 875m. Morphology: Stratovolcano. Eruption year: 1964. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Paluweh (Indonesia, 1973)",
+      "content": "Volcano: Paluweh. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.32, 121.708). Elevation: 875m. Morphology: Stratovolcano. Eruption year: 1973. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Paluweh (Indonesia, 1981)",
+      "content": "Volcano: Paluweh. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.32, 121.708). Elevation: 875m. Morphology: Stratovolcano. Eruption year: 1981. VEI: 2. Agent: P. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Lewotobi (Indonesia, 1869)",
+      "content": "Volcano: Lewotobi. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.542, 122.775). Elevation: 1703m. Morphology: Stratovolcano. Eruption year: 1869. VEI: 2. Agent: N/A. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Lewotobi (Indonesia, 1907)",
+      "content": "Volcano: Lewotobi. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.542, 122.775). Elevation: 1703m. Morphology: Stratovolcano. Eruption year: 1907. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Iliwerung (Indonesia, 1870)",
+      "content": "Volcano: Iliwerung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.532, 123.573). Elevation: 583m. Morphology: Complex volcano. Eruption year: 1870. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Iliwerung (Indonesia, 1948)",
+      "content": "Volcano: Iliwerung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.532, 123.573). Elevation: 583m. Morphology: Complex volcano. Eruption year: 1948. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Iliwerung (Indonesia, 1973)",
+      "content": "Volcano: Iliwerung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.532, 123.573). Elevation: 583m. Morphology: Complex volcano. Eruption year: 1973. VEI: 2. Agent: W. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Iliwerung (Indonesia, 1983)",
+      "content": "Volcano: Iliwerung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.532, 123.573). Elevation: 583m. Morphology: Complex volcano. Eruption year: 1983. VEI: 1. Agent: W. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Sirung (Indonesia, 1953)",
+      "content": "Volcano: Sirung. Location: Lesser Sunda Is, Indonesia. Coordinates: (-8.497, 124.131). Elevation: 1347m. Morphology: Complex volcano. Eruption year: 1953. VEI: 0. Agent: N/A. Deaths total: 5. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Teon (Pacific Ocean, 1659)",
+      "content": "Volcano: Teon. Location: Banda Sea, Pacific Ocean. Coordinates: (-6.976, 129.144). Elevation: 728m. Morphology: Stratovolcano. Eruption year: 1659. VEI: 4. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Teon (Pacific Ocean, 1660)",
+      "content": "Volcano: Teon. Location: Banda Sea, Pacific Ocean. Coordinates: (-6.976, 129.144). Elevation: 728m. Morphology: Stratovolcano. Eruption year: 1660. VEI: 4. Agent: G,T. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Serua (Pacific Ocean, 1692)",
+      "content": "Volcano: Serua. Location: Banda Sea, Pacific Ocean. Coordinates: (-6.312, 130.017). Elevation: 608m. Morphology: Stratovolcano. Eruption year: 1692. VEI: 4. Agent: L. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banda Api (Pacific Ocean, 1598)",
+      "content": "Volcano: Banda Api. Location: Banda Sea, Pacific Ocean. Coordinates: (-4.523, 129.881). Elevation: 596m. Morphology: Caldera. Eruption year: 1598. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banda Api (Pacific Ocean, 1615)",
+      "content": "Volcano: Banda Api. Location: Banda Sea, Pacific Ocean. Coordinates: (-4.523, 129.881). Elevation: 596m. Morphology: Caldera. Eruption year: 1615. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banda Api (Pacific Ocean, 1694)",
+      "content": "Volcano: Banda Api. Location: Banda Sea, Pacific Ocean. Coordinates: (-4.523, 129.881). Elevation: 596m. Morphology: Caldera. Eruption year: 1694. VEI: 3. Agent: N/A. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banda Api (Pacific Ocean, 1820)",
+      "content": "Volcano: Banda Api. Location: Banda Sea, Pacific Ocean. Coordinates: (-4.523, 129.881). Elevation: 596m. Morphology: Caldera. Eruption year: 1820. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banda Api (Pacific Ocean, 1988)",
+      "content": "Volcano: Banda Api. Location: Banda Sea, Pacific Ocean. Coordinates: (-4.523, 129.881). Elevation: 596m. Morphology: Caldera. Eruption year: 1988. VEI: 3. Agent: T,L. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Colo (Indonesia, 1983)",
+      "content": "Volcano: Colo. Location: Sulawesi-Indonesia, Indonesia. Coordinates: (-0.162, 121.601). Elevation: 404m. Morphology: Stratovolcano. Eruption year: 1983. VEI: 4. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Soputan (Indonesia, 1845)",
+      "content": "Volcano: Soputan. Location: Sulawesi-Indonesia, Indonesia. Coordinates: (1.112, 124.737). Elevation: 1785m. Morphology: Stratovolcano. Eruption year: 1845. VEI: 2. Agent: N/A. Deaths total: 118. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mahawu (Indonesia, 1958)",
+      "content": "Volcano: Mahawu. Location: Sulawesi-Indonesia, Indonesia. Coordinates: (1.352, 124.865). Elevation: 1299m. Morphology: Stratovolcano. Eruption year: 1958. VEI: 2. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ruang (Indonesia, 1870)",
+      "content": "Volcano: Ruang. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (2.3, 125.37). Elevation: 725m. Morphology: Stratovolcano. Eruption year: 1870. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ruang (Indonesia, 1871)",
+      "content": "Volcano: Ruang. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (2.3, 125.37). Elevation: 725m. Morphology: Stratovolcano. Eruption year: 1871. VEI: 2. Agent: W. Deaths total: 400. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karangetang (Indonesia, 1940)",
+      "content": "Volcano: Karangetang. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (2.781, 125.407). Elevation: 1797m. Morphology: Stratovolcano. Eruption year: 1940. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karangetang (Indonesia, 1974)",
+      "content": "Volcano: Karangetang. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (2.781, 125.407). Elevation: 1797m. Morphology: Stratovolcano. Eruption year: 1974. VEI: 3. Agent: A. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Karangetang (Indonesia, 1976)",
+      "content": "Volcano: Karangetang. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (2.781, 125.407). Elevation: 1797m. Morphology: Stratovolcano. Eruption year: 1976. VEI: 2. Agent: P,L. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Banua Wuhu (Indonesia, 1889)",
+      "content": "Volcano: Banua Wuhu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.138, 125.491). Elevation: -5m. Morphology: Submarine volcano. Eruption year: 1889. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1711)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1711. VEI: 3. Agent: P. Deaths total: 3000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1812)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1812. VEI: 3. Agent: P,M. Deaths total: 953. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1856)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1856. VEI: 3. Agent: P. Deaths total: 2806. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1892)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1892. VEI: 3. Agent: P,M. Deaths total: 1532. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1913)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1913. VEI: 2. Agent: N/A. Deaths total: 138. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Awu (Indonesia, 1966)",
+      "content": "Volcano: Awu. Location: Sangihe Is-Indonesia, Indonesia. Coordinates: (3.689, 125.447). Elevation: 1318m. Morphology: Stratovolcano. Eruption year: 1966. VEI: 4. Agent: P,M,I. Deaths total: 39. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Dukono (Indonesia, 1550)",
+      "content": "Volcano: Dukono. Location: Halmahera-Indonesia, Indonesia. Coordinates: (1.699, 127.878). Elevation: 1273m. Morphology: Complex volcano. Eruption year: 1550. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamkonora (Indonesia, 1673)",
+      "content": "Volcano: Gamkonora. Location: Halmahera-Indonesia, Indonesia. Coordinates: (1.38, 127.53). Elevation: 1635m. Morphology: Stratovolcano. Eruption year: 1673. VEI: 5. Agent: W. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1608)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1608. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1772)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1772. VEI: 3. Agent: T. Deaths total: 35. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1773)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1773. VEI: 2. Agent: I. Deaths total: 2. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1775)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1775. VEI: 3. Agent: P,I. Deaths total: 1300. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1838)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1838. VEI: 2. Agent: T. Deaths total: 4. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1840)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1840. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1871)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1871. VEI: 2. Agent: T. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Gamalama (Indonesia, 1962)",
+      "content": "Volcano: Gamalama. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.81, 127.332). Elevation: 1714m. Morphology: Stratovolcano. Eruption year: 1962. VEI: 2. Agent: N/A. Deaths total: 5. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kie Besi (Indonesia, 1550)",
+      "content": "Volcano: Kie Besi. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.32, 127.4). Elevation: 1357m. Morphology: Stratovolcano. Eruption year: 1550. VEI: 3. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kie Besi (Indonesia, 1646)",
+      "content": "Volcano: Kie Besi. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.32, 127.4). Elevation: 1357m. Morphology: Stratovolcano. Eruption year: 1646. VEI: 4. Agent: P. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kie Besi (Indonesia, 1760)",
+      "content": "Volcano: Kie Besi. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.32, 127.4). Elevation: 1357m. Morphology: Stratovolcano. Eruption year: 1760. VEI: 4. Agent: M. Deaths total: 2000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kie Besi (Indonesia, 1861)",
+      "content": "Volcano: Kie Besi. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.32, 127.4). Elevation: 1357m. Morphology: Stratovolcano. Eruption year: 1861. VEI: 4. Agent: P,I. Deaths total: 326. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kie Besi (Indonesia, 1890)",
+      "content": "Volcano: Kie Besi. Location: Halmahera-Indonesia, Indonesia. Coordinates: (0.32, 127.4). Elevation: 1357m. Morphology: Stratovolcano. Eruption year: 1890. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Ragang (Philippines, 1873)",
+      "content": "Volcano: Ragang. Location: Mindanao-Philippines, Philippines. Coordinates: (7.691, 124.507). Elevation: 2790m. Morphology: Stratovolcano. Eruption year: 1873. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Camiguin (Philippines, 1871)",
+      "content": "Volcano: Camiguin. Location: Mindanao-Philippines, Philippines. Coordinates: (9.203, 124.673). Elevation: 1552m. Morphology: Stratovolcano. Eruption year: 1871. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Camiguin (Philippines, 1950)",
+      "content": "Volcano: Camiguin. Location: Mindanao-Philippines, Philippines. Coordinates: (9.203, 124.673). Elevation: 1552m. Morphology: Stratovolcano. Eruption year: 1950. VEI: 3. Agent: P. Deaths total: 68. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kanlaon (Philippines, 1996)",
+      "content": "Volcano: Kanlaon. Location: Philippines-C, Philippines. Coordinates: (10.41, 123.13). Elevation: 2422m. Morphology: Stratovolcano. Eruption year: 1996. VEI: 2. Agent: T. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Bulusan (Philippines, 1933)",
+      "content": "Volcano: Bulusan. Location: Luzon-Philippines, Philippines. Coordinates: (12.769, 124.056). Elevation: 1535m. Morphology: Stratovolcano. Eruption year: 1933. VEI: 2. Agent: N/A. Deaths total: 9. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Bulusan (Philippines, 1978)",
+      "content": "Volcano: Bulusan. Location: Luzon-Philippines, Philippines. Coordinates: (12.769, 124.056). Elevation: 1535m. Morphology: Stratovolcano. Eruption year: 1978. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1766)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1766. VEI: 3. Agent: m. Deaths total: 49. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1800)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1800. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1814)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1814. VEI: 4. Agent: P,M,E. Deaths total: 1200. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1853)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1853. VEI: 3. Agent: P. Deaths total: 34. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1858)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1858. VEI: 2. Agent: P. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1871)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1871. VEI: 3. Agent: P. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1887)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1887. VEI: 3. Agent: T. Deaths total: 15. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1897)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1897. VEI: 3. Agent: P,T,M. Deaths total: 350. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1928)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1928. VEI: 3. Agent: P. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1938)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1938. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1947)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1947. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1968)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1968. VEI: 3. Agent: M,P. Deaths total: 6. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Mayon (Philippines, 1984)",
+      "content": "Volcano: Mayon. Location: Luzon-Philippines, Philippines. Coordinates: (13.257, 123.685). Elevation: 2462m. Morphology: Stratovolcano. Eruption year: 1984. VEI: 3. Agent: M. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1572)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1572. VEI: 3. Agent: L. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1716)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1716. VEI: 4. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1749)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1749. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1754)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1754. VEI: 4. Agent: W,T. Deaths total: 12. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1874)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1874. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1911)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1911. VEI: 3. Agent: P,W. Deaths total: 1335. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Taal (Philippines, 1965)",
+      "content": "Volcano: Taal. Location: Luzon-Philippines, Philippines. Coordinates: (14.011, 120.998). Elevation: 311m. Morphology: Stratovolcano. Eruption year: 1965. VEI: 4. Agent: P,W. Deaths total: 355. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Didicas (Philippines, 1969)",
+      "content": "Volcano: Didicas. Location: Luzon-N of, Philippines. Coordinates: (19.077, 122.202). Elevation: 228m. Morphology: Compound volcano. Eruption year: 1969. VEI: 2. Agent: W. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Unnamed (Taiwan, 1853)",
+      "content": "Volcano: Unnamed. Location: Taiwan-E of, Taiwan. Coordinates: (24, 121.83). Elevation: 0m. Morphology: Submarine volcano. Eruption year: 1853. VEI: 2. Agent: N/A. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kuchinoerabujima (Japan, 1841)",
+      "content": "Volcano: Kuchinoerabujima. Location: Ryukyu Is, Japan. Coordinates: (30.443, 130.217). Elevation: 657m. Morphology: Stratovolcano. Eruption year: 1841. VEI: 2. Agent: T. Deaths total: N/A. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kuchinoerabujima (Japan, 1933)",
+      "content": "Volcano: Kuchinoerabujima. Location: Ryukyu Is, Japan. Coordinates: (30.443, 130.217). Elevation: 657m. Morphology: Stratovolcano. Eruption year: 1933. VEI: 4. Agent: T. Deaths total: 8. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 764)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 764. VEI: 4. Agent: T,L. Deaths total: 80. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 766)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 766. VEI: 3. Agent: N/A. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1471)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1471. VEI: 5. Agent: P. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1779)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1779. VEI: 4. Agent: T,W,I. Deaths total: 153. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1781)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1781. VEI: 4. Agent: W. Deaths total: 38. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1914)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1914. VEI: 4. Agent: I,S,A,T. Deaths total: 63. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1946)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1946. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Aira (Japan, 1955)",
+      "content": "Volcano: Aira. Location: Kyushu-Japan, Japan. Coordinates: (31.577, 130.659). Elevation: 1117m. Morphology: Stratovolcano. Eruption year: 1955. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kirishimayama (Japan, 1566)",
+      "content": "Volcano: Kirishimayama. Location: Kyushu-Japan, Japan. Coordinates: (31.934, 130.862). Elevation: 1700m. Morphology: Shield volcano. Eruption year: 1566. VEI: 3. Agent: N/A. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kirishimayama (Japan, 1716)",
+      "content": "Volcano: Kirishimayama. Location: Kyushu-Japan, Japan. Coordinates: (31.934, 130.862). Elevation: 1700m. Morphology: Shield volcano. Eruption year: 1716. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Kirishimayama (Japan, 1717)",
+      "content": "Volcano: Kirishimayama. Location: Kyushu-Japan, Japan. Coordinates: (31.934, 130.862). Elevation: 1700m. Morphology: Shield volcano. Eruption year: 1717. VEI: 3. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Unzendake (Japan, 1792)",
+      "content": "Volcano: Unzendake. Location: Kyushu-Japan, Japan. Coordinates: (32.761, 130.299). Elevation: 1483m. Morphology: Complex volcano. Eruption year: 1792. VEI: 2. Agent: W,A. Deaths total: 15000. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Unzendake (Japan, 1991)",
+      "content": "Volcano: Unzendake. Location: Kyushu-Japan, Japan. Coordinates: (32.761, 130.299). Elevation: 1483m. Morphology: Complex volcano. Eruption year: 1991. VEI: 1. Agent: P. Deaths total: 43. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Asosan (Japan, 1331)",
+      "content": "Volcano: Asosan. Location: Kyushu-Japan, Japan. Coordinates: (32.885, 131.085). Elevation: 1592m. Morphology: Caldera. Eruption year: 1331. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Asosan (Japan, 1485)",
+      "content": "Volcano: Asosan. Location: Kyushu-Japan, Japan. Coordinates: (32.885, 131.085). Elevation: 1592m. Morphology: Caldera. Eruption year: 1485. VEI: 2. Agent: N/A. Deaths total: 1. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Asosan (Japan, 1826)",
+      "content": "Volcano: Asosan. Location: Kyushu-Japan, Japan. Coordinates: (32.885, 131.085). Elevation: 1592m. Morphology: Caldera. Eruption year: 1826. VEI: 2. Agent: T. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    },
+    {
+      "title": "Volcanic event: Asosan (Japan, 1854)",
+      "content": "Volcano: Asosan. Location: Kyushu-Japan, Japan. Coordinates: (32.885, 131.085). Elevation: 1592m. Morphology: Caldera. Eruption year: 1854. VEI: 2. Agent: N/A. Deaths total: 3. Status: Historical.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "noaa_hazard_service",
+      "confidence": 0.91
+    }
+  ]
+}

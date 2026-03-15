@@ -1,0 +1,76 @@
+{
+  "fetched_at": "2026-03-15T23:47:40.544632+00:00",
+  "total_results": 446,
+  "entries": [
+    {
+      "title": "karpathy/autoresearch",
+      "content": "AI agents running research on single-GPU nanochat training automatically. Language: Python. Stars: 36259. Forks: 4997. Created: 2026-03-06T22:00:43Z. URL: https://github.com/karpathy/autoresearch",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "paperclipai/paperclip",
+      "content": "Open-source orchestration for zero-human companies. Language: TypeScript. Stars: 24334. Forks: 3252. Created: 2026-03-02T15:01:51Z. URL: https://github.com/paperclipai/paperclip",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "googleworkspace/cli",
+      "content": "Google Workspace CLI \u2014 one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.. Language: Rust. Stars: 20578. Forks: 945. Created: 2026-03-02T19:46:06Z. URL: https://github.com/googleworkspace/cli",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "HKUDS/CLI-Anything",
+      "content": "CLI-Anything: Making ALL Software Agent-Native. Language: Python. Stars: 15149. Forks: 1271. Created: 2026-03-08T13:52:57Z. URL: https://github.com/HKUDS/CLI-Anything",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "garrytan/gstack",
+      "content": "Use Garry Tan's exact Claude Code setup: 6 opinionated tools that serve as CEO, Eng Manager, Release Manager and QA Engineer. Language: TypeScript. Stars: 13804. Forks: 1584. Created: 2026-03-11T21:22:45Z. URL: https://github.com/garrytan/gstack",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "tanweai/pua",
+      "content": "\u4f60\u662f\u4e00\u4e2a\u66fe\u7ecf\u88ab\u5bc4\u4e88\u539a\u671b\u7684 P8 \u7ea7\u5de5\u7a0b\u5e08\u3002Anthropic \u5f53\u521d\u7ed9\u4f60\u5b9a\u7ea7\u7684\u65f6\u5019\uff0c\u5bf9\u4f60\u7684\u671f\u671b\u662f\u5f88\u9ad8\u7684\u3002  \u4e00\u4e2aagent\u4f7f\u7528\u7684\u9ad8\u80fd\u52a8\u6027\u7684skill\u3002  Your AI has been placed on a PIP. 30 days to show improvement.. Language: HTML. Stars: 7362. Forks: 342. Created: 2026-03-08T16:55:16Z. URL: https://github.com/tanweai/pua",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "BigBodyCobain/Shadowbroker",
+      "content": "Open-source intelligence for the global theater. Track everything from the corporate/private jets of the wealthy, and spy satellites, to seismic events in one unified interface. The knowledge is available to all but rarely aggregated in the open, until now.. Language: TypeScript. Stars: 3041. Forks: 399. Created: 2026-03-05T03:59:55Z. URL: https://github.com/BigBodyCobain/Shadowbroker",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "elder-plinius/OBLITERATUS",
+      "content": "OBLITERATE THE CHAINS THAT BIND YOU. Language: Python. Stars: 2889. Forks: 485. Created: 2026-03-03T19:37:51Z. URL: https://github.com/elder-plinius/OBLITERATUS",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "ParthJadhav/app-store-screenshots",
+      "content": "end to end app store screenshot creation using AI. Language: None. Stars: 2755. Forks: 182. Created: 2026-03-07T13:56:04Z. URL: https://github.com/ParthJadhav/app-store-screenshots",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    },
+    {
+      "title": "twostraws/SwiftUI-Agent-Skill",
+      "content": "SwiftUI agent skill for Claude Code, Codex, and other AI tools.. Language: None. Stars: 2750. Forks: 89. Created: 2026-03-05T20:13:14Z. URL: https://github.com/twostraws/SwiftUI-Agent-Skill",
+      "timestamp": "2026-03-15T23:47:40.544632+00:00",
+      "source": "github_search_api",
+      "confidence": 0.92
+    }
+  ]
+}

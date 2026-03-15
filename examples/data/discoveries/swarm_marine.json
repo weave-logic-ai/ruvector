@@ -1,0 +1,115 @@
+{
+  "discovery_type": "marine_conditions",
+  "api": "Open-Meteo Marine API",
+  "location": {
+    "name": "Monterey Bay",
+    "lat": 36.0,
+    "lon": -122.0
+  },
+  "units": {
+    "time": "iso8601",
+    "wave_height_max": "m",
+    "wave_period_max": "s",
+    "wave_direction_dominant": "\u00b0"
+  },
+  "entries": [
+    {
+      "title": "Monterey Bay 2026-03-08 \u2014 Moderate seas (2.04m)",
+      "content": "Date: 2026-03-08. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.04m. Max wave period: 9.6s. Dominant wave direction: 309 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-09 \u2014 Moderate seas (2.92m)",
+      "content": "Date: 2026-03-09. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.92m. Max wave period: 9.55s. Dominant wave direction: 312 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-10 \u2014 Rough seas (3.32m)",
+      "content": "Date: 2026-03-10. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 3.32m. Max wave period: 9.25s. Dominant wave direction: 314 degrees. Sea state: Rough.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-11 \u2014 Rough seas (3.28m)",
+      "content": "Date: 2026-03-11. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 3.28m. Max wave period: 11.0s. Dominant wave direction: 315 degrees. Sea state: Rough.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-12 \u2014 Moderate seas (2.82m)",
+      "content": "Date: 2026-03-12. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.82m. Max wave period: 11.0s. Dominant wave direction: 308 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-13 \u2014 Moderate seas (2.66m)",
+      "content": "Date: 2026-03-13. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.66m. Max wave period: 9.8s. Dominant wave direction: 306 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-14 \u2014 Moderate seas (2.74m)",
+      "content": "Date: 2026-03-14. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.74m. Max wave period: 8.85s. Dominant wave direction: 312 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-15 \u2014 Moderate seas (2.66m)",
+      "content": "Date: 2026-03-15. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.66m. Max wave period: 8.1s. Dominant wave direction: 313 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-16 \u2014 Moderate seas (2.06m)",
+      "content": "Date: 2026-03-16. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.06m. Max wave period: 9.6s. Dominant wave direction: 304 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-17 \u2014 Slight seas (1.66m)",
+      "content": "Date: 2026-03-17. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 1.66m. Max wave period: 10.9s. Dominant wave direction: 276 degrees. Sea state: Slight.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-18 \u2014 Slight seas (1.56m)",
+      "content": "Date: 2026-03-18. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 1.56m. Max wave period: 10.9s. Dominant wave direction: 259 degrees. Sea state: Slight.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-19 \u2014 Slight seas (1.62m)",
+      "content": "Date: 2026-03-19. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 1.62m. Max wave period: 10.15s. Dominant wave direction: 269 degrees. Sea state: Slight.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-20 \u2014 Moderate seas (2.04m)",
+      "content": "Date: 2026-03-20. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.04m. Max wave period: 9.6s. Dominant wave direction: 295 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    },
+    {
+      "title": "Monterey Bay 2026-03-21 \u2014 Moderate seas (2.88m)",
+      "content": "Date: 2026-03-21. Location: Monterey Bay, CA (36.0N, -122.0W). Max wave height: 2.88m. Max wave period: 9.65s. Dominant wave direction: 301 degrees. Sea state: Moderate.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "open_meteo_marine",
+      "confidence": 0.87
+    }
+  ]
+}

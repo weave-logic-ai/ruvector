@@ -1,0 +1,78 @@
+{
+  "discovery_type": "genetic_variants",
+  "api": "NCBI ClinVar (eutils)",
+  "total_pathogenic_cancer_variants": 170922,
+  "fetched": 10,
+  "entries": [
+    {
+      "title": "Pathogenic variant in MUTYH \u2014 Familial adenomatous polyposis 2",
+      "content": "Gene: MUTYH. Variant: NM_001048174.2(MUTYH):c.1434+286_1434+287del. Classification: Pathogenic (criteria provided, single submitter). Associated disease: Familial adenomatous polyposis 2. Molecular consequence: intron variant. Protein change: N/A. Chromosome: 1. Accession: VCV004813065.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in BARD1 \u2014 Familial cancer of breast",
+      "content": "Gene: BARD1. Variant: NM_000465.4(BARD1):c.7del (p.Asp3fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Familial cancer of breast. Molecular consequence: frameshift variant, non-coding transcript variant. Protein change: D3fs. Chromosome: 2. Accession: VCV004813042.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in MLH1 \u2014 Colorectal cancer, hereditary nonpolyposis, type 2",
+      "content": "Gene: MLH1. Variant: NM_000249.4(MLH1):c.642del (p.Asp214fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Colorectal cancer, hereditary nonpolyposis, type 2. Molecular consequence: frameshift variant, 5 prime UTR variant. Protein change: D116fs, D181fs, D214fs. Chromosome: 3. Accession: VCV004813041.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in ATM \u2014 Familial cancer of breast",
+      "content": "Gene: ATM. Variant: NM_000051.4(ATM):c.3308_3309del (p.Asp1103fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Familial cancer of breast. Molecular consequence: frameshift variant. Protein change: D1103fs. Chromosome: 11. Accession: VCV004813040.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in BRCA2 \u2014 Breast-ovarian cancer, familial, susceptibility to, 2",
+      "content": "Gene: BRCA2. Variant: NM_000059.4(BRCA2):c.849dup (p.Gly284fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Breast-ovarian cancer, familial, susceptibility to, 2. Molecular consequence: frameshift variant. Protein change: G284fs. Chromosome: 13. Accession: VCV004813039.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in ATM \u2014 Familial cancer of breast",
+      "content": "Gene: ATM. Variant: NM_000051.4(ATM):c.2374A>T (p.Lys792Ter). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Familial cancer of breast. Molecular consequence: nonsense. Protein change: K792*. Chromosome: 11. Accession: VCV004813038.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in AXIN2 \u2014 Oligodontia-cancer predisposition syndrome",
+      "content": "Gene: AXIN2. Variant: NM_004655.4(AXIN2):c.1650C>G (p.Tyr550Ter). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Oligodontia-cancer predisposition syndrome. Molecular consequence: nonsense. Protein change: Y550*. Chromosome: 17. Accession: VCV004813037.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in BRCA2 \u2014 Breast-ovarian cancer, familial, susceptibility to, 2",
+      "content": "Gene: BRCA2. Variant: NM_000059.4(BRCA2):c.6914del (p.Lys2305fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Breast-ovarian cancer, familial, susceptibility to, 2. Molecular consequence: frameshift variant, non-coding transcript variant, intron variant. Protein change: K166fs, K2305fs, K661fs. Chromosome: 13. Accession: VCV004813036.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in PMS2 \u2014 Lynch syndrome 4",
+      "content": "Gene: PMS2. Variant: NM_000535.7(PMS2):c.2293del (p.Ala765fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Lynch syndrome 4. Molecular consequence: frameshift variant, intron variant. Protein change: A364fs, A454fs, A508fs, A574fs, A578fs, A594fs, A603fs, A607fs, A610fs, A630fs, A641fs, A643fs, A653fs, A657fs, A659fs, A662fs, A670fs, A673fs, A699fs, A709fs, A713fs, A724fs, A729fs, A765fs, A773fs, A776fs, A827fs. Chromosome: 7. Accession: VCV004813035.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    },
+    {
+      "title": "Pathogenic variant in PALB2 \u2014 Familial cancer of breast",
+      "content": "Gene: PALB2. Variant: NM_024675.4(PALB2):c.2813del (p.Asn938fs). Classification: Pathogenic (criteria provided, single submitter). Associated disease: Familial cancer of breast. Molecular consequence: frameshift variant. Protein change: N116fs, N342fs, N589fs, N643fs, N884fs, N914fs, N918fs, N938fs. Chromosome: 16. Accession: VCV004813034.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "ncbi_clinvar",
+      "confidence": 0.92
+    }
+  ]
+}

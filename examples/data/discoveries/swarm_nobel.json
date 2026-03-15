@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Nobel Prize in Physiology or Medicine (2025)",
+    "content": "Category: Physiology or Medicine. Year: 2025. Date awarded: 2025-10-06. Prize amount: 11,000,000 SEK. Laureate(s): Mary E. Brunkow, Frederick J. Ramsdell, Shimon Sakaguchi. Motivation: for their discoveries concerning peripheral immune tolerance",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  },
+  {
+    "title": "Nobel Prize in Physics (2025)",
+    "content": "Category: Physics. Year: 2025. Date awarded: 2025-10-07. Prize amount: 11,000,000 SEK. Laureate(s): John Clarke, Michel H. Devoret, John M. Martinis. Motivation: for the discovery of macroscopic quantum mechanical tunnelling and energy quantisation in an electric circuit",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  },
+  {
+    "title": "Nobel Prize in Peace (2025)",
+    "content": "Category: Peace. Year: 2025. Date awarded: 2025-10-10. Prize amount: 11,000,000 SEK. Laureate(s): Maria Corina Machado. Motivation: for her tireless work promoting democratic rights for the people of Venezuela and for her struggle to achieve a just and peaceful transition from dictatorship to democracy",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  },
+  {
+    "title": "Nobel Prize in Literature (2025)",
+    "content": "Category: Literature. Year: 2025. Date awarded: 2025-10-09. Prize amount: 11,000,000 SEK. Laureate(s): L\u00e1szl\u00f3 Krasznahorkai. Motivation: for his compelling and visionary oeuvre that, in the midst of apocalyptic terror, reaffirms the power of art",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  },
+  {
+    "title": "Nobel Prize in Economic Sciences (2025)",
+    "content": "Category: Economic Sciences. Year: 2025. Date awarded: 2025-10-13. Prize amount: 11,000,000 SEK. Laureate(s): Joel Mokyr, Philippe Aghion, Peter Howitt. Motivation: for having identified the prerequisites for sustained growth through technological progress",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  },
+  {
+    "title": "Nobel Prize in Chemistry (2025)",
+    "content": "Category: Chemistry. Year: 2025. Date awarded: 2025-10-08. Prize amount: 11,000,000 SEK. Laureate(s): Susumu Kitagawa, Richard Robson, Omar M. Yaghi. Motivation: for the development of metal\u2013organic frameworks",
+    "timestamp": "2026-03-15T23:49:45.257025+00:00",
+    "source": "nobel_prize_api",
+    "confidence": 0.95
+  }
+]

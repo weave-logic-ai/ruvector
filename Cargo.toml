@@ -131,6 +131,8 @@ members = [
     "crates/rvAgent/rvagent-acp",
     "crates/rvAgent/rvagent-mcp",
     "crates/rvAgent/rvagent-wasm",
+    # ETL pipeline example
+    "examples/train-discoveries",
 ]
 resolver = "2"
 

@@ -1,0 +1,75 @@
+{
+  "fetched_at": "2026-03-15T23:47:40.544632+00:00",
+  "entries": [
+    {
+      "title": "[GITHUB_STATUS] Degraded performance for various services",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-13T15:12:48.287Z. Updated: 2026-03-13T16:15:33.801Z. URL: https://stspg.io/xrr4ln3tbt88",
+      "timestamp": "2026-03-13T15:12:48.287Z",
+      "source": "github_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[GITHUB_STATUS] Degraded Codespaces experience",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-12T13:06:54.989Z. Updated: 2026-03-12T18:53:33.503Z. URL: https://stspg.io/lq4q8bqfnkqn",
+      "timestamp": "2026-03-12T13:06:54.989Z",
+      "source": "github_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[GITHUB_STATUS] Actions failures to download (401 Unauthorized)",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-12T04:46:20.069Z. Updated: 2026-03-12T06:02:07.247Z. URL: https://stspg.io/8t1nfjvmmtqj",
+      "timestamp": "2026-03-12T04:46:20.069Z",
+      "source": "github_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[GITHUB_STATUS] Disruption with some GitHub services",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-12T01:54:18.324Z. Updated: 2026-03-12T02:45:55.816Z. URL: https://stspg.io/tg49qcr0n1lc",
+      "timestamp": "2026-03-12T01:54:18.324Z",
+      "source": "github_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[GITHUB_STATUS] Degraded experience with Copilot Code Review",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-11T14:25:17.532Z. Updated: 2026-03-13T20:03:40.829Z. URL: https://stspg.io/twfx8xg9nf33",
+      "timestamp": "2026-03-11T14:25:17.532Z",
+      "source": "github_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[OPENAI_STATUS] Responses API errors when using background mode",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-13T19:38:07Z. Updated: 2026-03-13T20:03:53Z. URL: ",
+      "timestamp": "2026-03-13T19:38:07Z",
+      "source": "openai_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[OPENAI_STATUS] Conversation Errors for Logged out Users",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-13T13:48:11Z. Updated: 2026-03-13T15:10:34Z. URL: ",
+      "timestamp": "2026-03-13T13:48:11Z",
+      "source": "openai_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[OPENAI_STATUS] Some users seeing \"No Accessible Workspaces\" when attempting to login via SSO",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-12T19:07:12Z. Updated: 2026-03-12T23:29:55Z. URL: ",
+      "timestamp": "2026-03-12T19:07:12Z",
+      "source": "openai_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[OPENAI_STATUS] Increased errors with ChatGPT file downloads",
+      "content": "Status: resolved. Impact: none. Created: 2026-03-10T23:10:02Z. Updated: 2026-03-12T22:15:53Z. URL: ",
+      "timestamp": "2026-03-10T23:10:02Z",
+      "source": "openai_status",
+      "confidence": 0.9
+    },
+    {
+      "title": "[OPENAI_STATUS] Increased errors on ChatGPT File Uploads",
+      "content": "Status: resolved. Impact: minor. Created: 2026-03-10T21:22:50Z. Updated: 2026-03-12T20:28:36Z. URL: ",
+      "timestamp": "2026-03-10T21:22:50Z",
+      "source": "openai_status",
+      "confidence": 0.9
+    }
+  ]
+}

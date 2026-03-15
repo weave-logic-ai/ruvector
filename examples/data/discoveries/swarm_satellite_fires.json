@@ -1,0 +1,77 @@
+{
+  "discovery_type": "satellite_fire_events",
+  "api": "NASA EONET v3 (Earth Observatory Natural Event Tracker)",
+  "note": "FIRMS DEMO_KEY invalid; using NASA EONET wildfire events as fallback",
+  "entries": [
+    {
+      "title": "Yellow Wildfire, Moore, Texas",
+      "content": "Event: Yellow Wildfire, Moore, Texas. Date: 2026-03-10T22:40:00Z. Location: (35.6423, -102.16138). Magnitude: 8500.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "RX PCS White Oak Prescribed Fire, Scott, Arkansas",
+      "content": "Event: RX PCS White Oak Prescribed Fire, Scott, Arkansas. Date: 2026-03-10T17:12:00Z. Location: (34.974698, -93.885147). Magnitude: 2523.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "Cabin Creek Wildfire, Gray, Texas",
+      "content": "Event: Cabin Creek Wildfire, Gray, Texas. Date: 2026-03-09T17:52:00Z. Location: (35.422, -100.753). Magnitude: 7000.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "Porcupine Creek Wildfire, Campbell, Wyoming",
+      "content": "Event: Porcupine Creek Wildfire, Campbell, Wyoming. Date: 2026-03-09T15:37:00Z. Location: (43.699, -105.647467). Magnitude: 2490.23 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "Rock Ridge Wildfire, Chouteau, Montana",
+      "content": "Event: Rock Ridge Wildfire, Chouteau, Montana. Date: 2026-03-08T19:26:00Z. Location: (47.54961, -110.27752). Magnitude: 700.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "Eldorado Wildfire, Teton, Montana",
+      "content": "Event: Eldorado Wildfire, Teton, Montana. Date: 2026-03-08T15:17:00Z. Location: (47.909896, -112.26804). Magnitude: 500.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "South Patrol North RX Prescribed Fire, Will, Illinois",
+      "content": "Event: South Patrol North RX Prescribed Fire, Will, Illinois. Date: 2026-03-08T11:35:00Z. Location: (41.35475, -88.15605). Magnitude: 609.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "RX Interior Pastures 2 Prescribed Fire, Comanche, Oklahoma",
+      "content": "Event: RX Interior Pastures 2 Prescribed Fire, Comanche, Oklahoma. Date: 2026-03-08T08:07:00Z. Location: (34.74737, -98.700088). Magnitude: 1209.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "440 Wildfire, Dixie, Florida",
+      "content": "Event: 440 Wildfire, Dixie, Florida. Date: 2026-03-07T19:54:00Z. Location: (29.6138889, -83.2216667). Magnitude: 750.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    },
+    {
+      "title": "OLD BOWLING GREEN Wildfire, Polk, Florida",
+      "content": "Event: OLD BOWLING GREEN Wildfire, Polk, Florida. Date: 2026-03-07T19:11:00Z. Location: (27.6811111, -81.8244444). Magnitude: 3297.0 acres. Status: Open/Active. Source: IRWIN.",
+      "timestamp": "2026-03-15T23:49:06.185611Z",
+      "source": "nasa_eonet",
+      "confidence": 0.9
+    }
+  ]
+}
