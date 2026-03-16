@@ -1,3 +1,6 @@
+#![allow(clippy::manual_range_contains)]
+#![allow(clippy::needless_range_loop)]
+
 //! Acceptance Gates for ADR-090
 //!
 //! Integration tests implementing the acceptance gates defined in ADR-090:

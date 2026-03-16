@@ -255,3 +255,20 @@ path = "examples/benchmark_model.rs"
 name = "run_eval"
 path = "examples/run_eval.rs"
 required-features = ["async-runtime"]
+
+# Lint configuration for the package
+[lints.clippy]
+# Allow common patterns in test code for readability
+manual_range_contains = "allow"
+needless_range_loop = "allow"
+useless_vec = "allow"
+unnecessary_cast = "allow"
+excessive_precision = "allow"
+
+[lints.rust]
+# Allow common patterns in test code
+unused_imports = "allow"
+unused_variables = "allow"
+dead_code = "allow"
+unreachable_code = "allow"
+unused_parens = "allow"
