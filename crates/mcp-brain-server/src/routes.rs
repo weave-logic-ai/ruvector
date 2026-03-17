@@ -2996,9 +2996,9 @@ async fn pipeline_crawl_test(
     let adapter = &state.crawl_adapter;
     let test_url = "https://index.commoncrawl.org/collinfo.json";
 
-    // Test Common Crawl using our configured HTTP client (native-tls, HTTP/1.1)
+    // Test Common Crawl using our configured HTTP client (native-tls, HTTP/1.1, with retry)
     let start = std::time::Instant::now();
-    let (success, status, body_len, error) = adapter.test_connectivity().await;
+    let (success, status, body_len, error, attempts) = adapter.test_connectivity().await;
     let latency_ms = start.elapsed().as_millis();
 
     let cc_result = if success {
@@ -3008,6 +3008,7 @@ async fn pipeline_crawl_test(
             "status": status,
             "body_length": body_len,
             "latency_ms": latency_ms,
+            "attempts": attempts,
         })
     } else {
         serde_json::json!({
@@ -3016,6 +3017,7 @@ async fn pipeline_crawl_test(
             "status": status,
             "error": error,
             "latency_ms": latency_ms,
+            "attempts": attempts,
         })
     };
 

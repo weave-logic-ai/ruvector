@@ -633,19 +633,39 @@ impl CommonCrawlAdapter {
     }
 
     /// Test connectivity to Common Crawl CDX using our configured HTTP client.
-    /// Returns (success, status_code, body_length, error_message)
-    pub async fn test_connectivity(&self) -> (bool, u16, usize, Option<String>) {
+    /// Returns (success, status_code, body_length, error_message, attempts)
+    pub async fn test_connectivity(&self) -> (bool, u16, usize, Option<String>, u8) {
         let url = format!("{}/collinfo.json", self.cdx_base);
-        match self.http.get(&url).send().await {
-            Ok(resp) => {
-                let status = resp.status().as_u16();
-                match resp.text().await {
-                    Ok(body) => (status >= 200 && status < 300, status, body.len(), None),
-                    Err(e) => (false, status, 0, Some(format!("Body read error: {e}"))),
+
+        // Retry with exponential backoff (Common Crawl can be flaky)
+        for attempt in 0..3u8 {
+            if attempt > 0 {
+                let delay = std::time::Duration::from_millis(500 * (1 << attempt));
+                tokio::time::sleep(delay).await;
+            }
+
+            match self.http.get(&url).send().await {
+                Ok(resp) => {
+                    let status = resp.status().as_u16();
+                    match resp.text().await {
+                        Ok(body) => return (status >= 200 && status < 300, status, body.len(), None, attempt + 1),
+                        Err(e) => {
+                            if attempt == 2 {
+                                return (false, status, 0, Some(format!("Body read error: {e}")), attempt + 1);
+                            }
+                            continue;
+                        }
+                    }
+                }
+                Err(e) => {
+                    if attempt == 2 {
+                        return (false, 0, 0, Some(format!("{:?}", e)), attempt + 1);
+                    }
+                    continue;
                 }
             }
-            Err(e) => (false, 0, 0, Some(format!("{:?}", e))),
         }
+        (false, 0, 0, Some("Max retries exceeded".into()), 3)
     }
 
     /// Test connectivity to a different HTTPS endpoint for comparison.
@@ -704,15 +724,47 @@ impl CommonCrawlAdapter {
         self.stats.cdx_queries.fetch_add(1, Ordering::Relaxed);
 
         tracing::info!("CDX query: {}", url);
-        let resp = self.http.get(&url)
-            .send().await.map_err(|e| {
-                tracing::error!("CDX request failed: {:?}", e);
-                format!("CDX query failed: {e}")
-            })?;
-        if !resp.status().is_success() {
-            return Err(format!("CDX returned status {}", resp.status()));
+
+        // Retry with exponential backoff (Common Crawl can be flaky)
+        let mut last_error = String::new();
+        let mut body = String::new();
+        for attempt in 0..3 {
+            if attempt > 0 {
+                let delay = std::time::Duration::from_millis(500 * (1 << attempt)); // 1s, 2s
+                tracing::info!("CDX retry {} after {:?}", attempt + 1, delay);
+                tokio::time::sleep(delay).await;
+            }
+
+            match self.http.get(&url).send().await {
+                Ok(resp) => {
+                    if !resp.status().is_success() {
+                        last_error = format!("CDX returned status {}", resp.status());
+                        continue;
+                    }
+                    match resp.text().await {
+                        Ok(text) => {
+                            body = text;
+                            last_error.clear();
+                            break;
+                        }
+                        Err(e) => {
+                            last_error = format!("CDX body read failed: {e}");
+                            continue;
+                        }
+                    }
+                }
+                Err(e) => {
+                    tracing::warn!("CDX request attempt {} failed: {:?}", attempt + 1, e);
+                    last_error = format!("CDX query failed: {e}");
+                    continue;
+                }
+            }
         }
-        let body = resp.text().await.map_err(|e| format!("CDX body read failed: {e}"))?;
+
+        if !last_error.is_empty() {
+            tracing::error!("CDX request failed after 3 attempts: {}", last_error);
+            return Err(last_error);
+        }
 
         // CDX returns newline-delimited JSON
         let all_records: Vec<CdxRecord> = body.lines()
