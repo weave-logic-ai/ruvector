@@ -668,8 +668,12 @@ impl CommonCrawlAdapter {
         }
         self.stats.cdx_queries.fetch_add(1, Ordering::Relaxed);
 
+        tracing::info!("CDX query: {}", url);
         let resp = self.http.get(&url)
-            .send().await.map_err(|e| format!("CDX query failed: {e}"))?;
+            .send().await.map_err(|e| {
+                tracing::error!("CDX request failed: {:?}", e);
+                format!("CDX query failed: {e}")
+            })?;
         if !resp.status().is_success() {
             return Err(format!("CDX returned status {}", resp.status()));
         }

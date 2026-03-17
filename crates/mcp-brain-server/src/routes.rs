@@ -316,9 +316,10 @@ pub async fn create_router() -> (Router, AppState) {
         .route("/v1/pipeline/optimize", post(pipeline_optimize))
         .route("/v1/pipeline/feeds", post(pipeline_add_feed).get(pipeline_list_feeds))
         .route("/v1/pipeline/scheduler/status", get(pipeline_scheduler_status))
-        // Common Crawl Integration (ADR-096 §10)
+        // Common Crawl Integration (ADR-096 §10, ADR-115)
         .route("/v1/pipeline/crawl/discover", post(pipeline_crawl_discover))
         .route("/v1/pipeline/crawl/stats", get(pipeline_crawl_stats))
+        .route("/v1/pipeline/crawl/test", get(pipeline_crawl_test))
         // MCP SSE transport
         .route("/sse", get(sse_handler))
         .route("/messages", post(messages_handler))
@@ -2985,6 +2986,52 @@ async fn pipeline_crawl_stats(
                 "archived": web_status.tier_distribution.archived,
             }
         }
+    }))
+}
+
+/// GET /v1/pipeline/crawl/test — Test CDX connectivity (diagnostic)
+async fn pipeline_crawl_test(
+    State(state): State<AppState>,
+) -> Json<serde_json::Value> {
+    let http = &state.crawl_adapter;
+    let test_url = "https://index.commoncrawl.org/collinfo.json";
+
+    let start = std::time::Instant::now();
+    let result = match reqwest::get(test_url).await {
+        Ok(resp) => {
+            let status = resp.status().as_u16();
+            let body_len = resp.text().await.map(|b| b.len()).unwrap_or(0);
+            serde_json::json!({
+                "success": true,
+                "url": test_url,
+                "status": status,
+                "body_length": body_len,
+                "latency_ms": start.elapsed().as_millis(),
+            })
+        }
+        Err(e) => {
+            serde_json::json!({
+                "success": false,
+                "url": test_url,
+                "error": format!("{:?}", e),
+                "latency_ms": start.elapsed().as_millis(),
+            })
+        }
+    };
+
+    // Also test with our configured client
+    let cc_test_url = "https://index.commoncrawl.org/CC-MAIN-2026-08-index?url=example.com&output=json&limit=1";
+    let cc_start = std::time::Instant::now();
+    let cc_result = match http.stats() {
+        (queries, _, _, _, _) => serde_json::json!({
+            "adapter_queries": queries,
+            "cache_stats": http.cache_stats(),
+        })
+    };
+
+    Json(serde_json::json!({
+        "connectivity_test": result,
+        "adapter_status": cc_result,
     }))
 }
 
