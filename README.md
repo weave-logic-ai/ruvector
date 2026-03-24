@@ -1031,7 +1031,22 @@ Run RuVector wherever your application lives — as a server, a PostgreSQL exten
 
 ## Performance
 
-Real numbers from real benchmarks — measured on Apple M4 Pro (48GB RAM) with Criterion.rs statistical sampling.
+### Independent Benchmark (Real Competitors)
+
+Measured against hnswlib (C++) and numpy brute-force with ground-truth recall (2026-03-24, aarch64 Linux):
+
+| Scale | Engine | QPS | Recall@10 | Build (s) | p50 (ms) |
+|-------|--------|-----|-----------|-----------|----------|
+| 10K | hnswlib (M=32) | 1153 | 0.9895 | 7.5 | 0.73 |
+| 10K | **ruvector-core** | **443** | **0.9830** | **44.0** | **1.98** |
+| 100K | hnswlib (M=32) | 250 | 0.7427 | 395 | 2.57 |
+| 100K | **ruvector-core** | **86** | **0.8675** | **856** | **10.14** |
+
+See [`bench_results/real_comparison_benchmark.md`](./bench_results/real_comparison_benchmark.md) for full methodology and raw data.
+
+### Criterion.rs Benchmarks
+
+Numbers from Criterion.rs statistical sampling on Apple M4 Pro (48GB RAM):
 
 <details>
 <summary>📈 Performance Benchmarks</summary>
@@ -1046,7 +1061,7 @@ Real numbers from real benchmarks — measured on Apple M4 Pro (48GB RAM) with C
 | Python baseline | 77 | 11.88ms | 11.88ms | 100% | 10K vectors, 384D |
 | Brute force | 12 | 77.76ms | 77.76ms | 100% | 10K vectors, 384D |
 
-**15.7x faster than Python** — 100% recall at every configuration.
+**Note:** The "Python baseline" and "Brute force" rows above are from the internal Criterion benchmark which simulates competitors. See the Independent Benchmark section above for real competitor comparisons. Actual recall@10 ranges from 86.75% (100K) to 98.3% (10K) — not 100%.
 
 | Search k | p50 Latency | Throughput |
 |----------|-------------|------------|

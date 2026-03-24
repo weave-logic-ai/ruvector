@@ -1,4 +1,8 @@
-# Ruvector Benchmark Results
+# Ruvector Benchmark Results (DEPRECATED)
+
+> **Note**: These results use simulated competitors and hardcoded memory/recall values.
+> See [`real_comparison_benchmark.md`](./real_comparison_benchmark.md) for actual measurements
+> against real competitors (hnswlib, numpy) with ground-truth recall.
 
 Generated: 2026-01-18 21:59:06 UTC
 
