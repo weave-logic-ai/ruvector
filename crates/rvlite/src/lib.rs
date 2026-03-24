@@ -171,6 +171,7 @@ impl RvLiteConfig {
             storage_path: "memory://".to_string(),
             hnsw_config: None,
             quantization: None,
+        ..Default::default()
         }
     }
 }

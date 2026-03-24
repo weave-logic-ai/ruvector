@@ -128,6 +128,7 @@ impl From<JsDbOptions> for DbOptions {
                 .unwrap_or_else(|| "./ruvector.db".to_string()),
             hnsw_config: options.hnsw_config.map(Into::into),
             quantization: options.quantization.map(Into::into),
+            ..Default::default()
         }
     }
 }

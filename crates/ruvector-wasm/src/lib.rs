@@ -228,6 +228,7 @@ impl VectorDB {
             storage_path: ":memory:".to_string(), // Use in-memory for WASM
             hnsw_config,
             quantization: None, // Disable quantization for WASM (for now)
+                ..Default::default()
         };
 
         let db = CoreVectorDB::new(options).map_err(|e| JsValue::from(WasmError::from(e)))?;
@@ -608,6 +609,7 @@ impl CollectionManager {
             storage_path: ":memory:".to_string(),
             hnsw_config: collection.config.hnsw_config.clone(),
             quantization: collection.config.quantization.clone(),
+                ..Default::default()
         };
 
         let db = CoreVectorDB::new(db_options)

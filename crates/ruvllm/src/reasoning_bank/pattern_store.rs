@@ -463,6 +463,7 @@ impl PatternStore {
                 max_elements: config.max_patterns,
             }),
             quantization: None,
+        ..Default::default()
         };
 
         let index = VectorDB::new(db_options)

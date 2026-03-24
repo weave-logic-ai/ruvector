@@ -43,6 +43,7 @@ fn bench_insert_single(c: &mut Criterion) {
                 distance_metric: DistanceMetric::Cosine,
                 hnsw_config: Some(HnswConfig::default()),
                 quantization: None,
+            ..Default::default()
             };
             let db = VectorDB::new(options).unwrap();
             let mut idx = 0;
@@ -81,6 +82,7 @@ fn bench_insert_batch(c: &mut Criterion) {
                         distance_metric: DistanceMetric::Cosine,
                         hnsw_config: Some(HnswConfig::default()),
                         quantization: None,
+                    ..Default::default()
                     };
                     let db = VectorDB::new(options).unwrap();
 
@@ -118,6 +120,7 @@ fn bench_search(c: &mut Criterion) {
             max_elements: 100000,
         }),
         quantization: None,
+    ..Default::default()
     };
     let db = VectorDB::new(options).unwrap();
 

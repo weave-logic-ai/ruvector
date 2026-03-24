@@ -277,6 +277,7 @@ fn run_benchmark(
             max_elements: vectors.len() * 2,
         }),
         quantization: Some(quantization),
+    ..Default::default()
     };
 
     // Measure build time and memory

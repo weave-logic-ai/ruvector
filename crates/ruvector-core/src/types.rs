@@ -81,6 +81,14 @@ pub struct DbOptions {
     pub hnsw_config: Option<HnswConfig>,
     /// Quantization configuration
     pub quantization: Option<QuantizationConfig>,
+    /// REDB storage cache size in bytes. Controls how much memory REDB uses
+    /// for its page cache. Default: 64MB. The previous redb default was 1GB
+    /// which is excessive for most vector workloads.
+    ///
+    /// Set to `None` to use the default (64MB), or `Some(bytes)` to override.
+    /// Example: `Some(128 * 1024 * 1024)` for 128MB.
+    #[serde(default)]
+    pub cache_size_bytes: Option<usize>,
 }
 
 /// HNSW index configuration
@@ -133,6 +141,7 @@ impl Default for DbOptions {
             storage_path: "./ruvector.db".to_string(),
             hnsw_config: Some(HnswConfig::default()),
             quantization: Some(QuantizationConfig::Scalar),
+            cache_size_bytes: None,
         }
     }
 }

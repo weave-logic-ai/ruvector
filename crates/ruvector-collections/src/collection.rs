@@ -119,6 +119,7 @@ impl Collection {
             storage_path,
             hnsw_config: config.hnsw_config.clone(),
             quantization: config.quantization.clone(),
+                ..Default::default()
         };
 
         let db = VectorDB::new(db_options)?;

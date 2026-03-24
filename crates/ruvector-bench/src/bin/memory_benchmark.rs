@@ -100,6 +100,7 @@ fn bench_memory_scale(args: &Args, num_vectors: usize) -> Result<BenchmarkResult
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();
@@ -215,6 +216,7 @@ fn bench_quantization_memory(args: &Args) -> Result<Vec<BenchmarkResult>> {
             storage_path: db_path.to_str().unwrap().to_string(),
             hnsw_config: Some(HnswConfig::default()),
             quantization: Some(quant_config),
+        ..Default::default()
         };
 
         let mem_profiler = MemoryProfiler::new();
@@ -309,6 +311,7 @@ fn bench_index_overhead(args: &Args) -> Result<BenchmarkResult> {
             max_elements: num_vectors * 2,
         }),
         quantization: Some(QuantizationConfig::None), // No quantization for overhead analysis
+        ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();

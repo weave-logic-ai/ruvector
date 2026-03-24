@@ -109,6 +109,7 @@ fn bench_reflexion_episodes(args: &Args) -> Result<BenchmarkResult> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();
@@ -215,6 +216,7 @@ fn bench_skill_library(args: &Args) -> Result<BenchmarkResult> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();
@@ -323,6 +325,7 @@ fn bench_causal_graph(args: &Args) -> Result<BenchmarkResult> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();
@@ -425,6 +428,7 @@ fn bench_learning_session(args: &Args) -> Result<BenchmarkResult> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();

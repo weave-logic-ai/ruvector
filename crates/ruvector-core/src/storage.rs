@@ -44,12 +44,17 @@ pub struct VectorStorage {
 }
 
 impl VectorStorage {
-    /// Create or open a vector storage at the given path
-    ///
-    /// This method uses a global connection pool to allow multiple VectorDB
-    /// instances to share the same underlying database file, fixing the
-    /// "Database already open. Cannot acquire lock" error.
+    /// Create or open a vector storage at the given path with default 64MB cache.
     pub fn new<P: AsRef<Path>>(path: P, dimensions: usize) -> Result<Self> {
+        Self::with_cache(path, dimensions, None)
+    }
+
+    /// Create or open vector storage with explicit cache size configuration.
+    pub fn with_cache<P: AsRef<Path>>(
+        path: P,
+        dimensions: usize,
+        cache_size_bytes: Option<usize>,
+    ) -> Result<Self> {
         // SECURITY: Validate path to prevent directory traversal attacks
         let path_ref = path.as_ref();
 
@@ -107,8 +112,14 @@ impl VectorStorage {
                 // Reuse existing database connection
                 Arc::clone(existing_db)
             } else {
-                // Create new database and add to pool
-                let new_db = Arc::new(Database::create(&path_buf)?);
+                // Create new database with configured cache size.
+                // Default: 64MB (redb's built-in default is 1GB which is excessive).
+                let cache_bytes = cache_size_bytes.unwrap_or(64 * 1024 * 1024);
+                let new_db = Arc::new(
+                    Database::builder()
+                        .set_cache_size(cache_bytes)
+                        .create(&path_buf)?,
+                );
 
                 // Initialize tables
                 let write_txn = new_db.begin_write()?;

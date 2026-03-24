@@ -138,6 +138,7 @@ fn profile_indexing(args: &Args) -> Result<()> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let mem_profiler = MemoryProfiler::new();
@@ -223,6 +224,7 @@ fn profile_mixed_workload(args: &Args) -> Result<()> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let db = VectorDB::new(options)?;
@@ -304,6 +306,7 @@ fn setup_database(args: &Args) -> Result<(VectorDB, Vec<Vec<f32>>)> {
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(QuantizationConfig::Scalar),
+    ..Default::default()
     };
 
     let db = VectorDB::new(options)?;

@@ -62,6 +62,7 @@ fn run_benchmark(num_vectors: usize, dimensions: usize, num_queries: usize, k: u
             max_elements: num_vectors + 1000,
         }),
         quantization: None,
+    ..Default::default()
     };
 
     let db = VectorDB::new(opts).expect("Failed to create VectorDB");

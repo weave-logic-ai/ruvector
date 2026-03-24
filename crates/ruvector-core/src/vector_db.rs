@@ -38,7 +38,11 @@ impl VectorDB {
         let storage = {
             // First, try to load existing configuration from the database
             // We create a temporary storage to check for config
-            let temp_storage = VectorStorage::new(&options.storage_path, options.dimensions)?;
+            let temp_storage = VectorStorage::with_cache(
+                &options.storage_path,
+                options.dimensions,
+                options.cache_size_bytes,
+            )?;
 
             let stored_config = temp_storage.load_config()?;
 
@@ -48,6 +52,7 @@ impl VectorDB {
                     "Loading existing database with {} dimensions",
                     config.dimensions
                 );
+                let cache_size = options.cache_size_bytes;
                 options = DbOptions {
                     // Keep the provided storage path (may have changed)
                     storage_path: options.storage_path.clone(),
@@ -56,11 +61,14 @@ impl VectorDB {
                     distance_metric: config.distance_metric,
                     hnsw_config: config.hnsw_config,
                     quantization: config.quantization,
+                    // Preserve caller's cache size preference
+                    cache_size_bytes: cache_size,
                 };
                 // Recreate storage with correct dimensions
-                Arc::new(VectorStorage::new(
+                Arc::new(VectorStorage::with_cache(
                     &options.storage_path,
                     options.dimensions,
+                    options.cache_size_bytes,
                 )?)
             } else {
                 // New database - save the configuration

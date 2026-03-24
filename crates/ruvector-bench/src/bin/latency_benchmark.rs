@@ -347,6 +347,7 @@ fn setup_database(
         storage_path: db_path.to_str().unwrap().to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: Some(quantization),
+    ..Default::default()
     };
 
     let db = VectorDB::new(options)?;

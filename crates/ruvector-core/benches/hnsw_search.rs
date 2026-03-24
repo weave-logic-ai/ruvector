@@ -17,6 +17,7 @@ fn bench_hnsw_search(c: &mut Criterion) {
             .to_string(),
         hnsw_config: Some(HnswConfig::default()),
         quantization: None,
+    ..Default::default()
     };
 
     let db = VectorDB::new(options).unwrap();

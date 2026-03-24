@@ -135,6 +135,7 @@ impl SqlEngine {
             storage_path: "memory://".to_string(),
             hnsw_config: None,
             quantization: None,
+        ..Default::default()
         };
 
         let db = VectorDB::new(db_options).map_err(|e| RvLiteError {

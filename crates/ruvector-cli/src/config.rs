@@ -136,6 +136,7 @@ impl Default for DatabaseConfig {
             distance_metric: DistanceMetric::Cosine,
             hnsw: Some(HnswConfig::default()),
             quantization: Some(QuantizationConfig::Scalar),
+        ..Default::default()
         }
     }
 }
@@ -247,6 +248,7 @@ impl Config {
             storage_path: self.database.storage_path.clone(),
             hnsw_config: self.database.hnsw.clone(),
             quantization: self.database.quantization.clone(),
+            ..Default::default()
         }
     }
 
