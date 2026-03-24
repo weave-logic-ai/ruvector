@@ -72,9 +72,12 @@ pub fn cosine_distance(a: &[f32], b: &[f32]) -> f32 {
         // cosine_similarity_simd returns similarity (dot / (norm_a * norm_b)).
         // We need distance = 1.0 - similarity.
         // Guard against zero-norm vectors (simd_intrinsics doesn't check this).
+        // Clamp to [0.0, 2.0] because SIMD floating point can produce similarity
+        // slightly > 1.0 for identical vectors, yielding negative distance which
+        // violates hnsw_rs assertions (it stores -distance for candidate heaps).
         let similarity = crate::simd_intrinsics::cosine_similarity_simd(a, b);
         if similarity.is_finite() {
-            1.0 - similarity
+            (1.0 - similarity).max(0.0)
         } else {
             // Zero-norm vector: treat as maximally distant
             1.0

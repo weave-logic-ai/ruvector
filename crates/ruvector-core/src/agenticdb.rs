@@ -220,7 +220,6 @@ impl AgenticDB {
         let options = DbOptions {
             dimensions,
             ..DbOptions::default()
-                ..Default::default()
         };
         Self::new(options)
     }

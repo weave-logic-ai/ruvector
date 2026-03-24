@@ -1,7 +1,7 @@
 //! HNSW (Hierarchical Navigable Small World) index implementation
 
 use crate::distance::{
-    cosine_distance, distance, dot_product_distance, euclidean_distance, manhattan_distance,
+    cosine_distance, dot_product_distance, euclidean_distance, manhattan_distance,
 };
 use crate::error::{Result, RuvectorError};
 use crate::index::VectorIndex;
