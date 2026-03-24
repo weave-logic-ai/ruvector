@@ -230,8 +230,161 @@ mod tests {
         assert_eq!(stats.edge_count, 1);
     }
 
+    /// Issue #269: MATCH must return ALL matching rows, not just the last one.
+    /// This was the critical bug — context.bind() overwrote previous bindings.
     #[test]
-    fn test_match_nodes() {
+    fn test_match_returns_multiple_rows() {
+        let mut engine = CypherEngine::new();
+
+        // Create 3 Person nodes
+        let create = "CREATE (a:Person {name: 'Alice'}), (b:Person {name: 'Bob'}), (c:Person {name: 'Charlie'})";
+        let ast = parse_cypher(create).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        executor.execute(&ast).unwrap();
+        assert_eq!(engine.graph.stats().node_count, 3);
+
+        // MATCH all Person nodes — must return 3 rows
+        let match_query = "MATCH (n:Person) RETURN n";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(
+            result.rows.len(),
+            3,
+            "MATCH (n:Person) RETURN n should return 3 rows for 3 Person nodes, got {}",
+            result.rows.len()
+        );
+        assert_eq!(result.columns, vec!["n"]);
+    }
+
+    /// Verify MATCH with property access returns correct values for each row.
+    #[test]
+    fn test_match_return_properties() {
+        let mut engine = CypherEngine::new();
+
+        let create = "CREATE (a:Person {name: 'Alice'}), (b:Person {name: 'Bob'})";
+        let ast = parse_cypher(create).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        executor.execute(&ast).unwrap();
+
+        let match_query = "MATCH (n:Person) RETURN n.name";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(result.rows.len(), 2, "Should return 2 rows");
+
+        // Collect returned names
+        let mut names: Vec<String> = result
+            .rows
+            .iter()
+            .filter_map(|row| {
+                row.get("n.name").and_then(|v| {
+                    if let ContextValue::Value(Value::String(s)) = v {
+                        Some(s.clone())
+                    } else {
+                        None
+                    }
+                })
+            })
+            .collect();
+        names.sort();
+        assert_eq!(names, vec!["Alice", "Bob"]);
+    }
+
+    /// Verify MATCH with WHERE correctly filters results.
+    #[test]
+    fn test_match_where_filter() {
+        let mut engine = CypherEngine::new();
+
+        let create =
+            "CREATE (a:Person {name: 'Alice', age: 30}), (b:Person {name: 'Bob', age: 25}), (c:Person {name: 'Charlie', age: 35})";
+        let ast = parse_cypher(create).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        executor.execute(&ast).unwrap();
+
+        // Match persons with age > 28
+        let match_query = "MATCH (n:Person) WHERE n.age > 28 RETURN n.name";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(
+            result.rows.len(),
+            2,
+            "Should return 2 rows (Alice=30 and Charlie=35), got {}",
+            result.rows.len()
+        );
+    }
+
+    /// Test with a single match — should still return exactly 1 row.
+    #[test]
+    fn test_match_single_result() {
+        let mut engine = CypherEngine::new();
+
+        let create = "CREATE (a:Person {name: 'Alice'})";
+        let ast = parse_cypher(create).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        executor.execute(&ast).unwrap();
+
+        let match_query = "MATCH (n:Person) RETURN n";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(result.rows.len(), 1, "Should return exactly 1 row");
+    }
+
+    /// Test with no matches — should return 0 rows.
+    #[test]
+    fn test_match_no_results() {
+        let mut engine = CypherEngine::new();
+
+        // Create a Person but match for Animal
+        let create = "CREATE (a:Person {name: 'Alice'})";
+        let ast = parse_cypher(create).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        executor.execute(&ast).unwrap();
+
+        let match_query = "MATCH (n:Animal) RETURN n";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(result.rows.len(), 0, "Should return 0 rows for no matches");
+    }
+
+    /// Test MATCH with many nodes — stress test for the multi-row fix.
+    #[test]
+    fn test_match_many_nodes() {
+        let mut engine = CypherEngine::new();
+
+        // Create 100 nodes
+        for i in 0..100 {
+            let create = format!("CREATE (n:Item {{id: {}}})", i);
+            let ast = parse_cypher(&create).unwrap();
+            let mut executor = Executor::new(&mut engine.graph);
+            executor.execute(&ast).unwrap();
+        }
+        assert_eq!(engine.graph.stats().node_count, 100);
+
+        // MATCH all — must return 100 rows
+        let match_query = "MATCH (n:Item) RETURN n";
+        let ast = parse_cypher(match_query).unwrap();
+        let mut executor = Executor::new(&mut engine.graph);
+        let result = executor.execute(&ast).unwrap();
+
+        assert_eq!(
+            result.rows.len(),
+            100,
+            "MATCH should return all 100 nodes, got {}",
+            result.rows.len()
+        );
+    }
+
+    #[test]
+    fn test_match_nodes_basic() {
         let mut engine = CypherEngine::new();
 
         // Create data

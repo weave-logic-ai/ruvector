@@ -1,4 +1,8 @@
 //! Cypher query executor for in-memory property graph
+//!
+//! Fixed: MATCH now correctly returns multiple rows (Issue #269).
+//! The executor uses a ResultSet (Vec<ExecutionContext>) pipeline where each
+//! clause transforms the set of row contexts, preserving all matched results.
 
 use super::ast::*;
 use super::graph_store::*;
@@ -20,7 +24,7 @@ pub enum ExecutionError {
     ExecutionError(String),
 }
 
-/// Execution context holding variable bindings
+/// Execution context holding variable bindings for a single row
 #[derive(Debug, Clone)]
 pub struct ExecutionContext {
     pub variables: HashMap<String, ContextValue>,
@@ -94,6 +98,10 @@ impl ExecutionResult {
     }
 }
 
+/// A set of row contexts flowing through the execution pipeline.
+/// Each clause transforms Vec<ExecutionContext> → Vec<ExecutionContext>.
+type ResultSet = Vec<ExecutionContext>;
+
 /// Cypher query executor
 pub struct Executor<'a> {
     graph: &'a mut PropertyGraph,
@@ -106,27 +114,30 @@ impl<'a> Executor<'a> {
 
     /// Execute a parsed Cypher query
     pub fn execute(&mut self, query: &Query) -> Result<ExecutionResult, ExecutionError> {
-        let mut context = ExecutionContext::new();
-        let mut result = None;
+        // Start with a single empty context (one row with no bindings).
+        // Each statement transforms this ResultSet.
+        let mut result_set: ResultSet = vec![ExecutionContext::new()];
+        let mut final_result = None;
 
         for statement in &query.statements {
-            result = Some(self.execute_statement(statement, &mut context)?);
+            final_result = Some(self.execute_statement(statement, &mut result_set)?);
         }
 
-        result.ok_or_else(|| ExecutionError::ExecutionError("No statements to execute".to_string()))
+        final_result
+            .ok_or_else(|| ExecutionError::ExecutionError("No statements to execute".to_string()))
     }
 
     fn execute_statement(
         &mut self,
         statement: &Statement,
-        context: &mut ExecutionContext,
+        result_set: &mut ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
         match statement {
-            Statement::Create(clause) => self.execute_create(clause, context),
-            Statement::Match(clause) => self.execute_match(clause, context),
-            Statement::Return(clause) => self.execute_return(clause, context),
-            Statement::Set(clause) => self.execute_set(clause, context),
-            Statement::Delete(clause) => self.execute_delete(clause, context),
+            Statement::Create(clause) => self.execute_create(clause, result_set),
+            Statement::Match(clause) => self.execute_match(clause, result_set),
+            Statement::Return(clause) => self.execute_return(clause, result_set),
+            Statement::Set(clause) => self.execute_set(clause, result_set),
+            Statement::Delete(clause) => self.execute_delete(clause, result_set),
             _ => Err(ExecutionError::UnsupportedOperation(format!(
                 "Statement {:?} not yet implemented",
                 statement
@@ -137,8 +148,14 @@ impl<'a> Executor<'a> {
     fn execute_create(
         &mut self,
         clause: &CreateClause,
-        context: &mut ExecutionContext,
+        result_set: &mut ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
+        // CREATE applies to the first context (or a new one if empty)
+        if result_set.is_empty() {
+            result_set.push(ExecutionContext::new());
+        }
+        let context = &mut result_set[0];
+
         for pattern in &clause.patterns {
             self.create_pattern(pattern, context)?;
         }
@@ -247,33 +264,61 @@ impl<'a> Executor<'a> {
         Ok(())
     }
 
+    /// Execute MATCH: find all matching patterns and expand the result set.
+    ///
+    /// For each existing row context, MATCH finds all matching nodes/relationships
+    /// and produces a new row context for each match. This correctly handles
+    /// multiple results (fixes Issue #269).
     fn execute_match(
         &mut self,
         clause: &MatchClause,
-        context: &mut ExecutionContext,
+        result_set: &mut ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
-        let mut matches = Vec::new();
+        let mut new_result_set = Vec::new();
 
-        for pattern in &clause.patterns {
-            let pattern_matches = self.match_pattern(pattern)?;
-            matches.extend(pattern_matches);
-        }
+        // For each existing context row, expand with matches
+        for existing_ctx in result_set.iter() {
+            let mut matches = Vec::new();
 
-        // Apply WHERE filter if present
-        if let Some(where_clause) = &clause.where_clause {
-            matches.retain(|ctx| {
-                self.evaluate_condition(&where_clause.condition, ctx)
-                    .unwrap_or(false)
-            });
-        }
-
-        // Merge matches into context
-        for match_ctx in matches {
-            for (var, val) in match_ctx.variables {
-                context.bind(var, val);
+            for pattern in &clause.patterns {
+                let pattern_matches = self.match_pattern(pattern)?;
+                if matches.is_empty() {
+                    // First pattern: each match becomes a new context
+                    for m in pattern_matches {
+                        let mut ctx = existing_ctx.clone();
+                        for (var, val) in m.variables {
+                            ctx.bind(var, val);
+                        }
+                        matches.push(ctx);
+                    }
+                } else {
+                    // Subsequent patterns: cross-product with existing matches
+                    let mut cross = Vec::new();
+                    for prev in &matches {
+                        for m in &pattern_matches {
+                            let mut ctx = prev.clone();
+                            for (var, val) in &m.variables {
+                                ctx.bind(var.clone(), val.clone());
+                            }
+                            cross.push(ctx);
+                        }
+                    }
+                    matches = cross;
+                }
             }
+
+            // Apply WHERE filter if present
+            if let Some(where_clause) = &clause.where_clause {
+                matches.retain(|ctx| {
+                    self.evaluate_condition(&where_clause.condition, ctx)
+                        .unwrap_or(false)
+                });
+            }
+
+            new_result_set.extend(matches);
         }
 
+        *result_set = new_result_set;
         Ok(ExecutionResult::new(vec![]))
     }
 
@@ -414,14 +459,17 @@ impl<'a> Executor<'a> {
         Ok(contexts)
     }
 
+    /// Execute RETURN: project columns from each row context.
+    ///
+    /// Produces one output row per context in the result set (fixes Issue #269).
     fn execute_return(
         &self,
         clause: &ReturnClause,
-        context: &ExecutionContext,
+        result_set: &ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
         let mut columns = Vec::new();
-        let mut row = HashMap::new();
 
+        // Determine column names from the first item
         for item in &clause.items {
             let col_name = item
                 .alias
@@ -430,42 +478,53 @@ impl<'a> Executor<'a> {
                     Expression::Variable(var) => var.clone(),
                     _ => "?column?".to_string(),
                 });
-
-            columns.push(col_name.clone());
-
-            let value = self.evaluate_expression_ctx(&item.expression, context)?;
-            row.insert(col_name, value);
+            columns.push(col_name);
         }
 
-        let mut result = ExecutionResult::new(columns);
-        result.add_row(row);
+        let mut result = ExecutionResult::new(columns.clone());
+
+        // Produce one row per context
+        for context in result_set {
+            let mut row = HashMap::new();
+
+            for (i, item) in clause.items.iter().enumerate() {
+                let col_name = &columns[i];
+                let value = self.evaluate_expression_ctx(&item.expression, context)?;
+                row.insert(col_name.clone(), value);
+            }
+
+            result.add_row(row);
+        }
 
         Ok(result)
     }
 
+    /// Execute SET: apply property updates to all rows in the result set.
     fn execute_set(
         &mut self,
         clause: &SetClause,
-        context: &ExecutionContext,
+        result_set: &ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
-        for item in &clause.items {
-            match item {
-                SetItem::Property {
-                    variable,
-                    property,
-                    value,
-                } => {
-                    let val = self.evaluate_expression(value, context)?;
-                    if let Some(ContextValue::Node(node)) = context.get(variable) {
-                        if let Some(node_mut) = self.graph.get_node_mut(&node.id) {
-                            node_mut.set_property(property.clone(), val);
+        for context in result_set {
+            for item in &clause.items {
+                match item {
+                    SetItem::Property {
+                        variable,
+                        property,
+                        value,
+                    } => {
+                        let val = self.evaluate_expression(value, context)?;
+                        if let Some(ContextValue::Node(node)) = context.get(variable) {
+                            if let Some(node_mut) = self.graph.get_node_mut(&node.id) {
+                                node_mut.set_property(property.clone(), val);
+                            }
                         }
                     }
-                }
-                _ => {
-                    return Err(ExecutionError::UnsupportedOperation(
-                        "Only property SET supported".to_string(),
-                    ))
+                    _ => {
+                        return Err(ExecutionError::UnsupportedOperation(
+                            "Only property SET supported".to_string(),
+                        ))
+                    }
                 }
             }
         }
@@ -473,29 +532,33 @@ impl<'a> Executor<'a> {
         Ok(ExecutionResult::new(vec![]))
     }
 
+    /// Execute DELETE: remove nodes/edges for all rows in the result set.
     fn execute_delete(
         &mut self,
         clause: &DeleteClause,
-        context: &ExecutionContext,
+        result_set: &ResultSet,
     ) -> Result<ExecutionResult, ExecutionError> {
-        for expr in &clause.expressions {
-            if let Expression::Variable(var) = expr {
-                if let Some(ctx_val) = context.get(var) {
-                    match ctx_val {
-                        ContextValue::Node(node) => {
-                            if clause.detach {
-                                self.graph.delete_node(&node.id)?;
-                            } else {
-                                return Err(ExecutionError::ExecutionError(
-                                    "Cannot delete node with relationships without DETACH"
-                                        .to_string(),
-                                ));
+        for context in result_set {
+            for expr in &clause.expressions {
+                if let Expression::Variable(var) = expr {
+                    if let Some(ctx_val) = context.get(var) {
+                        match ctx_val {
+                            ContextValue::Node(node) => {
+                                if clause.detach {
+                                    // Ignore errors for already-deleted nodes
+                                    let _ = self.graph.delete_node(&node.id);
+                                } else {
+                                    return Err(ExecutionError::ExecutionError(
+                                        "Cannot delete node with relationships without DETACH"
+                                            .to_string(),
+                                    ));
+                                }
                             }
+                            ContextValue::Edge(edge) => {
+                                let _ = self.graph.delete_edge(&edge.id);
+                            }
+                            _ => {}
                         }
-                        ContextValue::Edge(edge) => {
-                            self.graph.delete_edge(&edge.id)?;
-                        }
-                        _ => {}
                     }
                 }
             }
