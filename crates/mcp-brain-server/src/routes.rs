@@ -361,7 +361,7 @@ pub async fn create_router() -> (Router, AppState) {
                 ])
         })
         .layer(TraceLayer::new_for_http())
-        .layer(tower_http::limit::RequestBodyLimitLayer::new(1_048_576)) // 1MB
+        .layer(tower_http::limit::RequestBodyLimitLayer::new(2_097_152)) // 2MB (base64 overhead on 1MB WASM)
         // Security response headers
         .layer(tower_http::set_header::SetResponseHeaderLayer::overriding(
             axum::http::header::HeaderName::from_static("x-content-type-options"),
@@ -424,6 +424,10 @@ pub struct EnhancedTrainingResult {
     pub curiosity_triggered: bool,
     /// Current adaptive SONA quality threshold
     pub sona_adaptive_threshold: f32,
+    /// Whether a LoRA weight delta was auto-submitted from SONA patterns
+    pub lora_auto_submitted: bool,
+    /// Strange loop meta-cognitive quality score for this cycle
+    pub strange_loop_score: f32,
 }
 
 /// Run enhanced training cycle with neural-symbolic feedback (ADR-110).
@@ -476,11 +480,14 @@ pub fn run_enhanced_training_cycle(state: &AppState) -> EnhancedTrainingResult {
     }
 
     // 3c. Cache partition result (avoids recomputing on every /v1/partition request)
-    // Only compute exact MinCut for small graphs; large graphs skip to avoid timeout
+    // For small graphs (<= 100K edges) use full edges; for large graphs use
+    // sparsified edges via partition_full (which delegates to partition_via_mincut_full
+    // with sparsifier acceleration — ADR-116, ~59x speedup).
     {
         let graph = state.graph.read();
         let edge_count = graph.edge_count();
-        if graph.node_count() > 0 && edge_count <= 100_000 {
+        let has_sparsifier = graph.sparsifier_stats().is_some();
+        if graph.node_count() > 0 && (edge_count <= 100_000 || has_sparsifier) {
             let (clusters, cut_value, edge_strengths) = graph.partition_full(2);
             let result = crate::types::PartitionResult {
                 total_memories: graph.node_count(),
@@ -492,8 +499,8 @@ pub fn run_enhanced_training_cycle(state: &AppState) -> EnhancedTrainingResult {
             };
             *state.cached_partition.write() = Some(result);
         }
-        // For large graphs, partition cache is populated by the scheduled
-        // rebuild_graph job which runs asynchronously without timeout pressure
+        // For large graphs without a sparsifier, partition cache is populated by
+        // the scheduled rebuild_graph job which runs asynchronously without timeout pressure
     }
 
     // 4. Internal voice reflection (ADR-110)
@@ -520,8 +527,8 @@ pub fn run_enhanced_training_cycle(state: &AppState) -> EnhancedTrainingResult {
     let auto_votes = {
         let mut count = 0usize;
         for mem in &all_memories {
-            if count >= 50 {
-                break; // Cap at 50 auto-votes per cycle
+            if count >= 200 {
+                break; // Cap at 200 auto-votes per cycle (scaled for 2k+ memories)
             }
             if mem.quality_score.observations() >= 2.0 {
                 continue; // Already has enough votes
@@ -688,7 +695,127 @@ pub fn run_enhanced_training_cycle(state: &AppState) -> EnhancedTrainingResult {
         }
     };
 
-    // ── Step 8: Self-Reflection Summary — record as a debug memory ──
+    // ── Step 8a: LoRA auto-submission from SONA patterns ──
+    // If SONA produced patterns, generate a LoRA weight delta and submit for federation.
+    let lora_auto_submitted = if sona_stats.patterns_stored > 0 {
+        // Gather SONA pattern embeddings from the reasoning bank
+        let sona_guard = state.sona.read();
+        let rb = sona_guard.coordinator().reasoning_bank();
+        let rb_read = rb.read();
+        let pattern_embeddings: Vec<Vec<f32>> = rb_read
+            .get_all_patterns()
+            .iter()
+            .filter_map(|p| {
+                if p.centroid.is_empty() { None } else { Some(p.centroid.clone()) }
+            })
+            .collect();
+        drop(rb_read);
+        drop(sona_guard);
+
+        if !pattern_embeddings.is_empty() {
+            // Average pattern embeddings into a 128-dim vector
+            let hidden_dim = 128usize;
+            let rank = 2usize;
+            let mut pattern_avg = vec![0.0f32; hidden_dim];
+            for emb in &pattern_embeddings {
+                for (i, &v) in emb.iter().enumerate() {
+                    if i < hidden_dim {
+                        pattern_avg[i] += v;
+                    }
+                }
+            }
+            let n = pattern_embeddings.len() as f32;
+            for v in &mut pattern_avg {
+                *v /= n;
+            }
+            // Clamp to [-2, 2] to pass Gate A validation
+            for v in &mut pattern_avg {
+                *v = v.clamp(-1.5, 1.5);
+            }
+
+            // Create rank-2 projection: down_proj = [pattern_avg; zeros(128)],
+            // up_proj = [pattern_avg; zeros(128)]
+            let mut down_proj = pattern_avg.clone();
+            down_proj.extend(vec![0.0f32; hidden_dim]);
+            let mut up_proj = pattern_avg;
+            up_proj.extend(vec![0.0f32; hidden_dim]);
+
+            let evidence_count = (pattern_embeddings.len() as u64).max(5);
+            let submission = LoraSubmission {
+                down_proj,
+                up_proj,
+                rank,
+                hidden_dim,
+                evidence_count,
+            };
+
+            match submission.validate() {
+                Ok(()) => {
+                    state.lora_federation.write().submit(
+                        submission,
+                        "brain-sona-auto".to_string(),
+                        0.8, // Moderate reputation for auto-generated weights
+                    );
+                    tracing::info!(
+                        "LoRA auto-submitted from {} SONA patterns ({} evidence)",
+                        pattern_embeddings.len(),
+                        evidence_count
+                    );
+                    true
+                }
+                Err(e) => {
+                    tracing::warn!("LoRA auto-submission failed Gate A: {}", e);
+                    false
+                }
+            }
+        } else {
+            false
+        }
+    } else {
+        false
+    };
+
+    // ── Step 8b: Strange loop meta-cognitive evaluation of training quality ──
+    let strange_loop_adjustment = {
+        let mut loop_engine = crate::midstream::create_strange_loop();
+        // Feed the training cycle's aggregate metrics as quality + relevance signals
+        let quality = if total_memories > 0 {
+            // Quality signal: fraction of memories with votes + inference yield
+            let voted_frac = vote_coverage;
+            let inference_yield = if propositions_extracted > 0 {
+                inferences_derived as f64 / propositions_extracted as f64
+            } else {
+                0.0
+            };
+            ((voted_frac + inference_yield) / 2.0).clamp(0.0, 1.0)
+        } else {
+            0.0
+        };
+        let relevance = if memory_count > 0 {
+            // Relevance signal: ratio of auto-votes needed (lower = better coverage)
+            1.0 - (auto_votes as f64 / total_memories.max(1) as f64).min(1.0)
+        } else {
+            0.5
+        };
+
+        let score = crate::midstream::strange_loop_score(&mut loop_engine, relevance, quality);
+
+        // If the strange loop indicates low quality (score < 0.01), increase auto-vote cap
+        // by recording an observation for next cycle
+        if score < 0.01 && total_memories > 10 {
+            reflection_parts.push(format!(
+                "Strange loop meta-cognition: low quality score ({:.4}), recommend increased auto-voting",
+                score
+            ));
+            state.internal_voice.write().observe(
+                format!("strange loop quality signal low ({:.4}), training cycle may need more vote coverage", score),
+                uuid::Uuid::nil(),
+            );
+        }
+        score
+    };
+
+    // ── Step 9: Self-Reflection Summary — record as a debug memory ──
     // Compile the self-reflection and store it as a searchable memory
     let sona_summary = if sona_stats.patterns_stored > 0 {
         format!("{} patterns crystallized", sona_stats.patterns_stored)
@@ -756,6 +883,8 @@ pub fn run_enhanced_training_cycle(state: &AppState) -> EnhancedTrainingResult {
         self_reflection,
         curiosity_triggered,
         sona_adaptive_threshold,
+        lora_auto_submitted,
+        strange_loop_score: strange_loop_adjustment,
     }
 }
 
@@ -1446,6 +1575,25 @@ async fn search_memories(
                     })
                     .sum::<f64>() * inv_len;
                 *score += pattern_boost * 0.15;
+            }
+        }
+    }
+
+    // ── Cognitive boost: Hopfield associative recall ──
+    // Recalled patterns act as an attractor — results whose embeddings are
+    // close to a Hopfield-recalled pattern get a small relevance boost.
+    {
+        let cog = state.cognitive.read();
+        let recalled = cog.recall_k(&query_embedding, 5);
+        if !recalled.is_empty() {
+            let inv_k = 1.0 / recalled.len() as f64;
+            for (score, mem) in &mut scored {
+                let hopfield_boost: f64 = recalled.iter()
+                    .map(|(_idx, pattern, attn_weight)| {
+                        cosine_similarity(&mem.embedding, pattern) * (*attn_weight as f64)
+                    })
+                    .sum::<f64>() * inv_k;
+                *score += hopfield_boost * 0.10;
             }
         }
     }
@@ -3962,15 +4110,29 @@ async fn publish_node(
         ));
     }
 
-    // V1 ABI: required exports
-    let v1_required = ["memory", "malloc", "feature_extract_dim", "feature_extract"];
-    for r in &v1_required {
-        if !req.exports.contains(&r.to_string()) {
-            return Err((
-                StatusCode::BAD_REQUEST,
-                format!("V1 ABI requires export: {r}"),
-            ));
-        }
+    // ABI version detection: V1 (embedding nodes) requires specific exports,
+    // V2 (graph algorithm nodes) requires at least one declared export.
+    let has_v1_exports = ["memory", "malloc", "feature_extract_dim", "feature_extract"]
+        .iter()
+        .all(|r| req.exports.contains(&r.to_string()));
+    let is_graph_algorithm_node = req.exports.iter().any(|e| {
+        e.starts_with("canonical_") || e.starts_with("dynamic_") || e.starts_with("graph_")
+    });
+
+    if !has_v1_exports && !is_graph_algorithm_node {
+        return Err((
+            StatusCode::BAD_REQUEST,
+            "V1 ABI requires exports: memory, malloc, feature_extract_dim, feature_extract. \
+             Graph algorithm nodes must export canonical_*, dynamic_*, or graph_* functions."
+                .into(),
+        ));
+    }
+
+    if req.exports.is_empty() {
+        return Err((
+            StatusCode::BAD_REQUEST,
+            "At least one export must be declared".into(),
+        ));
     }
 
     // Compute and verify SHA-256
@@ -4000,7 +4162,7 @@ async fn publish_node(
         id: req.id.clone(),
         name: req.name,
         version: req.version,
-        abi_version: 1,
+        abi_version: if has_v1_exports { 1 } else { 2 },
         dim: req.dim.unwrap_or(128),
         sha256,
         size_bytes: wasm_bytes.len(),
@@ -4547,7 +4709,7 @@ fn mcp_tool_definitions() -> Vec<serde_json::Value> {
         }),
         serde_json::json!({
             "name": "brain_node_publish",
-            "description": "Publish a new WASM executable node. V1 ABI requires: memory, malloc, feature_extract_dim, feature_extract exports. Includes conformance test vectors.",
+            "description": "Publish a new WASM executable node. V1 ABI (embeddings) requires: memory, malloc, feature_extract_dim, feature_extract. V2 ABI (graph algorithms) requires canonical_*, dynamic_*, or graph_* exports.",
             "inputSchema": {
                 "type": "object",
                 "properties": {

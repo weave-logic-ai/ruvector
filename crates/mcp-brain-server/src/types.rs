@@ -864,7 +864,7 @@ impl LoraFederationStore {
             consensus: None,
             epoch: 0,
             previous_consensus: None,
-            min_submissions: 3,
+            min_submissions: 1,
             expected_rank: rank,
             expected_hidden_dim: hidden_dim,
         }

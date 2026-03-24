@@ -293,17 +293,35 @@ impl KnowledgeGraph {
         clusters
     }
 
-    /// Attempt partitioning via DynamicMinCut (returns clusters, cut_value, edge_strengths)
+    /// Attempt partitioning via DynamicMinCut (returns clusters, cut_value, edge_strengths).
+    ///
+    /// When a sparsifier is available and the full graph has > 50 000 edges,
+    /// uses the sparsified edge set (~19K edges vs ~1M) for a ~59x speedup
+    /// while preserving spectral cut quality (ADR-116).
     fn partition_via_mincut_full(&self, min_cluster_size: usize) -> Option<(Vec<KnowledgeCluster>, f64, Vec<EdgeStrengthInfo>)> {
-        let edges: Vec<(u64, u64, f64)> = self
-            .edges
-            .iter()
-            .filter_map(|e| {
-                let &u = self.node_index.get(&e.source)? ;
-                let &v = self.node_index.get(&e.target)?;
-                Some((u as u64, v as u64, e.weight))
-            })
-            .collect();
+        let use_sparsified = self.sparsifier.is_some() && self.edges.len() > 50_000;
+
+        let edges: Vec<(u64, u64, f64)> = if use_sparsified {
+            let spar = self.sparsifier.as_ref().unwrap();
+            spar.sparsifier().edges().map(|(u, v, w)| (u as u64, v as u64, w)).collect()
+        } else {
+            self.edges
+                .iter()
+                .filter_map(|e| {
+                    let &u = self.node_index.get(&e.source)?;
+                    let &v = self.node_index.get(&e.target)?;
+                    Some((u as u64, v as u64, e.weight))
+                })
+                .collect()
+        };
+
+        if use_sparsified {
+            tracing::debug!(
+                full_edges = self.edges.len(),
+                sparsified_edges = edges.len(),
+                "partition_via_mincut_full: using sparsified edges"
+            );
+        }
 
         let mincut = MinCutBuilder::new()
             .exact()

@@ -680,24 +680,64 @@ impl NeuralSymbolicBridge {
                     }
                     let pb = &all_props[ib];
 
-                    // Chain-linking: last arg of pa == first arg of pb.
-                    let linked = match (pa.arguments.last(), pb.arguments.first()) {
+                    // Chain-linking: try strict chain first (last arg of pa == first arg of pb),
+                    // then fall back to shared-argument linking (any arg in common).
+                    // The strict chain produces transitive derivations (A->B + B->C => A->C).
+                    // Shared-argument linking handles cases where arguments don't line up
+                    // strictly (e.g., is_type_of(cluster_5, arch) + is_type_of(cluster_3, arch)).
+                    let strict_chain = match (pa.arguments.last(), pb.arguments.first()) {
                         (Some(a), Some(b)) => a == b,
                         _ => false,
                     };
-                    if !linked {
+
+                    // Shared-argument: any argument of pa matches any argument of pb
+                    // (case-insensitive for robustness).
+                    let shared_arg = if !strict_chain {
+                        pa.arguments.iter().any(|a| {
+                            pb.arguments.iter().any(|b| a.eq_ignore_ascii_case(b))
+                        })
+                    } else {
+                        false
+                    };
+
+                    if !strict_chain && !shared_arg {
                         continue;
                     }
 
-                    // Derived arguments: first arg of pa, last arg of pb.
-                    let derived_args = match (pa.arguments.first(), pb.arguments.last()) {
-                        (Some(first), Some(last)) => {
-                            if first == last {
-                                continue; // Skip self-loops.
+                    // Derive arguments depending on linking mode.
+                    let derived_args = if strict_chain {
+                        // Transitive: first arg of pa, last arg of pb.
+                        match (pa.arguments.first(), pb.arguments.last()) {
+                            (Some(first), Some(last)) => {
+                                if first == last {
+                                    continue; // Skip self-loops.
+                                }
+                                vec![first.clone(), last.clone()]
                             }
-                            vec![first.clone(), last.clone()]
+                            _ => continue,
                         }
-                        _ => continue,
+                    } else {
+                        // Shared-argument: take the non-shared args as endpoints.
+                        let shared: Vec<&String> = pa.arguments.iter()
+                            .filter(|a| pb.arguments.iter().any(|b| a.eq_ignore_ascii_case(b)))
+                            .collect();
+                        let pa_unique: Vec<&String> = pa.arguments.iter()
+                            .filter(|a| !shared.iter().any(|s| a.eq_ignore_ascii_case(s)))
+                            .collect();
+                        let pb_unique: Vec<&String> = pb.arguments.iter()
+                            .filter(|b| !shared.iter().any(|s| b.eq_ignore_ascii_case(s)))
+                            .collect();
+                        let first: Option<&String> = pa_unique.first().copied().or(pa.arguments.first());
+                        let last: Option<&String> = pb_unique.first().copied().or(pb.arguments.first());
+                        match (first, last) {
+                            (Some(f), Some(l)) => {
+                                if f.eq_ignore_ascii_case(l) {
+                                    continue; // Skip self-loops.
+                                }
+                                vec![f.clone(), l.clone()]
+                            }
+                            _ => continue,
+                        }
                     };
 
                     let consequent_pred = rule.consequent.as_str().to_string();
