@@ -13,6 +13,8 @@ pub mod hash;
 pub mod lineage;
 #[cfg(feature = "ed25519")]
 pub mod sign;
+#[cfg(feature = "ed25519")]
+pub mod dual_sign;
 pub mod witness;
 
 pub use attestation::{
@@ -29,4 +31,10 @@ pub use lineage::{
 };
 #[cfg(feature = "ed25519")]
 pub use sign::{sign_segment, verify_segment};
+#[cfg(feature = "ed25519")]
+pub use dual_sign::{
+    DualKey, DualVerifyKey, MlDsa65Key, MlDsa65VerifyKey,
+    dual_sign_segment, verify_dual_segment,
+    sign_segment_ml_dsa, verify_segment_ml_dsa,
+};
 pub use witness::{create_witness_chain, verify_witness_chain, WitnessEntry};

@@ -60,6 +60,11 @@ fn header_to_sign_bytes(h: &SegmentHeader) -> [u8; 64] {
     buf
 }
 
+/// Public accessor for the canonical signed data (used by dual_sign module).
+pub fn build_signed_data_pub(header: &SegmentHeader, payload: &[u8]) -> Vec<u8> {
+    build_signed_data(header, payload)
+}
+
 /// Sign a segment with Ed25519, producing a `SignatureFooter`.
 pub fn sign_segment(header: &SegmentHeader, payload: &[u8], key: &SigningKey) -> SignatureFooter {
     let msg = build_signed_data(header, payload);
