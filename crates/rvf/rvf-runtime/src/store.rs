@@ -3038,7 +3038,12 @@ impl RvfStore {
         // case, which starts at 1) and every sparse ID. Size from the highest
         // live ID instead, while bounding the dense bitmap to fail closed
         // rather than risk an allocation DoS.
-        let membership_capacity = self
+        //
+        // When `self` is itself a COW child, the ids it inherits from its own
+        // parent are not in `self.vectors`; they are visible through
+        // `self.membership_filter`. The new child must inherit that visible
+        // set too, so the range also covers the filter's capacity.
+        let local_capacity = self
             .vectors
             .ids()
             .copied()
@@ -3050,6 +3055,11 @@ impl RvfStore {
             })
             .transpose()?
             .unwrap_or(0);
+        let inherited_capacity = self
+            .membership_filter
+            .as_ref()
+            .map_or(0, MembershipFilter::vector_count);
+        let membership_capacity = local_capacity.max(inherited_capacity);
         let membership_bytes = membership_capacity
             .div_ceil(64)
             .checked_mul(8)
@@ -3080,8 +3090,20 @@ impl RvfStore {
 
         // Initialize membership filter with all parent vectors visible
         let mut filter = MembershipFilter::new_include(membership_capacity);
+        // Inherited ids: whatever this store itself exposes from its parent
+        // (already minus the tombstones `delete` removed from its filter).
+        if let Some(ref own) = self.membership_filter {
+            for vid in 0..own.vector_count() {
+                if own.contains(vid) {
+                    filter.add(vid);
+                }
+            }
+        }
+        // Local ids override inherited ones; a locally deleted id is hidden.
         for &vid in self.vectors.ids() {
-            if !self.deletion_bitmap.is_deleted(vid) {
+            if self.deletion_bitmap.is_deleted(vid) {
+                filter.remove(vid);
+            } else {
                 filter.add(vid);
             }
         }
@@ -6267,5 +6289,80 @@ mod tests {
         drop(store);
         let reopened = RvfStore::open_readonly(&path).unwrap();
         assert_hits(&reopened);
+    }
+
+    /// A branch of a branch must inherit everything its parent exposes, not
+    /// only the parent's local vectors: records from the grandparent stay
+    /// visible, a delete made at depth 1 stays hidden at depth 2 and 3, and
+    /// every level reopens.
+    #[test]
+    fn branch_of_branch_inherits_the_parents_visible_set() {
+        fn md(id: u64) -> VectorMetadata {
+            VectorMetadata {
+                vector_id: id,
+                fields: vec![MetadataEntry {
+                    field_id: 0,
+                    value: MetadataValue::U64(id),
+                }],
+                delete_record: false,
+            }
+        }
+        fn ingest(store: &mut RvfStore, id: u64) {
+            store
+                .ingest_batch_with_metadata(&[&[id as f32, 0.0]], &[id], &[md(id)])
+                .unwrap();
+        }
+        fn hits(store: &RvfStore) -> Vec<u64> {
+            let mut ids: Vec<u64> = store
+                .query(&[0.0, 0.0], 32, &QueryOptions::default())
+                .unwrap()
+                .into_iter()
+                .map(|r| r.id)
+                .collect();
+            ids.sort_unstable();
+            ids
+        }
+
+        let dir = TempDir::new().unwrap();
+        let p = |name: &str| dir.path().join(name);
+        let options = RvfOptions {
+            dimension: 2,
+            ..Default::default()
+        };
+        let mut root = RvfStore::create(&p("root.rvf"), options).unwrap();
+        for id in [1, 2, 3] {
+            ingest(&mut root, id);
+        }
+        let mut c1 = root.branch(&p("c1.rvf")).unwrap();
+        ingest(&mut c1, 10);
+        c1.delete(&[2]).unwrap();
+        let mut c2 = c1.branch(&p("c2.rvf")).unwrap();
+        ingest(&mut c2, 20);
+        let mut c3 = c2.branch(&p("c3.rvf")).unwrap();
+        ingest(&mut c3, 30);
+
+        let visible = [1, 3, 10, 20, 30];
+        for id in [1, 3, 10, 20] {
+            assert!(c3.membership_filter().unwrap().contains(id), "filter {id}");
+        }
+        for id in visible {
+            assert!(c3.get_metadata(id).is_some(), "metadata {id}");
+        }
+        assert!(!c3.membership_filter().unwrap().contains(2));
+        assert!(!c2.membership_filter().unwrap().contains(2));
+        assert_eq!(hits(&c3), visible);
+        assert_eq!(hits(&c2), [1, 3, 10, 20]);
+
+        c3.close().unwrap();
+        c2.close().unwrap();
+        c1.close().unwrap();
+        root.close().unwrap();
+
+        let reopened = RvfStore::open_readonly(&p("c3.rvf")).unwrap();
+        for id in visible {
+            assert!(reopened.get_metadata(id).is_some(), "reopened {id}");
+        }
+        assert!(reopened.get_metadata(2).is_none());
+        assert_eq!(hits(&reopened), visible);
     }
 }
